@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,11 +8,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Share+Tech+Mono&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
     <div class="scanline"></div>
-    
+
     <header id="main-header">
         <div class="header-top">
             <div class="logo">
@@ -31,6 +34,17 @@
             <span class="status-indicator">STATUS: UNSTABLE</span>
         </div>
     </header>
+
+    <!-- NEW: Live Server Status Ticker -->
+    <div id="live-ticker-container">
+        <div class="ticker-label"><span class="pulsing-dot"></span> LIVE_EVENTS:</div>
+        <div class="ticker-content-wrapper">
+            <div id="ticker-content">
+                <!-- Injected via JS -->
+                <span>Initializing monitor protocol...</span>
+            </div>
+        </div>
+    </div>
 
     <main class="layout-grid">
         <aside id="sidebar">
@@ -68,7 +82,9 @@
                         <option value="all">ALL SERVERS</option>
                         <option value="global">Global</option>
                         <option value="europe_server">Europe_Server</option>
+                        <option value="sol_system">Solar_System (Incl. Moon/Mars)</option>
                         <option value="moon_server">Moon_Server</option>
+                        <option value="mars_server">Mars_Server</option>
                         <option value="global_void">Global_Void</option>
                     </select>
                 </div>
@@ -77,6 +93,17 @@
                     <label for="severity-toggle">SHOW CRITICAL ONLY</label>
                     <label class="switch">
                         <input type="checkbox" id="severity-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+
+                <!-- NEW: Granularity Toggle -->
+                <div class="control-group toggle-group">
+                    <label for="granularity-toggle" class="tooltip">SHOW VERBOSE LOGS
+                        <span class="tooltip-text">Include minor patches & low importance events</span>
+                    </label>
+                    <label class="switch">
+                        <input type="checkbox" id="granularity-toggle">
                         <span class="slider round"></span>
                     </label>
                 </div>
@@ -96,4 +123,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

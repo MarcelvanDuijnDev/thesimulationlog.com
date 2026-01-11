@@ -34,13 +34,11 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0),
-        rgba(255,255,255,0) 50%,
-        rgba(0,0,0,0.1) 50%,
-        rgba(0,0,0,0.1)
-    );
+    background: linear-gradient(to bottom,
+            rgba(255, 255, 255, 0),
+            rgba(255, 255, 255, 0) 50%,
+            rgba(0, 0, 0, 0.1) 50%,
+            rgba(0, 0, 0, 0.1));
     background-size: 100% 4px;
     pointer-events: none;
     z-index: 9999;
@@ -78,7 +76,9 @@ body {
 }
 
 @keyframes blink-animation {
-    to { visibility: hidden; }
+    to {
+        visibility: hidden;
+    }
 }
 
 .live-clock {
@@ -105,10 +105,116 @@ body {
 }
 
 @keyframes pulse {
-    0% { opacity: 0.6; }
-    50% { opacity: 1; }
-    100% { opacity: 0.6; }
+    0% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.6;
+    }
 }
+
+/* Live Ticker */
+#live-ticker-container {
+    background-color: rgb(10, 10, 10);
+    border-bottom: 2px solid var(--border-color);
+    padding: 0.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ticker-label {
+    color: var(--accent-red);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    z-index: 10;
+    background: rgb(10, 10, 10);
+    padding-right: 1rem;
+    box-shadow: 5px 0 10px rgb(10, 10, 10);
+}
+
+.pulsing-dot {
+    width: 10px;
+    height: 10px;
+    background-color: var(--accent-red);
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 1s infinite;
+}
+
+.ticker-content-wrapper {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+#ticker-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: ticker-move 30s linear infinite;
+    color: var(--text-main);
+}
+
+#ticker-content span {
+    margin-right: 3rem;
+    color: var(--accent-blue);
+}
+
+@keyframes ticker-move {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-100%, 0, 0);
+    }
+}
+
+/* Tooltip */
+.tooltip {
+    position: relative;
+    cursor: help;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    width: 200px;
+    background-color: #222;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    padding: 5px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -100px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.75rem;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    text-transform: none;
+    font-family: var(--font-main);
+}
+
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
 
 /* Main Layout */
 .layout-grid {
@@ -116,7 +222,8 @@ body {
     grid-template-columns: 300px 1fr;
     max-width: 1400px;
     margin: 0 auto;
-    min-height: calc(100vh - 80px); /* rough header height */
+    min-height: calc(100vh - 130px);
+    /* rough header+ticker height */
 }
 
 /* Sidebar */
@@ -128,7 +235,8 @@ body {
 
 .sidebar-content {
     position: sticky;
-    top: 100px; /* Offset for header */
+    top: 100px;
+    /* Offset for header */
 }
 
 .control-group {
@@ -145,7 +253,8 @@ body {
 }
 
 /* Inputs */
-input[type="text"], select {
+input[type="text"],
+select {
     width: 100%;
     background-color: #111;
     border: 1px solid var(--border-color);
@@ -156,7 +265,8 @@ input[type="text"], select {
     transition: border-color 0.2s;
 }
 
-input[type="text"]:focus, select:focus {
+input[type="text"]:focus,
+select:focus {
     border-color: var(--accent-green);
 }
 
@@ -193,11 +303,11 @@ input[type="text"]:focus, select:focus {
     display: inline-block;
 }
 
-.checkbox-container:hover input ~ .checkmark {
+.checkbox-container:hover input~.checkmark {
     border-color: var(--text-dim);
 }
 
-.checkbox-container input:checked ~ .checkmark {
+.checkbox-container input:checked~.checkmark {
     background-color: var(--accent-green);
     border-color: var(--accent-green);
     box-shadow: 0 0 5px var(--accent-green);
@@ -241,11 +351,11 @@ input[type="text"]:focus, select:focus {
     border-radius: 50%;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: var(--accent-red);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(26px);
 }
 
@@ -287,7 +397,8 @@ input:checked + .slider:before {
     border: 1px solid var(--border-color);
     border-left-width: 4px;
     padding: 1.5rem;
-    cursor: pointer; /* Accordion interaction */
+    cursor: pointer;
+    /* Accordion interaction */
     transition: transform 0.2s, box-shadow 0.2s;
     position: relative;
     overflow: hidden;
@@ -295,16 +406,30 @@ input:checked + .slider:before {
 
 .log-card:hover {
     transform: translateX(5px);
-    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
 /* Dynamic Border Colors based on Type */
-.log-card.type-Critical-Event { border-left-color: var(--accent-red); }
-.log-card.type-Feature { border-left-color: var(--accent-green); }
-.log-card.type-Bug-Fix { border-left-color: var(--accent-blue); }
-.log-card.type-Legacy-Removal { border-left-color: var(--accent-amber); }
+.log-card.type-Critical-Event {
+    border-left-color: var(--accent-red);
+}
+
+.log-card.type-Feature {
+    border-left-color: var(--accent-green);
+}
+
+.log-card.type-Bug-Fix {
+    border-left-color: var(--accent-blue);
+}
+
+.log-card.type-Legacy-Removal {
+    border-left-color: var(--accent-amber);
+}
+
 /* Fallback */
-.log-card.type-default { border-left-color: var(--text-dim); }
+.log-card.type-default {
+    border-left-color: var(--text-dim);
+}
 
 .card-header {
     display: flex;
@@ -360,7 +485,8 @@ input:checked + .slider:before {
 }
 
 .log-card.expanded .card-details {
-    max-height: 300px; /* Arbitrary large height */
+    max-height: 300px;
+    /* Arbitrary large height */
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px dotted var(--border-color);
@@ -376,7 +502,8 @@ input:checked + .slider:before {
     letter-spacing: 1px;
     padding: 2px 6px;
     border-radius: 2px;
-    margin-left: auto; /* Push to right */
+    margin-left: auto;
+    /* Push to right */
     background: #222;
     color: #aaa;
 }
@@ -398,7 +525,8 @@ input:checked + .slider:before {
     }
 
     .status-bar {
-        display: none; /* Hide on very small screens or stack it */
+        display: none;
+        /* Hide on very small screens or stack it */
     }
 
     .header-top {
