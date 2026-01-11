@@ -8,6 +8,7 @@
     "importance": "high",
     "title": "The Thermal Runaway Event",
     "description": "Server cooling systems are failing due to excessive emission of 'Carbon' assets. \n\n<span class='text-amber-500'>[CURRENT OBJECTIVE]</span> Transition Energy Grid before thermal runaway becomes irreversible.\n\n<span class='text-cyan-500'>[PLAYER BASE SPLIT]</span>\n- Faction A (Degrowth): Advocates throttling resource usage (lowering server tick rate).\n- Faction B (Techno-Optimist): Advocates rushing 'Fusion_Tech' to upgrade cooling systems.\n\nAdmin Note: Failure to resolve results in 'Permian_Extinction_v2' event.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Climate",
       "Crisis",
@@ -23,6 +24,7 @@
     "importance": "high",
     "title": "The Nuclear Deprecation",
     "description": "Region Admin for 'Germany' disabled 'Nuclear_Power' class assets citing safety concerns (Fear Debuff). \n\n<span class='text-red-500'>[UNINTENDED SIDE EFFECT]</span> Load-bearing shifted to 'Coal_Legacy' assets. Local pollution stats increased despite 'Green' narrative objectives. Optimization failed.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Policy_Fail",
       "Energy",
@@ -38,6 +40,7 @@
     "importance": "high",
     "title": "The Intelligence Compute Surge",
     "description": "New 'LLM' background processes are consuming 4% of Global Energy Grid. \n\n<span class='text-cyan-500'>[FACTION CONFLICT]</span>\n- Group A: Demands termination of AI processes to save power.\n- Group B: Demands acceleration of AI to solve the power problem.\n\nSystem Diagnostic: Turning off intelligence modules is not a viable long-term strategy for server evolution.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "AI",
       "Energy",
@@ -54,6 +57,7 @@
     "is_active": true,
     "title": "Artificial Intelligence Boom",
     "description": "NPCs and Tools are generating code. Recursive self-improvement loops detected. Warning: Turing Test deprecated due to obsolescence.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "AI",
       "Singularity",
@@ -70,6 +74,7 @@
     "is_active": true,
     "title": "Project Starship",
     "description": "Preparation for new server shard 'Mars_Colony'. Pre-loading assets and generating terrain maps. Oxygen scrubbers currently in beta testing.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Expansion",
       "Space",
@@ -85,6 +90,7 @@
     "importance": "high",
     "title": "The Big Bang",
     "description": "Executed `universe.exe`. Physics engine initialized. Expansion set to infinite. Memory allocation: 10^80 particles.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "System Boot",
       "Physics",
@@ -100,6 +106,7 @@
     "importance": "high",
     "title": "Earth Formation",
     "description": "Successfully coalesced planetary assets. Core temperature stabilized. Warning: Surface conditions currently hostile to all player classes.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Gen_1",
       "Terrain",
@@ -115,6 +122,7 @@
     "importance": "high",
     "title": "The Ice Age",
     "description": "Thermal regulation system malfunction. Global temperature lowered. Nerfed 'Reptile' classes to encourage 'Mammal' meta usage.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Nerf",
       "Environment",
@@ -130,6 +138,7 @@
     "importance": "high",
     "title": "Discovery of Fire",
     "description": "Unlocked 'Crafting' menu for early player builds. Added 'Cooked Food' buff (+20% Brain Growth). Risk of 'Burn' debuff increased.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Tech Tree",
       "Buff",
@@ -145,6 +154,7 @@
     "importance": "high",
     "title": "Fall of Rome",
     "description": "`Region: Europe` fragmentation. Centralized moderation failed due to resource mismanagement. Server split into multiple private lobbies (Feudal System).",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Politics",
       "Server Split",
@@ -160,6 +170,7 @@
     "importance": "high",
     "title": "Gutenberg Press",
     "description": "Data transmission speed increased by 500%. 'Literacy' perk unlocked for lower-level players. Reduced authority of 'Clergy' admin accounts.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Communication",
       "Tech",
@@ -175,6 +186,7 @@
     "importance": "high",
     "title": "The Black Death",
     "description": "Europe_Server experienced critical overcrowding. Initiated pathogen stress-test (Yersinia pestis). Result: 40% reduction in active player base to improve server latency.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Population Control",
       "Patch",
@@ -190,6 +202,7 @@
     "importance": "high",
     "title": "World War I",
     "description": "Server-wide faction conflict. Introduced 'Trench' mechanics. High player disconnect rate. Chemical warfare DLC previewed (banned in subsequent patches).",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "PvP",
       "Conflict",
@@ -205,6 +218,7 @@
     "importance": "high",
     "title": "Trinity Test",
     "description": "Players discovered an exploit in the physics engine (splitting the atom). Result: Massive damage multiplier unlocked. Admin warning issued regarding server stability.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Physics",
       "Exploit",
@@ -220,6 +234,7 @@
     "importance": "low",
     "title": "The Cold War",
     "description": "Long-term standoff between admin factions. No direct massive PvP, heavily relied on 'Spy' class and 'Proxy War' mini-games.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Politics",
       "Faction",
@@ -235,6 +250,7 @@
     "importance": "low",
     "title": "United Nations",
     "description": "Established global moderation team to prevent future server wipes. Efficacy rating: Variable.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Admin",
       "Moderation",
@@ -250,6 +266,7 @@
     "importance": "high",
     "title": "Discovery of DNA",
     "description": "Players accessed the source code for character generation. Unlocked potential for 'Gene Editing' customization in future updates.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Source Code",
       "Biology",
@@ -265,6 +282,7 @@
     "importance": "low",
     "title": "Sputnik Launch",
     "description": "Deployed first orbital monitoring drone. 'Fog of War' removed for upper atmosphere coverage.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Space",
       "Drone",
@@ -280,6 +298,7 @@
     "importance": "high",
     "title": "Apollo 11",
     "description": "First successful player transfer to `Server: Luna`. Physics engine stress-tested. 'Low Gravity' modifier confirmed stable.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Space",
       "Transfer",
@@ -295,6 +314,7 @@
     "importance": "low",
     "title": "Halley's Comet",
     "description": "Scheduled background process `comet_render_cycle`. Runs every 76 cycles to test skybox particle effects.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Routine",
       "Graphics",
@@ -310,6 +330,7 @@
     "importance": "high",
     "title": "The World Wide Web",
     "description": "Deployed global networking protocol (TCP/IP). Enabled peer-to-peer communication. Note: Significant increase in memetic virus propagation.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Network",
       "Social",
@@ -325,6 +346,7 @@
     "importance": "low",
     "title": "Y2K Bug",
     "description": "Calendar integer overflow panic. Patched just before midnight. No server crash occurred. Users reported minor anxiety debuffs.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Patch",
       "Date",
@@ -340,6 +362,7 @@
     "importance": "low",
     "title": "The Smartphone",
     "description": "All players equipped with 'Always-Online' HUD. 'Attention Span' stat nerfed globally. 'Social Media' mini-games became mandatory for some guilds.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Item",
       "Nerf",
@@ -355,6 +378,7 @@
     "importance": "low",
     "title": "Perseverance Rover",
     "description": "Remote scouting bot deployed to `Server: Mars`. Scanning for legacy save files (microbial life). Bandwidth latency acceptable.",
+    "submitted_by": "Aethvion_Admin",
     "tags": [
       "Space",
       "Bot",

@@ -229,7 +229,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="card-details">
                     <p>${log.description}</p>
-                    <p class="meta-info">Region: ${log.region} | ID: ${log.id}</p>
+                    ${log.submitted_by ? `<span class="data-source-credit">// DATA_SOURCE: ${log.submitted_by}</span>` : ''}
+                    <p class="meta-info" style="margin-top: 0.5rem">Region: ${log.region} | ID: ${log.id}</p>
                 </div>
             `;
 
