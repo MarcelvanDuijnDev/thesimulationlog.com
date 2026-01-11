@@ -61,3 +61,12 @@ body:
       placeholder: "e.g., Policy_Fail, Energy, Irony"
     validations:
       required: false
+
+  - type: input
+    id: credit_name
+    attributes:
+      label: Credited Username (Optional)
+      description: The name you want displayed on the card (e.g., "Scouted by [YourName]"). Leave blank to remain anonymous.
+      placeholder: "e.g., HistoryBuff99"
+    validations:
+      required: false
