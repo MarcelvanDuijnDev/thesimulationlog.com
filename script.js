@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const regionSelect = document.getElementById('region-select');
     const severityToggle = document.getElementById('severity-toggle');
     const granularityToggle = document.getElementById('granularity-toggle');
+    const sortSelect = document.getElementById('sort-select'); // New Element
     const eraCheckboxes = document.querySelectorAll('.filter-era');
     const clockElement = document.getElementById('live-clock');
     const tickerContent = document.getElementById('ticker-content');
@@ -17,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         eras: ['pre-history', 'antiquity', 'modern', 'future'],
         region: 'all',
         criticalOnly: false,
-        verbose: false // Default to hiding low importance
+        verbose: false, // Default to hiding low importance
+        sort: 'date-desc' // Default sort
     };
 
     // --- Core Logic ---
@@ -57,6 +59,34 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Helper: Parse Simulation Date to Numeric Value for Sorting
+    function parseSimDate(dateString) {
+        if (!dateString) return -Infinity;
+        const lower = dateString.toLowerCase();
+
+        // Special Constants
+        if (lower.includes('present')) return 2026;
+        if (lower.includes('future') || lower.includes('near future')) return 3000;
+
+        // Extract numbers
+        const match = lower.match(/([\d\.]+)/);
+        if (!match) return 0; // Fallback
+
+        let val = parseFloat(match[1]);
+
+        // Multipliers
+        if (lower.includes('billion')) val *= 1_000_000_000;
+        else if (lower.includes('million')) val *= 1_000_000;
+
+        // Direction
+        // "Ago" or "BC" means negative
+        if (lower.includes('ago') || lower.includes('bc')) {
+            val *= -1;
+        }
+
+        return val;
+    }
+
     // Determine Era Helper
     function getEra(dateString) {
         if (!dateString) return 'modern';
@@ -86,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Filter Logic
     function getFilteredLogs() {
-        return allLogs.filter(log => {
+        let filtered = allLogs.filter(log => {
             // Exclude active-only logs from feed if we wanted, but let's show all
             if (log.is_active && !activeFilters.verbose) {
                 // Logic hole: Should active logs be shown in feed? 
@@ -133,6 +163,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return matchesSearch && matchesEra && matchesRegion && matchesSeverity;
         });
+
+        // Sorting
+        filtered.sort((a, b) => {
+            const valA = parseSimDate(a.date);
+            const valB = parseSimDate(b.date);
+
+            if (activeFilters.sort === 'date-asc') {
+                return valA - valB;
+            } else {
+                return valB - valA; // Descending (Newest First)
+            }
+        });
+
+        return filtered;
     }
 
     // Rendering Active Ticker
@@ -201,6 +245,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     searchInput.addEventListener('input', (e) => {
         activeFilters.search = e.target.value;
+        renderLogs();
+    });
+
+    // Sort Select
+    sortSelect.addEventListener('change', (e) => {
+        activeFilters.sort = e.target.value;
         renderLogs();
     });
 
