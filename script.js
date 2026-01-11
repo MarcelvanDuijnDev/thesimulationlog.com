@@ -288,8 +288,54 @@ document.addEventListener('DOMContentLoaded', () => {
         clockElement.textContent = `Server Time: ${now.toLocaleTimeString()}`;
     }
 
-    // Init
+    // --- Contributors Fetch ---
+    async function loadContributors() {
+        const repo = "MarcelvanDuijnDev/thesimulationlog.com";
+        const container = document.getElementById('contributors-list');
+
+        try {
+            const response = await fetch(`https://api.github.com/repos/${repo}/contributors`);
+
+            if (!response.ok) throw new Error("Connection Refused");
+
+            const data = await response.json();
+
+            // Clear the loading skeleton
+            container.innerHTML = '';
+
+            data.forEach(user => {
+                // Link wrapper
+                const link = document.createElement('a');
+                link.href = user.html_url;
+                link.target = "_blank";
+                link.className = "contributor-link";
+
+                // Avatar
+                const img = document.createElement('img');
+                img.src = user.avatar_url;
+                img.alt = user.login;
+                img.className = "contributor-avatar";
+
+                // Tooltip
+                const tooltip = document.createElement('span');
+                tooltip.textContent = `User: ${user.login}`;
+                tooltip.className = "contributor-tooltip";
+
+                link.appendChild(img);
+                link.appendChild(tooltip);
+                container.appendChild(link);
+            });
+
+        } catch (error) {
+            console.warn("Contributors failed to load:", error);
+            // Fallback for offline/rate limit
+            container.innerHTML = '<span class="text-xs text-dim" style="font-family: var(--font-display)">// OFFLINE_MODE (GIT_API_FAIL)</span>';
+        }
+    }
+
+    // Init interactives
     fetchLogs();
+    loadContributors(); // New
     setInterval(updateClock, 1000);
     updateClock();
 });
