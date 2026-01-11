@@ -1,0 +1,63 @@
+name: 📝 Submit a New Log Entry
+description: Suggest a historical event formatted as a server patch note for TheSimulationLog.
+title: "[LOG]: <Event Name Here>"
+labels: ["content-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### Welcome to the Simulation Log!
+        Thank you for helping document the server history. 
+        
+        **Rules for Submission:**
+        1. **Realism:** The title must be the real historical event name.
+        2. **Sim Logic:** The description must sound like a System Admin describing a bug, update, or crash.
+        3. **Neutrality:** Use "Server Logic" to describe conflicts (e.g., "Faction A vs Faction B").
+
+  - type: input
+    id: event_name
+    attributes:
+      label: Event Title (Real History)
+      description: What is the actual name of the event?
+      placeholder: e.g., The French Revolution
+    validations:
+      required: true
+
+  - type: textarea
+    id: sim_desc
+    attributes:
+      label: Simulation Description (The "Sim Logic")
+      description: Describe the event using "Server/Gaming" terminology. (People = Players, Laws = Engine Rules, War = PvP).
+      placeholder: "Region 'France' experienced a GUI overhaul. Monarchy class removed. Guillotine.exe executed multiple times..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: type
+    attributes:
+      label: Log Type
+      options:
+        - Critical Event (Red)
+        - Feature (Green)
+        - Bug Fix (Blue)
+        - Admin Error (Yellow/Orange)
+        - Resource Alert (Cyan)
+    validations:
+      required: true
+
+  - type: input
+    id: region
+    attributes:
+      label: Region / Server
+      placeholder: e.g., Global, Europe_West, Server: Mars
+    validations:
+      required: true
+
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      description: Comma separated tags.
+      placeholder: e.g., Policy_Fail, Energy, Irony
+    validations:
+      required: false
