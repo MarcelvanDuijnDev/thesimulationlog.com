@@ -117,11 +117,16 @@
                 </div>
 
                 <!-- Contribute Button -->
-                <div class="control-group" style="margin-top: 2rem; border-top: 1px dashed #333; padding-top: 1.5rem;">
-                    <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com/issues" target="_blank"
-                        class="sidebar-btn">
-                        [+] SUBMIT_NEW_EVENT
+                <!-- Contribute Button -->
+                <div class="sidebar-submit-section">
+                    <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com/issues/new/choose"
+                        target="_blank" class="sidebar-btn group">
+                        <span class="btn-icon">[+]</span> SUBMIT_LOG
                     </a>
+                    <p class="submit-via-email-text">
+                        // <a href="mailto:contact@aethvion.com?subject=[LOG] New Event Submission">Submit via Email</a>
+                        if no GitHub
+                    </p>
                 </div>
             </div>
         </aside>
@@ -137,26 +142,58 @@
         </section>
     </main>
 
-    <footer id="main-footer">
+    <footer id="main-footer" class="terminal-footer">
         <div class="footer-content">
 
-            <div class="footer-section">
-                <h3 class="footer-heading">
-                    // ACTIVE_SERVER_ADMINS (CONTRIBUTORS)
+            <!-- Contributors Section -->
+            <div class="footer-section border-bottom-sep">
+                <h3 class="footer-heading opacity-80">
+                    > QUERY_ADMIN_LIST (CONTRIBUTORS)
                 </h3>
-                <div id="contributors-list" class="contributors-grid">
+                <div id="contributors-list" class="contributors-grid opacity-80-hover">
                     <div class="loading-pulse"></div>
                     <div class="loading-pulse"></div>
                     <div class="loading-pulse"></div>
                 </div>
             </div>
 
-            <div class="footer-bottom">
-                <p>AETHVION © 2026 // NO_BACKEND_DETECTED</p>
-                <div class="footer-links">
-                    <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com" target="_blank">GITHUB_REPO</a>
-                    <a href="https://aethvion.com" target="_blank">AETHVION_MAIN</a>
+            <!-- Terminal Grid (2-Column) -->
+            <div class="footer-grid">
+
+                <div class="footer-brand-col">
+                    <h4 class="brand-title">
+                        <span class="status-indicator-dot"></span> SYSTEM_LOG // STATUS
+                    </h4>
+                    <p class="brand-desc terminal-text">
+                        // CURRENT_INSTANCE: EARTH_SIM_C-137<br>
+                        Tracking real-time patch notes, critical errors, and anomaly reports for the local reality
+                        simulation.
+                    </p>
+                    <p class="copyright terminal-text-dim">SysID: 2026-LOG-V1 // ALL RIGHTS RESERVED</p>
                 </div>
+
+                <div class="footer-contact-col">
+                    <h4 class="col-heading">ADMIN_CONSOLE // MESSAGE</h4>
+
+                    <div class="contact-block">
+                        <p class="label-dim">Encrypted Channel:</p>
+                        <a href="mailto:contact@aethvion.com" class="contact-link">contact@aethvion.com</a>
+                    </div>
+
+                    <div class="contact-block">
+                        <p class="label-dim">Upstream Link:</p>
+                        <a href="https://aethvion.com" target="_blank" class="contact-link">> AETHVION_MAIN</a>
+                    </div>
+
+                    <div class="contact-sep">
+                        <p class="label-dim">// MANUAL_OVERRIDE</p>
+                        <p class="label-small">
+                            Submit anomaly reports via mail.<br>
+                            Header: <span class="text-green-500">"[LOG] Event Name"</span>
+                        </p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </footer>
