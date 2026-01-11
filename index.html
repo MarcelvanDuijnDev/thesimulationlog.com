@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SYSTEM_LOG // EARTH_SIMULATION</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="scanline"></div>
+    
+    <header id="main-header">
+        <div class="header-top">
+            <div class="logo">
+                <span class="blink">></span> SYSTEM_LOG // EARTH_SIMULATION
+            </div>
+            <div class="live-clock" id="live-clock">
+                Server Time: --:--:--
+            </div>
+        </div>
+        <div class="status-bar">
+            <span>Uptime: 4.54 Billion Years</span>
+            <span class="separator">|</span>
+            <span>CPU Load: 98%</span>
+            <span class="separator">|</span>
+            <span>Connected Clients: 8.1 Billion</span>
+            <span class="separator">|</span>
+            <span class="status-indicator">STATUS: UNSTABLE</span>
+        </div>
+    </header>
+
+    <main class="layout-grid">
+        <aside id="sidebar">
+            <div class="sidebar-content">
+                <div class="control-group">
+                    <label for="search-input">GREP LOGS</label>
+                    <input type="text" id="search-input" placeholder="Search events, versions..." autocomplete="off">
+                </div>
+
+                <div class="control-group">
+                    <label>FILTERS // ERA</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-container">
+                            <input type="checkbox" value="pre-history" checked class="filter-era">
+                            <span class="checkmark"></span> Pre-History
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" value="antiquity" checked class="filter-era">
+                            <span class="checkmark"></span> Antiquity
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" value="modern" checked class="filter-era">
+                            <span class="checkmark"></span> Modern
+                        </label>
+                        <label class="checkbox-container">
+                            <input type="checkbox" value="future" checked class="filter-era">
+                            <span class="checkmark"></span> Future
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label for="region-select">REGION SELECT</label>
+                    <select id="region-select">
+                        <option value="all">ALL SERVERS</option>
+                        <option value="global">Global</option>
+                        <option value="europe_server">Europe_Server</option>
+                        <option value="moon_server">Moon_Server</option>
+                        <option value="global_void">Global_Void</option>
+                    </select>
+                </div>
+
+                <div class="control-group toggle-group">
+                    <label for="severity-toggle">SHOW CRITICAL ONLY</label>
+                    <label class="switch">
+                        <input type="checkbox" id="severity-toggle">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </div>
+        </aside>
+
+        <section id="feed-container">
+            <div class="feed-header">
+                <h3>// LATEST_PATCH_NOTES</h3>
+                <span id="log-count">Loading...</span>
+            </div>
+            <div id="feed" class="feed-list">
+                <!-- Logs will be injected here via JS -->
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

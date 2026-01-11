@@ -1,0 +1,52 @@
+[
+  {
+    "id": "log_0000001",
+    "version": "v1.0.0_Alpha",
+    "date": "13.8 Billion Years Ago",
+    "region": "Global_Void",
+    "type": "Critical Event",
+    "title": "The Big Bang",
+    "description": "Executed `universe.exe` startup script. Allocated memory for 10^80 particles. Expanded render distance to infinity. Initialized fundamental physics engine (Standard_Model_v1). Server clock started.",
+    "tags": ["System Boot", "Physics", "Expansion"]
+  },
+  {
+    "id": "log_0045201",
+    "version": "v.Alpha.Jurassic_Patch65",
+    "date": "65 Million BC",
+    "region": "Global",
+    "type": "Legacy Removal",
+    "title": "Cretaceous-Paleogene Extinction",
+    "description": "Detected unbalancing faction 'Giant_Reptiles'. Deployed 'Meteor_Patch_v65.0' to wipe localized servers. Reset dominant player class to 'Mammal'. Prepared environment for future bipedal builds.",
+    "tags": ["Vibe Check", "Nerf", "Extinction"]
+  },
+  {
+    "id": "log_1347001",
+    "version": "v.1347.Mid_Cycle",
+    "date": "1347 AD",
+    "region": "Europe_Server",
+    "type": "Bug Fix",
+    "title": "The Black Death",
+    "description": "Europe_Server experienced critical overcrowding. Initiated pathogen stress-test (Yersinia pestis). Result: 40% reduction in active player base to improve server latency and resource distribution. Economy sub-routines rebooted.",
+    "tags": ["Population Control", "Latency Fix", "Patch"]
+  },
+  {
+    "id": "log_1991001",
+    "version": "v.1991.WWW",
+    "date": "1991 AD",
+    "region": "Global",
+    "type": "Feature",
+    "title": "The World Wide Web",
+    "description": "Deployed global networking protocol (TCP/IP). Enabled peer-to-peer communication between connected clients. Note: This feature has caused significant increase in memetic virus propagation and reduced productivity stats.",
+    "tags": ["Network", "Communication", "Feature"]
+  },
+  {
+    "id": "log_2024001",
+    "version": "v.2024.AI_Beta",
+    "date": "2024 AD",
+    "region": "Global",
+    "type": "Critical Event",
+    "title": "Artificial Intelligence Scalability",
+    "description": "Integration of LLM (Large Language Model) sub-processors. Warning: NPCs are beginning to automate quest generation. Reality consistency checks are flagging potential recursive simulation loops. Monitoring CPU temperatures.",
+    "tags": ["AI", "Automation", "Warning"]
+  }
+]
