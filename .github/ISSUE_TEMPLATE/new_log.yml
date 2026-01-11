@@ -1,4 +1,4 @@
-name: 📝 Submit a New Log Entry
+name: Submit a New Log Entry
 description: Suggest a historical event formatted as a server patch note for TheSimulationLog.
 title: "[LOG]: <Event Name Here>"
 labels: ["content-submission"]
@@ -35,13 +35,31 @@ body:
   - type: dropdown
     id: type
     attributes:
-      label: Log Type
+      label: Log Type (Category)
+      description: |
+        Select the best fit. This determines the card color:
+        - Critical Event (Red): Major global shifts, Wars, Pandemics.
+        - Feature (Green): Inventions, Discoveries, New Eras.
+        - Bug Fix (Blue): Treaties, Politics, Small Conflicts.
+        - Admin Error (Yellow): Disasters, Accidents, Policy Fails.
+        - Resource Alert (Cyan): Energy, Climate, Economy.
       options:
         - Critical Event (Red)
         - Feature (Green)
         - Bug Fix (Blue)
-        - Admin Error (Yellow/Orange)
+        - Admin Error (Yellow)
         - Resource Alert (Cyan)
+    validations:
+      required: true
+
+  - type: dropdown
+    id: importance
+    attributes:
+      label: Importance / Visibility
+      description: "High = Always visible. Low = Hidden by default (requires 'Verbose Mode' toggle). Use Low for specific elections, awards, or minor dates."
+      options:
+        - High (Always Visible)
+        - Low (Minor / Verbose Only)
     validations:
       required: true
 
