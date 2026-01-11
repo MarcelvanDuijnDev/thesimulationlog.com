@@ -1,5 +1,50 @@
 [
   {
+    "id": "log_climate_crisis",
+    "version": "v.2026.Thermal_Warning",
+    "date": "Present Day",
+    "region": "Global",
+    "type": "System Alert",
+    "importance": "high",
+    "title": "The Thermal Runaway Event",
+    "description": "Server cooling systems are failing due to excessive emission of 'Carbon' assets. \n\n<span class='text-amber-500'>[CURRENT OBJECTIVE]</span> Transition Energy Grid before thermal runaway becomes irreversible.\n\n<span class='text-cyan-500'>[PLAYER BASE SPLIT]</span>\n- Faction A (Degrowth): Advocates throttling resource usage (lowering server tick rate).\n- Faction B (Techno-Optimist): Advocates rushing 'Fusion_Tech' to upgrade cooling systems.\n\nAdmin Note: Failure to resolve results in 'Permian_Extinction_v2' event.",
+    "tags": [
+      "Climate",
+      "Crisis",
+      "Physics"
+    ]
+  },
+  {
+    "id": "log_nuclear_exit",
+    "version": "v.2011.Patch_DE",
+    "date": "2011 - 2023",
+    "region": "Europe_West (Germany)",
+    "type": "Config Change",
+    "importance": "high",
+    "title": "The Nuclear Deprecation",
+    "description": "Region Admin for 'Germany' disabled 'Nuclear_Power' class assets citing safety concerns (Fear Debuff). \n\n<span class='text-red-500'>[UNINTENDED SIDE EFFECT]</span> Load-bearing shifted to 'Coal_Legacy' assets. Local pollution stats increased despite 'Green' narrative objectives. Optimization failed.",
+    "tags": [
+      "Policy_Fail",
+      "Energy",
+      "Irony"
+    ]
+  },
+  {
+    "id": "log_ai_energy",
+    "version": "v.2026.Compute_Surge",
+    "date": "Present Day",
+    "region": "Global",
+    "type": "Resource Alert",
+    "importance": "high",
+    "title": "The Intelligence Compute Surge",
+    "description": "New 'LLM' background processes are consuming 4% of Global Energy Grid. \n\n<span class='text-cyan-500'>[FACTION CONFLICT]</span>\n- Group A: Demands termination of AI processes to save power.\n- Group B: Demands acceleration of AI to solve the power problem.\n\nSystem Diagnostic: Turning off intelligence modules is not a viable long-term strategy for server evolution.",
+    "tags": [
+      "AI",
+      "Energy",
+      "Future"
+    ]
+  },
+  {
     "id": "log_active_001",
     "version": "v.2026.AI_Alpha",
     "date": "Present Day",

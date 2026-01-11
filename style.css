@@ -12,6 +12,19 @@
     --font-display: 'Share Tech Mono', monospace;
 }
 
+/* Utility Colors for Description HTML */
+.text-amber-500 {
+    color: var(--accent-amber);
+}
+
+.text-red-500 {
+    color: var(--accent-red);
+}
+
+.text-cyan-500 {
+    color: var(--accent-blue);
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
