@@ -3,7 +3,7 @@
     "id": "log_climate_crisis",
     "version": "v.2026.Thermal_Warning",
     "date": "Present Day",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "System Alert",
     "importance": "high",
     "title": "The Thermal Runaway Event",
@@ -13,6 +13,14 @@
       "Climate",
       "Crisis",
       "Physics"
+    ],
+    "keywords": [
+      "global warming",
+      "climate change",
+      "co2",
+      "greenhouse",
+      "fossil fuels",
+      "panic"
     ]
   },
   {
@@ -29,13 +37,20 @@
       "Policy_Fail",
       "Energy",
       "Irony"
+    ],
+    "keywords": [
+      "germany",
+      "fukushima",
+      "energiewende",
+      "power",
+      "grid"
     ]
   },
   {
     "id": "log_ai_energy",
     "version": "v.2026.Compute_Surge",
     "date": "Present Day",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Resource Alert",
     "importance": "high",
     "title": "The Intelligence Compute Surge",
@@ -45,13 +60,20 @@
       "AI",
       "Energy",
       "Future"
+    ],
+    "keywords": [
+      "nvidia",
+      "datacenters",
+      "gpu",
+      "electricity",
+      "sam altman"
     ]
   },
   {
     "id": "log_active_001",
     "version": "v.2026.AI_Alpha",
     "date": "Present Day",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Critical Event",
     "importance": "high",
     "is_active": true,
@@ -62,6 +84,13 @@
       "AI",
       "Singularity",
       "Automation"
+    ],
+    "keywords": [
+      "chatgpt",
+      "agi",
+      "openai",
+      "robot",
+      "neural net"
     ]
   },
   {
@@ -81,6 +110,13 @@
       "Expansion",
       "Space",
       "Beta"
+    ],
+    "keywords": [
+      "spacex",
+      "elon musk",
+      "rocket",
+      "colonization",
+      "tech"
     ]
   },
   {
@@ -99,6 +135,13 @@
       "System Boot",
       "Physics",
       "Start"
+    ],
+    "keywords": [
+      "creation",
+      "ignite",
+      "star",
+      "galaxy",
+      "cosmic"
     ]
   },
   {
@@ -117,13 +160,20 @@
       "Gen_1",
       "Terrain",
       "Environment"
+    ],
+    "keywords": [
+      "hadean",
+      "protoplanet",
+      "solar nebula",
+      "accretion",
+      "planet"
     ]
   },
   {
     "id": "log_0045201",
     "version": "v.Jurassic_Patch65",
     "date": "65 Million BC",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Legacy Removal",
     "importance": "high",
     "title": "K-Pg Extinction Event",
@@ -135,13 +185,20 @@
       "Nerf",
       "Environment",
       "Patch"
+    ],
+    "keywords": [
+      "dinos",
+      "asteroid",
+      "chicxulub",
+      "meteor",
+      "impact"
     ]
   },
   {
     "id": "log_civ_001",
     "version": "v.Antiquity.Fire",
     "date": "1.5 Million Years Ago",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Feature",
     "importance": "high",
     "title": "Discovery of Fire",
@@ -153,6 +210,13 @@
       "Tech Tree",
       "Buff",
       "Survival"
+    ],
+    "keywords": [
+      "tools",
+      "homo erectus",
+      "cooking",
+      "warmth",
+      "light"
     ]
   },
   {
@@ -171,6 +235,13 @@
       "Politics",
       "Server Split",
       "Admin Fail"
+    ],
+    "keywords": [
+      "romans",
+      "empire",
+      "gladiator",
+      "caesar",
+      "byzantine"
     ]
   },
   {
@@ -189,6 +260,13 @@
       "Communication",
       "Tech",
       "Buff"
+    ],
+    "keywords": [
+      "books",
+      "bible",
+      "media",
+      "news",
+      "paper"
     ]
   },
   {
@@ -207,13 +285,20 @@
       "Population Control",
       "Patch",
       "Disease"
+    ],
+    "keywords": [
+      "plague",
+      "rats",
+      "fleas",
+      "pandemic",
+      "death"
     ]
   },
   {
     "id": "log_civ_wwi",
     "version": "v.1914.War",
     "date": "1914 - 1918",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Critical Event",
     "importance": "high",
     "title": "World War I",
@@ -225,13 +310,20 @@
       "PvP",
       "Conflict",
       "Update"
+    ],
+    "keywords": [
+      "great war",
+      "trenches",
+      "mustard gas",
+      "franz ferdinand",
+      "battle"
     ]
   },
   {
     "id": "log_civ_wwii",
     "version": "v.1939.War_v2",
     "date": "1939 - 1945",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Critical Event",
     "importance": "high",
     "title": "World War II",
@@ -243,13 +335,21 @@
       "PvP",
       "Conflict",
       "Update"
+    ],
+    "keywords": [
+      "hitler",
+      "nazis",
+      "axis",
+      "allies",
+      "d-day",
+      "holocaust"
     ]
   },
   {
     "id": "log_civ_atom",
     "version": "v.1945.Atom",
     "date": "1945",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Critical Event",
     "importance": "high",
     "title": "Trinity Test",
@@ -261,13 +361,20 @@
       "Physics",
       "Exploit",
       "Weapon"
+    ],
+    "keywords": [
+      "oppenheimer",
+      "nuke",
+      "bomb",
+      "manhattan project",
+      "radiation"
     ]
   },
   {
     "id": "log_civ_coldwar",
     "version": "v.1947.Cold",
     "date": "1947 - 1991",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Feature",
     "importance": "low",
     "title": "The Cold War",
@@ -277,13 +384,20 @@
       "Politics",
       "Faction",
       "Stalemate"
+    ],
+    "keywords": [
+      "ussr",
+      "usa",
+      "soviet",
+      "berlin wall",
+      "communism"
     ]
   },
   {
     "id": "log_civ_un",
     "version": "v.1945.UN",
     "date": "1945",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Admin Tool",
     "importance": "low",
     "title": "United Nations",
@@ -293,13 +407,20 @@
       "Admin",
       "Moderation",
       "Patch"
+    ],
+    "keywords": [
+      "diplomacy",
+      "peace",
+      "nyc",
+      "council",
+      "globalist"
     ]
   },
   {
     "id": "log_civ_dna",
     "version": "v.1953.Helix",
     "date": "1953",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Discovery",
     "importance": "high",
     "title": "Discovery of DNA",
@@ -311,6 +432,13 @@
       "Source Code",
       "Biology",
       "Unlock"
+    ],
+    "keywords": [
+      "watson",
+      "crick",
+      "rosalind franklin",
+      "genetics",
+      "helix"
     ]
   },
   {
@@ -327,6 +455,13 @@
       "Space",
       "Drone",
       "Map"
+    ],
+    "keywords": [
+      "russia",
+      "satellite",
+      "space race",
+      "beep",
+      "tech"
     ]
   },
   {
@@ -345,6 +480,13 @@
       "Space",
       "Transfer",
       "Milestone"
+    ],
+    "keywords": [
+      "armstrong",
+      "aldrin",
+      "nasa",
+      "usa",
+      "landing"
     ]
   },
   {
@@ -361,13 +503,20 @@
       "Routine",
       "Graphics",
       "Skybox"
+    ],
+    "keywords": [
+      "astronomy",
+      "orbit",
+      "sky",
+      "event",
+      "cycle"
     ]
   },
   {
     "id": "log_1991001",
     "version": "v.1991.WWW",
     "date": "1991",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Feature",
     "importance": "high",
     "title": "The World Wide Web",
@@ -379,13 +528,20 @@
       "Network",
       "Social",
       "Feature"
+    ],
+    "keywords": [
+      "internet",
+      "tim berners-lee",
+      "cern",
+      "browser",
+      "http"
     ]
   },
   {
     "id": "log_civ_y2k",
     "version": "v.1999.Bug",
     "date": "1999",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Bug Fix",
     "importance": "low",
     "title": "Y2K Bug",
@@ -395,13 +551,20 @@
       "Patch",
       "Date",
       "Glitch"
+    ],
+    "keywords": [
+      "millennium",
+      "computers",
+      "panic",
+      "1999",
+      "2000"
     ]
   },
   {
     "id": "log_civ_iphone",
     "version": "v.2007.Smart",
     "date": "2007",
-    "region": "Global",
+    "region": "Global_Earth",
     "type": "Feature",
     "importance": "low",
     "title": "The Smartphone",
@@ -411,6 +574,13 @@
       "Item",
       "Nerf",
       "Interface"
+    ],
+    "keywords": [
+      "apple",
+      "steve jobs",
+      "mobile",
+      "touchscreen",
+      "internet"
     ]
   },
   {
@@ -427,6 +597,13 @@
       "Space",
       "Bot",
       "Scan"
+    ],
+    "keywords": [
+      "jpl",
+      "nasa",
+      "science",
+      "robot",
+      "jezero"
     ]
   }
 ]

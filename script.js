@@ -133,7 +133,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const searchLower = activeFilters.search.toLowerCase();
             const matchesSearch = log.title.toLowerCase().includes(searchLower) ||
                 log.description.toLowerCase().includes(searchLower) ||
-                log.version.toLowerCase().includes(searchLower);
+                log.version.toLowerCase().includes(searchLower) ||
+                (log.keywords && log.keywords.some(k => k.toLowerCase().includes(searchLower)));
 
             // 3. Era
             const logEra = getEra(log.date);
@@ -150,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Exact match or partial inclusion?
                 // Example: Filter "sol_system" -> should match "Mars_Server", "Moon_Server", "Solar_System"
                 if (filterRegion === 'sol_system') {
-                    matchesRegion = ['mars', 'moon', 'solar', 'earth', 'global'].some(k => logRegion.includes(k));
+                    matchesRegion = ['mars', 'moon', 'solar', 'earth', 'global_earth'].some(k => logRegion.includes(k));
                 } else {
                     matchesRegion = logRegion.includes(filterRegion);
                 }
