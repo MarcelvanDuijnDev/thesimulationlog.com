@@ -56,7 +56,7 @@
     "importance": "high",
     "is_active": true,
     "title": "Artificial Intelligence Boom",
-    "description": "NPCs and Tools are generating code. Recursive self-improvement loops detected. Warning: Turing Test deprecated due to obsolescence.",
+    "description": "NPCs and Tools are generating code. Recursive self-improvement detection. Warning: Turing Test deprecated due to obsolescence.",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "AI",
@@ -74,6 +74,8 @@
     "is_active": true,
     "title": "Project Starship",
     "description": "Preparation for new server shard 'Mars_Colony'. Pre-loading assets and generating terrain maps. Oxygen scrubbers currently in beta testing.",
+    "wiki_url": "https://en.wikipedia.org/wiki/SpaceX_Starship",
+    "grok_url": "https://grokipedia.com/page/SpaceX_Starship",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Expansion",
@@ -90,6 +92,8 @@
     "importance": "high",
     "title": "The Big Bang",
     "description": "Executed `universe.exe`. Physics engine initialized. Expansion set to infinite. Memory allocation: 10^80 particles.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Big_Bang",
+    "grok_url": "https://grokipedia.com/page/Big_Bang",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "System Boot",
@@ -106,6 +110,8 @@
     "importance": "high",
     "title": "Earth Formation",
     "description": "Successfully coalesced planetary assets. Core temperature stabilized. Warning: Surface conditions currently hostile to all player classes.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Earth#Formation",
+    "grok_url": "https://grokipedia.com/page/Earth",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Gen_1",
@@ -122,6 +128,8 @@
     "importance": "high",
     "title": "The Ice Age",
     "description": "Thermal regulation system malfunction. Global temperature lowered. Nerfed 'Reptile' classes to encourage 'Mammal' meta usage.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Ice_age",
+    "grok_url": "https://grokipedia.com/page/Ice_age",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Nerf",
@@ -138,6 +146,8 @@
     "importance": "high",
     "title": "Discovery of Fire",
     "description": "Unlocked 'Crafting' menu for early player builds. Added 'Cooked Food' buff (+20% Brain Growth). Risk of 'Burn' debuff increased.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
+    "grok_url": "https://grokipedia.com/page/Control_of_fire_by_early_humans",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Tech Tree",
@@ -148,12 +158,14 @@
   {
     "id": "log_civ_rome",
     "version": "v.476.AD",
-    "date": "476 AD",
+    "date": "476",
     "region": "Europe_Server",
     "type": "Critical Event",
     "importance": "high",
     "title": "Fall of Rome",
     "description": "`Region: Europe` fragmentation. Centralized moderation failed due to resource mismanagement. Server split into multiple private lobbies (Feudal System).",
+    "wiki_url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire",
+    "grok_url": "https://grokipedia.com/page/ancient_rome_the_rise_and_fall_of_an_empire",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Politics",
@@ -164,12 +176,14 @@
   {
     "id": "log_civ_print",
     "version": "v.1440.Print",
-    "date": "1440 AD",
+    "date": "1440",
     "region": "Europe_Server",
     "type": "Feature",
     "importance": "high",
     "title": "Gutenberg Press",
     "description": "Data transmission speed increased by 500%. 'Literacy' perk unlocked for lower-level players. Reduced authority of 'Clergy' admin accounts.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg.27s_press",
+    "grok_url": "https://grokipedia.com/page/Printing_press",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Communication",
@@ -180,12 +194,14 @@
   {
     "id": "log_1347001",
     "version": "v.1347.Plague",
-    "date": "1347 AD",
+    "date": "1347",
     "region": "Europe_Server",
     "type": "Bug Fix",
     "importance": "high",
     "title": "The Black Death",
     "description": "Europe_Server experienced critical overcrowding. Initiated pathogen stress-test (Yersinia pestis). Result: 40% reduction in active player base to improve server latency.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Black_Death",
+    "grok_url": "https://grokipedia.com/page/Black_Death",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Population Control",
@@ -196,12 +212,32 @@
   {
     "id": "log_civ_wwi",
     "version": "v.1914.War",
-    "date": "1914 AD",
+    "date": "1914 - 1918",
     "region": "Global",
     "type": "Critical Event",
     "importance": "high",
     "title": "World War I",
     "description": "Server-wide faction conflict. Introduced 'Trench' mechanics. High player disconnect rate. Chemical warfare DLC previewed (banned in subsequent patches).",
+    "wiki_url": "https://en.wikipedia.org/wiki/World_War_I",
+    "grok_url": "https://grokipedia.com/page/World_War_I",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "PvP",
+      "Conflict",
+      "Update"
+    ]
+  },
+  {
+    "id": "log_civ_wwii",
+    "version": "v.1939.War_v2",
+    "date": "1939 - 1945",
+    "region": "Global",
+    "type": "Critical Event",
+    "importance": "high",
+    "title": "World War II",
+    "description": "Sequel to the 'Great War' event. Introduced 'Blitzkrieg' mechanics and 'Atomic' end-game content. Resulted in massive server depopulation and faction realignment.",
+    "wiki_url": "https://en.wikipedia.org/wiki/World_War_II",
+    "grok_url": "https://grokipedia.com/page/World_War_II",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "PvP",
@@ -212,12 +248,14 @@
   {
     "id": "log_civ_atom",
     "version": "v.1945.Atom",
-    "date": "1945 AD",
+    "date": "1945",
     "region": "Global",
     "type": "Critical Event",
     "importance": "high",
     "title": "Trinity Test",
     "description": "Players discovered an exploit in the physics engine (splitting the atom). Result: Massive damage multiplier unlocked. Admin warning issued regarding server stability.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+    "grok_url": "https://grokipedia.com/page/Trinity_(nuclear_test)",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Physics",
@@ -228,7 +266,7 @@
   {
     "id": "log_civ_coldwar",
     "version": "v.1947.Cold",
-    "date": "1947 - 1991 AD",
+    "date": "1947 - 1991",
     "region": "Global",
     "type": "Feature",
     "importance": "low",
@@ -244,7 +282,7 @@
   {
     "id": "log_civ_un",
     "version": "v.1945.UN",
-    "date": "1945 AD",
+    "date": "1945",
     "region": "Global",
     "type": "Admin Tool",
     "importance": "low",
@@ -260,12 +298,14 @@
   {
     "id": "log_civ_dna",
     "version": "v.1953.Helix",
-    "date": "1953 AD",
+    "date": "1953",
     "region": "Global",
     "type": "Discovery",
     "importance": "high",
     "title": "Discovery of DNA",
     "description": "Players accessed the source code for character generation. Unlocked potential for 'Gene Editing' customization in future updates.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Molecular_Structure_of_Nucleic_Acids:_A_Structure_for_Deoxyribose_Nucleic_Acid",
+    "grok_url": "https://grokipedia.com/page/Nucleic_acid_structure",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Source Code",
@@ -276,7 +316,7 @@
   {
     "id": "log_civ_sputnik",
     "version": "v.1957.Orbit",
-    "date": "1957 AD",
+    "date": "1957",
     "region": "Orbit",
     "type": "Feature",
     "importance": "low",
@@ -292,12 +332,14 @@
   {
     "id": "log_civ_apollo",
     "version": "v.1969.Moon",
-    "date": "1969 AD",
+    "date": "1969",
     "region": "Moon_Server",
     "type": "Feature",
     "importance": "high",
     "title": "Apollo 11",
     "description": "First successful player transfer to `Server: Luna`. Physics engine stress-tested. 'Low Gravity' modifier confirmed stable.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Apollo_11",
+    "grok_url": "https://grokipedia.com/page/Apollo_11",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Space",
@@ -324,12 +366,14 @@
   {
     "id": "log_1991001",
     "version": "v.1991.WWW",
-    "date": "1991 AD",
+    "date": "1991",
     "region": "Global",
     "type": "Feature",
     "importance": "high",
     "title": "The World Wide Web",
     "description": "Deployed global networking protocol (TCP/IP). Enabled peer-to-peer communication. Note: Significant increase in memetic virus propagation.",
+    "wiki_url": "https://en.wikipedia.org/wiki/World_Wide_Web",
+    "grok_url": "https://grokipedia.com/page/History_of_the_World_Wide_Web",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Network",
@@ -340,7 +384,7 @@
   {
     "id": "log_civ_y2k",
     "version": "v.1999.Bug",
-    "date": "1999 AD",
+    "date": "1999",
     "region": "Global",
     "type": "Bug Fix",
     "importance": "low",
@@ -356,7 +400,7 @@
   {
     "id": "log_civ_iphone",
     "version": "v.2007.Smart",
-    "date": "2007 AD",
+    "date": "2007",
     "region": "Global",
     "type": "Feature",
     "importance": "low",
@@ -372,7 +416,7 @@
   {
     "id": "log_civ_rover",
     "version": "v.2021.Percy",
-    "date": "2021 AD",
+    "date": "2021",
     "region": "Mars_Server",
     "type": "Feature",
     "importance": "low",

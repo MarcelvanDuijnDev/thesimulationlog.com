@@ -824,6 +824,60 @@ input:checked+.slider:before {
     }
 }
 
+/* External Archive Links */
+.external-links-container {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 255, 65, 0.2);
+}
+
+.archive-btn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    padding: 0.25rem 0.5rem;
+    background-color: transparent;
+    border: 1px solid rgba(0, 255, 65, 0.5);
+    color: var(--accent-green);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: var(--font-display);
+    text-decoration: none;
+    transition: all 0.2s;
+    border-radius: 2px;
+}
+
+.archive-btn:hover {
+    background-color: rgba(0, 255, 65, 0.1);
+    border-color: var(--accent-green);
+    color: #fff;
+}
+
+.archive-btn span {
+    opacity: 0.5;
+    margin-right: 0.25rem;
+    transition: opacity 0.2s;
+}
+
+.archive-btn:hover span {
+    opacity: 1;
+}
+
+/* Grok Specific */
+.archive-btn.grok-btn {
+    border-color: rgba(0, 204, 255, 0.5);
+    /* Blue-ish */
+    color: var(--accent-blue);
+}
+
+.archive-btn.grok-btn:hover {
+    background-color: rgba(0, 204, 255, 0.1);
+    border-color: var(--accent-blue);
+    color: #fff;
+}
+
 /* Contributor Avatar (Keep existing) */
 .contributor-link {
     position: relative;

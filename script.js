@@ -214,6 +214,23 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = `log-card ${typeClass}`;
             if (card.className.includes('Critical')) card.style.borderLeftColor = 'var(--accent-red)';
 
+            // Build Links
+            let linksHtml = '';
+            if (log.wiki_url || log.grok_url) {
+                linksHtml += '<div class="external-links-container">';
+                if (log.wiki_url) {
+                    linksHtml += `<a href="${log.wiki_url}" target="_blank" class="archive-btn">
+                        <span>></span> ACCESS_ARCHIVE (WIKI)
+                    </a>`;
+                }
+                if (log.grok_url) {
+                    linksHtml += `<a href="${log.grok_url}" target="_blank" class="archive-btn grok-btn">
+                        <span>></span> ACCESS_ARCHIVE (GROKIPEDIA)
+                    </a>`;
+                }
+                linksHtml += '</div>';
+            }
+
             card.innerHTML = `
                 <div class="card-header">
                     <div class="meta-info">
@@ -229,6 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
                 <div class="card-details">
                     <p>${log.description}</p>
+                    ${linksHtml}
                     ${log.submitted_by ? `<span class="data-source-credit">// DATA_SOURCE: ${log.submitted_by}</span>` : ''}
                     <p class="meta-info" style="margin-top: 0.5rem">Region: ${log.region} | ID: ${log.id}</p>
                 </div>
