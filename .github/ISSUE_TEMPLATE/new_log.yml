@@ -81,6 +81,24 @@ body:
       required: false
 
   - type: input
+    id: link_wiki
+    attributes:
+      label: Wikipedia Link (External Archive)
+      description: URL to the real-world history page.
+      placeholder: "https://en.wikipedia.org/wiki/..."
+    validations:
+      required: false
+
+  - type: input
+    id: link_grok
+    attributes:
+      label: Grokipedia / AI Link (Optional)
+      description: URL to the real-world history page.
+      placeholder: "https://grokipedia.com/"
+    validations:
+      required: false
+
+  - type: input
     id: credit_name
     attributes:
       label: Credited Username (Optional)
