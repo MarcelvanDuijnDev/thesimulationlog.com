@@ -126,10 +126,10 @@
     "region": "Global",
     "type": "Legacy Removal",
     "importance": "high",
-    "title": "The Ice Age",
+    "title": "K-Pg Extinction Event",
     "description": "Thermal regulation system malfunction. Global temperature lowered. Nerfed 'Reptile' classes to encourage 'Mammal' meta usage.",
-    "wiki_url": "https://en.wikipedia.org/wiki/Ice_age",
-    "grok_url": "https://grokipedia.com/page/Ice_age",
+    "wiki_url": "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event",
+    "grok_url": "https://grokipedia.com/page/Cretaceous%E2%80%93Paleogene_extinction_event",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Nerf",
