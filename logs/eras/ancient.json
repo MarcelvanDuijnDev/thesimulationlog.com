@@ -1,0 +1,200 @@
+[
+    {
+        "id": "log_0000001",
+        "version": "v1.0.0_Alpha",
+        "date": "13.8 Billion Years Ago",
+        "region": "Global_Universe",
+        "type": "System Boot",
+        "importance": "high",
+        "title": "The Big Bang",
+        "description": "Executed `universe.exe`. Physics engine initialized. Expansion set to infinite. Memory allocation: 10^80 particles.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Big_Bang",
+        "grok_url": "https://grokipedia.com/page/Big_Bang",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "System Boot",
+            "Physics",
+            "Start"
+        ],
+        "keywords": [
+            "creation",
+            "ignite",
+            "star",
+            "galaxy",
+            "cosmic"
+        ]
+    },
+    {
+        "id": "log_0000002",
+        "version": "v.Earth.0.1",
+        "date": "4.5 Billion Years Ago",
+        "region": "Solar_System",
+        "type": "Feature",
+        "importance": "high",
+        "title": "Earth Formation",
+        "description": "Successfully coalesced planetary assets. Core temperature stabilized. Warning: Surface conditions currently hostile to all player classes.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Earth#Formation",
+        "grok_url": "https://grokipedia.com/page/Earth",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Gen_1",
+            "Terrain",
+            "Environment"
+        ],
+        "keywords": [
+            "hadean",
+            "protoplanet",
+            "solar nebula",
+            "accretion",
+            "planet"
+        ]
+    },
+    {
+        "id": "log_0045201",
+        "version": "v.Jurassic_Patch65",
+        "date": "65 Million BC",
+        "region": "Global_Earth",
+        "type": "Legacy Removal",
+        "importance": "high",
+        "title": "K-Pg Extinction Event",
+        "description": "Thermal regulation system malfunction. Global temperature lowered. Nerfed 'Reptile' classes to encourage 'Mammal' meta usage.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event",
+        "grok_url": "https://grokipedia.com/page/Cretaceous%E2%80%93Paleogene_extinction_event",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Nerf",
+            "Environment",
+            "Patch"
+        ],
+        "keywords": [
+            "dinos",
+            "asteroid",
+            "chicxulub",
+            "meteor",
+            "impact"
+        ]
+    },
+    {
+        "id": "log_civ_001",
+        "version": "v.Antiquity.Fire",
+        "date": "1.5 Million Years Ago",
+        "region": "Global_Earth",
+        "type": "Feature",
+        "importance": "high",
+        "title": "Discovery of Fire",
+        "description": "Unlocked 'Crafting' menu for early player builds. Added 'Cooked Food' buff (+20% Brain Growth). Risk of 'Burn' debuff increased.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
+        "grok_url": "https://grokipedia.com/page/Control_of_fire_by_early_humans",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Tech Tree",
+            "Buff",
+            "Survival"
+        ],
+        "keywords": [
+            "tools",
+            "homo erectus",
+            "cooking",
+            "warmth",
+            "light"
+        ]
+    },
+    {
+        "id": "log_civ_rome",
+        "version": "v.476.AD",
+        "date": "476",
+        "region": "Europe_Server",
+        "type": "Critical Event",
+        "importance": "high",
+        "title": "Fall of Rome",
+        "description": "`Region: Europe` fragmentation. Centralized moderation failed due to resource mismanagement. Server split into multiple private lobbies (Feudal System).",
+        "wiki_url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire",
+        "grok_url": "https://grokipedia.com/page/ancient_rome_the_rise_and_fall_of_an_empire",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Politics",
+            "Server Split",
+            "Admin Fail"
+        ],
+        "keywords": [
+            "romans",
+            "empire",
+            "gladiator",
+            "caesar",
+            "byzantine"
+        ]
+    },
+    {
+        "id": "log_1347001",
+        "version": "v.1347.Plague",
+        "date": "1347",
+        "region": "Europe_Server",
+        "type": "Bug Fix",
+        "importance": "high",
+        "title": "The Black Death",
+        "description": "Europe_Server experienced critical overcrowding. Initiated pathogen stress-test (Yersinia pestis). Result: 40% reduction in active player base to improve server latency.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Black_Death",
+        "grok_url": "https://grokipedia.com/page/Black_Death",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Population Control",
+            "Patch",
+            "Disease"
+        ],
+        "keywords": [
+            "plague",
+            "rats",
+            "fleas",
+            "pandemic",
+            "death"
+        ]
+    },
+    {
+        "id": "log_civ_print",
+        "version": "v.1440.Print",
+        "date": "1440",
+        "region": "Europe_Server",
+        "type": "Feature",
+        "importance": "high",
+        "title": "Gutenberg Press",
+        "description": "Data transmission speed increased by 500%. 'Literacy' perk unlocked for lower-level players. Reduced authority of 'Clergy' admin accounts.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg.27s_press",
+        "grok_url": "https://grokipedia.com/page/Printing_press",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Communication",
+            "Tech",
+            "Buff"
+        ],
+        "keywords": [
+            "books",
+            "bible",
+            "media",
+            "news",
+            "paper"
+        ]
+    },
+    {
+        "id": "log_civ_halley",
+        "version": "v.Periodic.Comet",
+        "date": "Various",
+        "region": "Solar_System",
+        "type": "Routine Process",
+        "importance": "low",
+        "title": "Halley's Comet",
+        "description": "Scheduled background process `comet_render_cycle`. Runs every 76 cycles to test skybox particle effects.",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Routine",
+            "Graphics",
+            "Skybox"
+        ],
+        "keywords": [
+            "astronomy",
+            "orbit",
+            "sky",
+            "event",
+            "cycle"
+        ]
+    }
+]

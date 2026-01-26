@@ -1,0 +1,48 @@
+[
+    {
+        "id": "log_civ_iphone",
+        "version": "v.2007.Smart",
+        "date": "2007",
+        "region": "Global_Earth",
+        "type": "Feature",
+        "importance": "low",
+        "title": "The Smartphone",
+        "description": "All players equipped with 'Always-Online' HUD. 'Attention Span' stat nerfed globally. 'Social Media' mini-games became mandatory for some guilds.",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Item",
+            "Nerf",
+            "Interface"
+        ],
+        "keywords": [
+            "apple",
+            "steve jobs",
+            "mobile",
+            "touchscreen",
+            "internet"
+        ]
+    },
+    {
+        "id": "log_civ_rover",
+        "version": "v.2021.Percy",
+        "date": "2021",
+        "region": "Mars_Server",
+        "type": "Feature",
+        "importance": "low",
+        "title": "Perseverance Rover",
+        "description": "Remote scouting bot deployed to `Server: Mars`. Scanning for legacy save files (microbial life). Bandwidth latency acceptable.",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Space",
+            "Bot",
+            "Scan"
+        ],
+        "keywords": [
+            "jpl",
+            "nasa",
+            "science",
+            "robot",
+            "jezero"
+        ]
+    }
+]

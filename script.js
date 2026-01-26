@@ -6,57 +6,136 @@ document.addEventListener('DOMContentLoaded', () => {
     const regionSelect = document.getElementById('region-select');
     const severityToggle = document.getElementById('severity-toggle');
     const granularityToggle = document.getElementById('granularity-toggle');
-    const sortSelect = document.getElementById('sort-select'); // New Element
-    const eraCheckboxes = document.querySelectorAll('.filter-era');
+    const sortSelect = document.getElementById('sort-select');
+    const timeFilterContainer = document.getElementById('time-filter-container');
     const clockElement = document.getElementById('live-clock');
     const tickerContent = document.getElementById('ticker-content');
 
     // State
-    let allLogs = [];
+    let manifest = null;
+    let loadedData = {}; // Cache for loaded datasets { 'yearly/2026.json': [...], 'eras/ancient.json': [...] }
+    let allLogs = []; // Combined array of all currently loaded logs
     let activeFilters = {
         search: '',
-        eras: ['pre-history', 'antiquity', 'modern', 'future'],
+        selectedPeriods: [], // Array of file paths like ['yearly/2026.json', 'eras/ancient.json']
         region: 'all',
         criticalOnly: false,
-        verbose: false, // Default to hiding low importance
-        sort: 'date-desc' // Default sort
+        verbose: false,
+        sort: 'date-desc'
     };
 
     // --- Core Logic ---
 
-    // Fetch Data
-    async function fetchLogs() {
+    // Fetch Manifest
+    async function fetchManifest() {
         try {
-            const response = await fetch('logs.json');
-            if (!response.ok) throw new Error('Failed to load logs');
-            const data = await response.json();
+            const response = await fetch('logs/manifest.json');
+            if (!response.ok) throw new Error('Failed to load manifest');
+            manifest = await response.json();
 
-            // Separte active logs from history logs if needed, or just keep them all
-            // For the Feed, we likely want "History" logs (is_active !== true) 
-            // OR we show everything sorted by date?
-            // Requirement says "Main Feed (The Logs) - Standard Timeline"
-            // And "Live Server Status ... Displays currently active/ongoing events"
+            // Generate filter buttons
+            generateFilterButtons();
 
-            // Let's filter active ones for the ticker, and everything else for the feed.
-            const activeLogs = data.filter(log => log.is_active === true);
-            allLogs = data.filter(log => log.is_active !== true); // Only history in the feed?
-            // Actually, usually "Present Day" logs might be in the feed too. 
-            // Let's keep them in the feed as well for reference, unless specified otherwise.
-            // Prompt says "Standard Timeline" for history logs. "Active/Live events" in ticker.
-            // I'll keep them in allLogs for the feed, but maybe the ticker creates a separate display.
+            // Load current year by default
+            const currentYearFile = manifest.years_available.find(y => y.year === manifest.current_year)?.file;
+            if (currentYearFile) {
+                await loadDataset(currentYearFile);
+                activeFilters.selectedPeriods.push(currentYearFile);
+                updateFilterButtonStates();
+            }
 
-            // Re-eval: "Active events" usually imply "Ongoing". 
-            // I will put them in the ticker. I will ALSO put them in the feed if they have a date?
-            // Let's just use the `is_active` flag for the ticker, and `allLogs` is the source for local filtering.
-            // If the user didn't ask to exclude them from the feed, I'll include them.
-            allLogs = data;
-
-            renderTicker(activeLogs);
             renderLogs();
         } catch (error) {
             console.error('Error:', error);
-            feedContainer.innerHTML = `<div class="error-message">ERROR: CONNECTION_REFUSED. FAILED_TO_FETCH_LOGS.JSON</div>`;
+            feedContainer.innerHTML = `<div class="error-message">ERROR: CONNECTION_REFUSED. FAILED_TO_FETCH_MANIFEST.JSON</div>`;
         }
+    }
+
+    // Load a dataset (year or era)
+    async function loadDataset(filePath) {
+        if (loadedData[filePath]) {
+            return; // Already loaded
+        }
+
+        try {
+            const response = await fetch(`logs/${filePath}`);
+            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
+            const data = await response.json();
+            loadedData[filePath] = data;
+
+            // Rebuild allLogs from all loaded datasets
+            rebuildAllLogs();
+        } catch (error) {
+            console.error(`Error loading ${filePath}:`, error);
+        }
+    }
+
+    // Rebuild allLogs array from all loaded datasets
+    function rebuildAllLogs() {
+        allLogs = [];
+        Object.values(loadedData).forEach(dataset => {
+            allLogs = allLogs.concat(dataset);
+        });
+    }
+
+    // Generate filter buttons dynamically
+    function generateFilterButtons() {
+        if (!manifest) return;
+
+        timeFilterContainer.innerHTML = '';
+
+        // Create year buttons
+        manifest.years_available.forEach(yearObj => {
+            const btn = createFilterButton(yearObj.year.toString(), yearObj.file);
+            timeFilterContainer.appendChild(btn);
+        });
+
+        // Create era buttons
+        manifest.eras.forEach(era => {
+            const btn = createFilterButton(era.name, era.file);
+            timeFilterContainer.appendChild(btn);
+        });
+    }
+
+    // Create a filter button
+    function createFilterButton(label, filePath) {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn';
+        btn.textContent = label;
+        btn.dataset.file = filePath;
+
+        btn.addEventListener('click', async () => {
+            const isActive = activeFilters.selectedPeriods.includes(filePath);
+
+            if (isActive) {
+                // Remove from selection
+                activeFilters.selectedPeriods = activeFilters.selectedPeriods.filter(f => f !== filePath);
+            } else {
+                // Add to selection and load if needed
+                btn.classList.add('loading');
+                await loadDataset(filePath);
+                activeFilters.selectedPeriods.push(filePath);
+                btn.classList.remove('loading');
+            }
+
+            updateFilterButtonStates();
+            renderLogs();
+        });
+
+        return btn;
+    }
+
+    // Update button states based on active filters
+    function updateFilterButtonStates() {
+        const buttons = timeFilterContainer.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => {
+            const filePath = btn.dataset.file;
+            if (activeFilters.selectedPeriods.includes(filePath)) {
+                btn.classList.add('active');
+            } else {
+                btn.classList.remove('active');
+            }
+        });
     }
 
     // Helper: Parse Simulation Date to Numeric Value for Sorting
@@ -87,44 +166,22 @@ document.addEventListener('DOMContentLoaded', () => {
         return val;
     }
 
-    // Determine Era Helper
-    function getEra(dateString) {
-        if (!dateString) return 'modern';
-        const lowerDate = dateString.toLowerCase();
-
-        if (lowerDate.includes('billion') || lowerDate.includes('million') || lowerDate.includes('bc') || lowerDate.includes('pre-history')) {
-            return 'pre-history';
-        }
-
-        // Extract Year for AD dates
-        // Handles "1347 AD", "1991 - 2000 AD", "Present Day", "Near Future"
-        if (lowerDate.includes('present') || lowerDate.includes('future')) return 'future';
-
-        const yearMatch = dateString.match(/(\d+)/); // Crude year extractor
-        if (yearMatch) {
-            const year = parseInt(yearMatch[1]);
-            // Logic check for BC/AD if not explicit
-            // Assuming AD if not BC/Billion/Million which are caught above
-
-            if (year < 1500) return 'antiquity';
-            if (year > 2025) return 'future';
-            return 'modern';
-        }
-
-        return 'modern'; // Default fallback
-    }
-
     // Filter Logic
     function getFilteredLogs() {
+        // Only show logs from selected periods
         let filtered = allLogs.filter(log => {
-            // Exclude active-only logs from feed if we wanted, but let's show all
-            if (log.is_active && !activeFilters.verbose) {
-                // Logic hole: Should active logs be shown in feed? 
-                // Usually yes.
+            // Check if this log is from a selected period
+            let fromSelectedPeriod = false;
+            for (const filePath of activeFilters.selectedPeriods) {
+                if (loadedData[filePath] && loadedData[filePath].includes(log)) {
+                    fromSelectedPeriod = true;
+                    break;
+                }
             }
 
+            if (!fromSelectedPeriod) return false;
+
             // 1. Granularity (Importance)
-            // Rule: "By default, hide events tagged 'importance: low'. If toggled ON, show everything."
             if (!activeFilters.verbose && log.importance === 'low') {
                 return false;
             }
@@ -136,20 +193,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 log.version.toLowerCase().includes(searchLower) ||
                 (log.keywords && log.keywords.some(k => k.toLowerCase().includes(searchLower)));
 
-            // 3. Era
-            const logEra = getEra(log.date);
-            const matchesEra = activeFilters.eras.includes(logEra);
-
-            // 4. Region
-            // Special handling for region mapping to filters if needed.
-            // Our dropdown values are lowercase.
+            // 3. Region
             const logRegion = log.region.toLowerCase();
             const filterRegion = activeFilters.region.toLowerCase();
 
             let matchesRegion = filterRegion === 'all';
             if (!matchesRegion) {
-                // Exact match or partial inclusion?
-                // Example: Filter "sol_system" -> should match "Mars_Server", "Moon_Server", "Solar_System"
                 if (filterRegion === 'sol_system') {
                     matchesRegion = ['mars', 'moon', 'solar', 'earth', 'global_earth'].some(k => logRegion.includes(k));
                 } else {
@@ -157,12 +206,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // 5. Severity
+            // 4. Severity
             const matchesSeverity = !activeFilters.criticalOnly ||
                 log.type === 'Critical Event' ||
-                (log.is_active === true); // Maybe critical shows active too?
+                (log.is_active === true);
 
-            return matchesSearch && matchesEra && matchesRegion && matchesSeverity;
+            return matchesSearch && matchesRegion && matchesSeverity;
         });
 
         // Sorting
@@ -181,7 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Rendering Active Ticker
-    function renderTicker(activeLogs) {
+    function renderTicker() {
+        const activeLogs = allLogs.filter(log => log.is_active === true);
+
         if (activeLogs.length === 0) {
             tickerContent.innerHTML = '<span>// NO_ACTIVE_EVENTS_DETECTED</span>';
             return;
@@ -259,6 +310,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
             feedContainer.appendChild(card);
         });
+
+        // Update ticker with all loaded logs
+        renderTicker();
     }
 
     // --- Interactive Controls ---
@@ -286,20 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     granularityToggle.addEventListener('change', (e) => {
         activeFilters.verbose = e.target.checked;
-        // Visual feedback?
         renderLogs();
-    });
-
-    eraCheckboxes.forEach(cb => {
-        cb.addEventListener('change', () => {
-            const value = cb.value;
-            if (cb.checked) {
-                if (!activeFilters.eras.includes(value)) activeFilters.eras.push(value);
-            } else {
-                activeFilters.eras = activeFilters.eras.filter(e => e !== value);
-            }
-            renderLogs();
-        });
     });
 
     // --- Live Clock ---
@@ -354,8 +395,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Init interactives
-    fetchLogs();
-    loadContributors(); // New
+    fetchManifest();
+    loadContributors();
     setInterval(updateClock, 1000);
     updateClock();
 });

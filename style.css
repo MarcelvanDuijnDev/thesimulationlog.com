@@ -924,3 +924,41 @@ input:checked+.slider:before {
     visibility: visible;
     opacity: 1;
 }
+
+/* Filter Button Group */
+.filter-button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 0.9rem;
+    background: rgba(0, 255, 65, 0.1);
+    border: 1px solid var(--accent-green);
+    color: var(--accent-green);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-radius: 2px;
+}
+
+.filter-btn:hover {
+    background: rgba(0, 255, 65, 0.2);
+    box-shadow: 0 0 8px rgba(0, 255, 65, 0.3);
+}
+
+.filter-btn.active {
+    background: var(--accent-green);
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.filter-btn.loading {
+    opacity: 0.5;
+    cursor: wait;
+    animation: pulse 1.5s infinite;
+}

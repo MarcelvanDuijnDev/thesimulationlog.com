@@ -1,0 +1,30 @@
+{
+    "current_year": 2026,
+    "years_available": [
+        {
+            "year": 2026,
+            "file": "yearly/2026.json"
+        },
+        {
+            "year": 2025,
+            "file": "yearly/2025.json"
+        }
+    ],
+    "eras": [
+        {
+            "name": "2000-2024",
+            "file": "eras/2000-2024.json",
+            "range": "2000-2024"
+        },
+        {
+            "name": "20th Century",
+            "file": "eras/20th_century.json",
+            "range": "1900-1999"
+        },
+        {
+            "name": "Ancient History",
+            "file": "eras/ancient.json",
+            "range": "Pre-1900"
+        }
+    ]
+}

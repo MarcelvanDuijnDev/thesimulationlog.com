@@ -1,0 +1,245 @@
+[
+    {
+        "id": "log_civ_wwi",
+        "version": "v.1914.War",
+        "date": "1914 - 1918",
+        "region": "Global_Earth",
+        "type": "Critical Event",
+        "importance": "high",
+        "title": "World War I",
+        "description": "Server-wide faction conflict. Introduced 'Trench' mechanics. High player disconnect rate. Chemical warfare DLC previewed (banned in subsequent patches).",
+        "wiki_url": "https://en.wikipedia.org/wiki/World_War_I",
+        "grok_url": "https://grokipedia.com/page/World_War_I",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "PvP",
+            "Conflict",
+            "Update"
+        ],
+        "keywords": [
+            "great war",
+            "trenches",
+            "mustard gas",
+            "franz ferdinand",
+            "battle"
+        ]
+    },
+    {
+        "id": "log_civ_wwii",
+        "version": "v.1939.War_v2",
+        "date": "1939 - 1945",
+        "region": "Global_Earth",
+        "type": "Critical Event",
+        "importance": "high",
+        "title": "World War II",
+        "description": "Sequel to the 'Great War' event. Introduced 'Blitzkrieg' mechanics and 'Atomic' end-game content. Resulted in massive server depopulation and faction realignment.",
+        "wiki_url": "https://en.wikipedia.org/wiki/World_War_II",
+        "grok_url": "https://grokipedia.com/page/World_War_II",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "PvP",
+            "Conflict",
+            "Update"
+        ],
+        "keywords": [
+            "hitler",
+            "nazis",
+            "axis",
+            "allies",
+            "d-day",
+            "holocaust"
+        ]
+    },
+    {
+        "id": "log_civ_atom",
+        "version": "v.1945.Atom",
+        "date": "1945",
+        "region": "Global_Earth",
+        "type": "Critical Event",
+        "importance": "high",
+        "title": "Trinity Test",
+        "description": "Players discovered an exploit in the physics engine (splitting the atom). Result: Massive damage multiplier unlocked. Admin warning issued regarding server stability.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
+        "grok_url": "https://grokipedia.com/page/Trinity_(nuclear_test)",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Physics",
+            "Exploit",
+            "Weapon"
+        ],
+        "keywords": [
+            "oppenheimer",
+            "nuke",
+            "bomb",
+            "manhattan project",
+            "radiation"
+        ]
+    },
+    {
+        "id": "log_civ_un",
+        "version": "v.1945.UN",
+        "date": "1945",
+        "region": "Global_Earth",
+        "type": "Admin Tool",
+        "importance": "low",
+        "title": "United Nations",
+        "description": "Established global moderation team to prevent future server wipes. Efficacy rating: Variable.",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Admin",
+            "Moderation",
+            "Patch"
+        ],
+        "keywords": [
+            "diplomacy",
+            "peace",
+            "nyc",
+            "council",
+            "globalist"
+        ]
+    },
+    {
+        "id": "log_civ_coldwar",
+        "version": "v.1947.Cold",
+        "date": "1947 - 1991",
+        "region": "Global_Earth",
+        "type": "Feature",
+        "importance": "low",
+        "title": "The Cold War",
+        "description": "Long-term standoff between admin factions. No direct massive PvP, heavily relied on 'Spy' class and 'Proxy War' mini-games.",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Politics",
+            "Faction",
+            "Stalemate"
+        ],
+        "keywords": [
+            "ussr",
+            "usa",
+            "soviet",
+            "berlin wall",
+            "communism"
+        ]
+    },
+    {
+        "id": "log_civ_dna",
+        "version": "v.1953.Helix",
+        "date": "1953",
+        "region": "Global_Earth",
+        "type": "Discovery",
+        "importance": "high",
+        "title": "Discovery of DNA",
+        "description": "Players accessed the source code for character generation. Unlocked potential for 'Gene Editing' customization in future updates.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Molecular_Structure_of_Nucleic_Acids:_A_Structure_for_Deoxyribose_Nucleic_Acid",
+        "grok_url": "https://grokipedia.com/page/Nucleic_acid_structure",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Source Code",
+            "Biology",
+            "Unlock"
+        ],
+        "keywords": [
+            "watson",
+            "crick",
+            "rosalind franklin",
+            "genetics",
+            "helix"
+        ]
+    },
+    {
+        "id": "log_civ_sputnik",
+        "version": "v.1957.Orbit",
+        "date": "1957",
+        "region": "Orbit",
+        "type": "Feature",
+        "importance": "low",
+        "title": "Sputnik Launch",
+        "description": "Deployed first orbital monitoring drone. 'Fog of War' removed for upper atmosphere coverage.",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Space",
+            "Drone",
+            "Map"
+        ],
+        "keywords": [
+            "russia",
+            "satellite",
+            "space race",
+            "beep",
+            "tech"
+        ]
+    },
+    {
+        "id": "log_civ_apollo",
+        "version": "v.1969.Moon",
+        "date": "1969",
+        "region": "Moon_Server",
+        "type": "Feature",
+        "importance": "high",
+        "title": "Apollo 11",
+        "description": "First successful player transfer to `Server: Luna`. Physics engine stress-tested. 'Low Gravity' modifier confirmed stable.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Apollo_11",
+        "grok_url": "https://grokipedia.com/page/Apollo_11",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Space",
+            "Transfer",
+            "Milestone"
+        ],
+        "keywords": [
+            "armstrong",
+            "aldrin",
+            "nasa",
+            "usa",
+            "landing"
+        ]
+    },
+    {
+        "id": "log_1991001",
+        "version": "v.1991.WWW",
+        "date": "1991",
+        "region": "Global_Earth",
+        "type": "Feature",
+        "importance": "high",
+        "title": "The World Wide Web",
+        "description": "Deployed global networking protocol (TCP/IP). Enabled peer-to-peer communication. Note: Significant increase in memetic virus propagation.",
+        "wiki_url": "https://en.wikipedia.org/wiki/World_Wide_Web",
+        "grok_url": "https://grokipedia.com/page/History_of_the_World_Wide_Web",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Network",
+            "Social",
+            "Feature"
+        ],
+        "keywords": [
+            "internet",
+            "tim berners-lee",
+            "cern",
+            "browser",
+            "http"
+        ]
+    },
+    {
+        "id": "log_civ_y2k",
+        "version": "v.1999.Bug",
+        "date": "1999",
+        "region": "Global_Earth",
+        "type": "Bug Fix",
+        "importance": "low",
+        "title": "Y2K Bug",
+        "description": "Calendar integer overflow panic. Patched just before midnight. No server crash occurred. Users reported minor anxiety debuffs.",
+        "submitted_by": "Aethvion_Admin",
+        "tags": [
+            "Patch",
+            "Date",
+            "Glitch"
+        ],
+        "keywords": [
+            "millennium",
+            "computers",
+            "panic",
+            "1999",
+            "2000"
+        ]
+    }
+]
