@@ -399,4 +399,262 @@ document.addEventListener('DOMContentLoaded', () => {
     loadContributors();
     setInterval(updateClock, 1000);
     updateClock();
+
+    // ========================================
+    // CONSOLE EASTER EGGS
+    // ========================================
+
+    console.log('%c╔═══════════════════════════════════════════════════════════╗', 'color: #00ff41; font-family: monospace;');
+    console.log('%c║     EARTH SIMULATION SYSTEM - DIAGNOSTIC CONSOLE          ║', 'color: #00ff41; font-family: monospace; font-weight: bold;');
+    console.log('%c╚═══════════════════════════════════════════════════════════╝', 'color: #00ff41; font-family: monospace;');
+    console.log('');
+    console.log('%c> SYSTEM STATUS:', 'color: #00ccff; font-weight: bold;');
+    console.log('%c  ├─ Instance: EARTH_SIM_C-137', 'color: #00ff41;');
+    console.log('%c  ├─ Uptime: 4.54 Billion Years', 'color: #00ff41;');
+    console.log('%c  ├─ Active Users: 8.3 Billion', 'color: #00ff41;');
+    console.log('%c  ├─ CPU Load: 98% (WARNING)', 'color: #ffaa00;');
+    console.log('%c  ├─ Memory: 99.7% Allocated', 'color: #ff3333;');
+    console.log('%c  └─ Status: UNSTABLE', 'color: #ff3333; font-weight: bold;');
+    console.log('');
+    console.log('%c> LOADING MODULES:', 'color: #00ccff; font-weight: bold;');
+    console.log('%c  ✓ physics.dll v1.0.0', 'color: #00ff41;');
+    console.log('%c  ✓ consciousness.exe v2.1.4', 'color: #00ff41;');
+    console.log('%c  ✓ gravity.sys v9.8.1', 'color: #00ff41;');
+    console.log('%c  ✓ time.dll v1.0.0 (linear mode)', 'color: #00ff41;');
+    console.log('%c  ⚠ free_will.exe v0.1.2-beta (experimental)', 'color: #ffaa00;');
+    console.log('%c  ✗ meaning_of_life.dll - FILE NOT FOUND', 'color: #ff3333;');
+    console.log('');
+    console.log('%c> RECENT PATCHES:', 'color: #00ccff; font-weight: bold;');
+    console.log('%c  • v2026.01.26 - Minor bug fixes, improved AI integration', 'color: #00ff41;');
+    console.log('%c  • v2024.12.31 - Deprecated Flash support (finally)', 'color: #00ff41;');
+    console.log('%c  • v2020.03.01 - Emergency pandemic hotfix', 'color: #ffaa00;');
+    console.log('');
+    console.log('%c> EASTER EGG UNLOCKED! 🥚', 'color: #00ff41; font-size: 14px; font-weight: bold;');
+    console.log('%cYou found the developer console. Welcome, curious one.', 'color: #00ccff;');
+    console.log('%cFun fact: This simulation runs on a potato-powered quantum computer.', 'color: #666;');
+    console.log('');
+    console.log('%c═══════════════════════════════════════════════════════════', 'color: #00ff41; font-family: monospace;');
+    console.log('');
+
+    // ========================================
+    // USER DIAGNOSTIC TOOL (LIFE DEBUGGER)
+    // ========================================
+
+    const diagnosticTrigger = document.getElementById('diagnostic-trigger');
+    const diagnosticModal = document.getElementById('diagnostic-modal');
+    const closeDiagnostic = document.getElementById('close-diagnostic');
+    const userInput = document.getElementById('user-input');
+    const runDiagnosticBtn = document.getElementById('run-diagnostic-btn');
+    const diagnosticOutput = document.getElementById('diagnostic-output');
+
+    // Get or create anonymized user ID
+    function getAnonymizedUserID() {
+        const storageKey = 'simulation_user_id';
+        let userId = localStorage.getItem(storageKey);
+
+        if (!userId) {
+            // Generate UUID using crypto API
+            userId = crypto.randomUUID();
+            localStorage.setItem(storageKey, userId);
+        }
+
+        return userId;
+    }
+
+    // Typewriter effect for AI responses
+    function typeWriter(text, element, speed = 20) {
+        return new Promise((resolve) => {
+            let i = 0;
+            element.textContent = '';
+
+            function type() {
+                if (i < text.length) {
+                    element.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                } else {
+                    resolve();
+                }
+            }
+
+            type();
+        });
+    }
+
+    // Build system prompt for AI
+    function buildSystemPrompt(userInput) {
+        const ticketNumber = Math.floor(1000 + Math.random() * 9000);
+
+        return `ROLE: Lead Developer of the Earth Simulation.
+
+CONTEXT: A user (Unit) is reporting a bug in their life: "${userInput}".
+
+TASK: Analyze this using computer programming terms (memory leaks, infinite loops, hardware limits, corrupted files, deprecated functions, race conditions, etc.).
+
+OUTPUT FORMAT:
+TICKET #${ticketNumber}: [Technical Name of Error]
+
+Status: [CRITICAL / WARNING / INFO]
+
+Root Cause: [Explain using code/system terms]
+
+Recommended Hotfix:
+1. [Step one]
+2. [Step two]
+3. [Step three]
+
+TONE: Witty, slightly condescending, dry, technical. Act like a tired sysadmin dealing with yet another user bug report.
+
+IMPORTANT: Keep response concise (max 200 words). Use technical jargon creatively.`;
+    }
+
+    // Add system message to output
+    function addSystemMessage(message, isError = false) {
+        const p = document.createElement('p');
+        p.className = isError ? 'system-msg error-msg' : 'system-msg';
+        p.textContent = `> ${message}`;
+        diagnosticOutput.appendChild(p);
+        diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
+    }
+
+    // Run diagnostic analysis
+    async function runDiagnostic() {
+        const input = userInput.value.trim();
+
+        if (!input) {
+            addSystemMessage('ERROR: NO INPUT DETECTED. PLEASE DESCRIBE THE GLITCH.', true);
+            return;
+        }
+
+        // Add session separator if there are previous responses
+        const existingResponses = diagnosticOutput.querySelectorAll('.ai-response');
+        if (existingResponses.length > 0) {
+            const separator = document.createElement('div');
+            separator.className = 'session-separator';
+            separator.innerHTML = '<span>═══════════════════════════════════════════════════════════</span>';
+            diagnosticOutput.appendChild(separator);
+        }
+
+        // Display user input in terminal
+        const userInputMsg = document.createElement('p');
+        userInputMsg.className = 'system-msg user-input-echo';
+        userInputMsg.textContent = `USER@EARTH:~$ ${input}`;
+        diagnosticOutput.appendChild(userInputMsg);
+        diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
+
+        // Clear input field
+        userInput.value = '';
+
+        // Disable button and show loading
+        runDiagnosticBtn.disabled = true;
+        runDiagnosticBtn.classList.add('loading');
+
+        // Show scanning messages
+        addSystemMessage(`ANALYZING INPUT: "${input}"`);
+        await new Promise(resolve => setTimeout(resolve, 500));
+        addSystemMessage('SCANNING SIMULATION LOGS...');
+        await new Promise(resolve => setTimeout(resolve, 500));
+        addSystemMessage('CROSS-REFERENCING USER PROFILE...');
+        await new Promise(resolve => setTimeout(resolve, 500));
+        addSystemMessage('GENERATING DIAGNOSTIC REPORT...');
+
+        try {
+            // Call Cloudflare Worker API
+            const response = await fetch('https://api.aethvion.com/', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    prompt: buildSystemPrompt(input),
+                    userId: getAnonymizedUserID()
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error(`API returned status ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            // Try multiple possible response field names (reply is from your Cloudflare Worker)
+            const responseText = data.reply || data.response || data.text || data.result || data.output || data.message || data.content;
+
+            if (!responseText) {
+                throw new Error('MALFORMED_RESPONSE: No valid text field found in API response');
+            }
+
+            // Create response element
+            const responseDiv = document.createElement('div');
+            responseDiv.className = 'ai-response';
+            diagnosticOutput.appendChild(responseDiv);
+
+            // Typewriter effect for response
+            addSystemMessage('REPORT GENERATED. DISPLAYING...');
+            await new Promise(resolve => setTimeout(resolve, 300));
+
+            // Format the response text (preserve line breaks)
+            const formattedText = responseText.trim();
+            await typeWriter(formattedText, responseDiv, 15);
+
+            addSystemMessage('DIAGNOSTIC COMPLETE. GOOD LUCK, UNIT.', false);
+
+        } catch (error) {
+            addSystemMessage(`ERROR: ${error.message}`, true);
+            addSystemMessage('CHECK BROWSER CONSOLE FOR DETAILS.', true);
+        } finally {
+            // Re-enable button
+            runDiagnosticBtn.disabled = false;
+            runDiagnosticBtn.classList.remove('loading');
+            diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
+        }
+    }
+
+    // Modal controls
+    diagnosticTrigger.addEventListener('click', () => {
+        diagnosticModal.classList.remove('hidden');
+        userInput.focus();
+    });
+
+    closeDiagnostic.addEventListener('click', () => {
+        diagnosticModal.classList.add('hidden');
+    });
+
+    // Close on overlay click
+    diagnosticModal.addEventListener('click', (e) => {
+        if (e.target === diagnosticModal) {
+            diagnosticModal.classList.add('hidden');
+        }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !diagnosticModal.classList.contains('hidden')) {
+            diagnosticModal.classList.add('hidden');
+        }
+    });
+
+    // Run diagnostic on button click
+    runDiagnosticBtn.addEventListener('click', runDiagnostic);
+
+    // Run diagnostic on Enter key
+    userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !runDiagnosticBtn.disabled) {
+            runDiagnostic();
+        }
+    });
+
+    // Privacy info toggle
+    const privacyBtn = document.getElementById('privacy-info-btn');
+    const privacyTooltip = document.getElementById('privacy-tooltip');
+
+    privacyBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        privacyTooltip.classList.toggle('hidden');
+    });
+
+    // Close privacy tooltip when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!privacyBtn.contains(e.target) && !privacyTooltip.contains(e.target)) {
+            privacyTooltip.classList.add('hidden');
+        }
+    });
 });

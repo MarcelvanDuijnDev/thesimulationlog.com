@@ -117,6 +117,24 @@ body {
     animation: pulse 2s infinite;
 }
 
+.terminal-text-btn {
+    background: none;
+    border: none;
+    color: var(--accent-green);
+    font-family: var(--font-main);
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    text-transform: uppercase;
+    transition: color 0.2s, text-shadow 0.2s;
+    animation: pulse 2s infinite;
+}
+
+.terminal-text-btn:hover {
+    color: white;
+    text-shadow: 0 0 12px var(--accent-green);
+}
+
 @keyframes pulse {
     0% {
         opacity: 0.6;
@@ -961,4 +979,461 @@ input:checked+.slider:before {
     opacity: 0.5;
     cursor: wait;
     animation: pulse 1.5s infinite;
+}
+
+/* ========================================
+   USER DIAGNOSTIC TOOL (LIFE DEBUGGER)
+   ======================================== */
+
+/* Terminal Overlay */
+.terminal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease-out;
+}
+
+.terminal-overlay.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Terminal Window */
+.terminal-window {
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    background-color: #0a0a0a;
+    border: 2px solid var(--accent-green);
+    box-shadow: 0 0 40px rgba(0, 255, 65, 0.3),
+        inset 0 0 100px rgba(0, 255, 65, 0.05);
+    font-family: 'Courier New', monospace;
+    position: relative;
+    animation: terminalSlideIn 0.4s ease-out;
+    overflow: hidden;
+}
+
+/* CRT Scanline Effect */
+.terminal-window::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom,
+            rgba(0, 255, 65, 0) 50%,
+            rgba(0, 255, 65, 0.05) 50%);
+    background-size: 100% 4px;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.3;
+}
+
+/* CRT Flicker Effect */
+.terminal-window::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 65, 0.02);
+    pointer-events: none;
+    z-index: 1;
+    animation: crt-flicker 0.15s infinite;
+}
+
+@keyframes terminalSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes crt-flicker {
+    0% {
+        opacity: 0.02;
+    }
+
+    50% {
+        opacity: 0.04;
+    }
+
+    100% {
+        opacity: 0.02;
+    }
+}
+
+/* Terminal Header */
+.terminal-header {
+    background-color: #000;
+    border-bottom: 1px solid var(--accent-green);
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--accent-green);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+.close-btn {
+    background: transparent;
+    border: 1px solid var(--accent-red);
+    color: var(--accent-red);
+    padding: 0.25rem 0.75rem;
+    cursor: pointer;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background-color: var(--accent-red);
+    color: #000;
+    box-shadow: 0 0 10px var(--accent-red);
+}
+
+/* Terminal Body */
+.terminal-body {
+    padding: 1.5rem;
+    position: relative;
+    z-index: 3;
+}
+
+/* Output Area */
+.output-area {
+    min-height: 200px;
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 255, 65, 0.2);
+    color: var(--accent-green);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* Custom Scrollbar */
+.output-area::-webkit-scrollbar {
+    width: 8px;
+}
+
+.output-area::-webkit-scrollbar-track {
+    background: #000;
+}
+
+.output-area::-webkit-scrollbar-thumb {
+    background: var(--accent-green);
+    border-radius: 4px;
+}
+
+.output-area::-webkit-scrollbar-thumb:hover {
+    background: #00cc33;
+}
+
+.system-msg {
+    margin-bottom: 0.5rem;
+    color: rgba(0, 255, 65, 0.7);
+    animation: typeIn 0.5s ease-out;
+}
+
+.system-msg.error-msg {
+    color: var(--accent-red);
+}
+
+.system-msg.user-input-echo {
+    color: var(--text-main);
+    font-weight: bold;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(0, 255, 65, 0.2);
+}
+
+/* Session Separator */
+.session-separator {
+    margin: 2rem 0;
+    text-align: center;
+    color: rgba(0, 255, 65, 0.3);
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+}
+
+.session-separator span {
+    display: block;
+    opacity: 0.5;
+}
+
+@keyframes typeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.ai-response {
+    color: var(--accent-green);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px dashed rgba(0, 255, 65, 0.3);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.8;
+    font-family: 'Courier New', monospace;
+}
+
+/* Format AI response sections */
+.ai-response strong {
+    color: var(--accent-amber);
+    display: block;
+    margin-top: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.ai-response p {
+    margin-bottom: 0.5rem;
+}
+
+/* Terminal Footer with Privacy Button */
+.terminal-footer {
+    position: relative;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 255, 65, 0.2);
+    display: flex;
+    justify-content: flex-start;
+}
+
+.privacy-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 0.75rem;
+    background-color: transparent;
+    border: 1px solid rgba(0, 255, 65, 0.3);
+    color: rgba(0, 255, 65, 0.7);
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.privacy-btn:hover {
+    border-color: var(--accent-green);
+    color: var(--accent-green);
+    background-color: rgba(0, 255, 65, 0.05);
+}
+
+.privacy-icon {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.privacy-label {
+    letter-spacing: 0.5px;
+}
+
+/* Privacy Tooltip */
+.privacy-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    margin-bottom: 0.5rem;
+    background-color: #0a0a0a;
+    border: 1px solid var(--accent-green);
+    padding: 1rem;
+    min-width: 350px;
+    max-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.privacy-tooltip.hidden {
+    display: none;
+}
+
+.privacy-tooltip-header {
+    color: var(--accent-green);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.privacy-tooltip-content {
+    font-size: 0.75rem;
+    line-height: 1.6;
+    color: rgba(0, 255, 65, 0.8);
+}
+
+.privacy-tooltip-content p {
+    margin-bottom: 0.5rem;
+}
+
+.privacy-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
+}
+
+.privacy-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Input Line */
+.input-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 255, 65, 0.3);
+}
+
+.prompt {
+    color: var(--accent-green);
+    font-weight: bold;
+    white-space: nowrap;
+    font-family: 'Courier New', monospace;
+}
+
+#user-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    outline: none;
+    padding: 0;
+}
+
+#user-input::placeholder {
+    color: rgba(224, 224, 224, 0.3);
+}
+
+/* Terminal Controls */
+.terminal-controls {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-btn {
+    padding: 0.75rem 1.5rem;
+    background-color: transparent;
+    border: 2px solid var(--accent-green);
+    color: var(--accent-green);
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn:hover {
+    background-color: var(--accent-green);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+.action-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Loading Animation */
+.action-btn.loading::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(0, 255, 65, 0.3),
+            transparent);
+    animation: loading-sweep 1.5s infinite;
+}
+
+@keyframes loading-sweep {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+
+    .terminal-window {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .terminal-body {
+        padding: 1rem;
+    }
+
+    .output-area {
+        min-height: 150px;
+        max-height: 300px;
+        font-size: 0.85rem;
+    }
+
+    .input-line {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .prompt {
+        margin-bottom: 0.5rem;
+    }
 }

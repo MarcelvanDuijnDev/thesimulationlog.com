@@ -67,13 +67,15 @@
             </div>
         </div>
         <div class="status-bar">
-            <span>Uptime: 4.54 Billion Years</span>
+            <span>uptime: 4.54 Billion Years</span>
             <span class="separator">|</span>
             <span>CPU Load: 98%</span>
             <span class="separator">|</span>
             <span>Connected Clients: 8.1 Billion</span>
             <span class="separator">|</span>
             <span class="status-indicator">STATUS: UNSTABLE</span>
+            <span class="separator">|</span>
+            <button id="diagnostic-trigger" class="terminal-text-btn">TERMINAL</button>
         </div>
     </header>
 
@@ -230,6 +232,57 @@
             </div>
         </div>
     </footer>
+
+    <!-- User Diagnostic Tool -->
+
+
+    <div id="diagnostic-modal" class="terminal-overlay hidden">
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <span>> SYSTEM_DIAGNOSTIC_TOOL_v.1.0</span>
+                <button id="close-diagnostic" class="close-btn">[ X ]</button>
+            </div>
+
+            <div class="terminal-body">
+                <div id="diagnostic-output" class="output-area">
+                    <p class="system-msg">> INITIALIZING DIAGNOSTIC PROTOCOL...</p>
+                    <p class="system-msg">> WAITING FOR USER INPUT...</p>
+                </div>
+
+                <div class="input-line">
+                    <span class="prompt">USER@EARTH:~$</span>
+                    <input type="text" id="user-input"
+                        placeholder="Describe the error (e.g. 'I'm always tired', 'My code won't run')..."
+                        autocomplete="off">
+                </div>
+
+                <div class="terminal-controls">
+                    <button id="run-diagnostic-btn" class="action-btn">[ RUN_ANALYSIS ]</button>
+                </div>
+
+                <div class="terminal-footer">
+                    <button id="privacy-info-btn" class="privacy-btn">
+                        <span class="privacy-icon">ⓘ</span>
+                        <span class="privacy-label">API Info</span>
+                    </button>
+                    <div id="privacy-tooltip" class="privacy-tooltip hidden">
+                        <div class="privacy-tooltip-header">
+                            <strong>Gemini API (Cloud Processing)</strong>
+                        </div>
+                        <div class="privacy-tooltip-content">
+                            <p>• Powered by Google's Gemini API (Enterprise Tier - Paid Plan)</p>
+                            <p>• Your data is NOT used to train AI models</p>
+                            <p>• Data processed transiently, not stored permanently</p>
+                            <p>• Enterprise-grade security and compliance</p>
+                            <a href="https://ai.google.dev/gemini-api/terms" target="_blank" class="privacy-link">
+                                Read the Privacy Terms (Paid Services) →
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
