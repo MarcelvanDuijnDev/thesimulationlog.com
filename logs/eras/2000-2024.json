@@ -1,48 +1,218 @@
 [
-    {
-        "id": "log_civ_iphone",
-        "version": "v.2007.Smart",
-        "date": "2007",
-        "region": "Global_Earth",
-        "type": "Feature",
-        "importance": "low",
-        "title": "The Smartphone",
-        "description": "All players equipped with 'Always-Online' HUD. 'Attention Span' stat nerfed globally. 'Social Media' mini-games became mandatory for some guilds.",
-        "submitted_by": "Aethvion_Admin",
-        "tags": [
-            "Item",
-            "Nerf",
-            "Interface"
-        ],
-        "keywords": [
-            "apple",
-            "steve jobs",
-            "mobile",
-            "touchscreen",
-            "internet"
-        ]
-    },
-    {
-        "id": "log_civ_rover",
-        "version": "v.2021.Percy",
-        "date": "2021",
-        "region": "Mars_Server",
-        "type": "Feature",
-        "importance": "low",
-        "title": "Perseverance Rover",
-        "description": "Remote scouting bot deployed to `Server: Mars`. Scanning for legacy save files (microbial life). Bandwidth latency acceptable.",
-        "submitted_by": "Aethvion_Admin",
-        "tags": [
-            "Space",
-            "Bot",
-            "Scan"
-        ],
-        "keywords": [
-            "jpl",
-            "nasa",
-            "science",
-            "robot",
-            "jezero"
-        ]
-    }
+  {
+    "id": "log_civ_covid",
+    "version": "v.2020.Quarantine",
+    "date": "2020 - 2022",
+    "region": "Global_Earth",
+    "type": "Critical Event",
+    "importance": "high",
+    "title": "Pathogen Hotfix: quarantine.bat",
+    "description": "Server-wide lockdown protocol activated due to high-contagion pathogen. Physical interaction bandwidth restricted. Remote-work modifier applied (+300% Slack/Zoom client load). Global supply chain pipeline latency increased.",
+    "wiki_url": "https://en.wikipedia.org/wiki/COVID-19_pandemic",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Crisis",
+      "Quarantine",
+      "Pathogen"
+    ],
+    "keywords": [
+      "coronavirus",
+      "covid",
+      "lockdown",
+      "pandemic",
+      "virus",
+      "vaccine"
+    ]
+  },
+  {
+    "id": "log_civ_rover",
+    "version": "v.2021.Percy",
+    "date": "2021",
+    "region": "Mars_Server",
+    "type": "Feature",
+    "importance": "low",
+    "title": "Perseverance Rover",
+    "description": "Remote scouting bot deployed to `Server: Mars`. Scanning for legacy save files (microbial life). Bandwidth latency acceptable.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Space",
+      "Bot",
+      "Scan"
+    ],
+    "keywords": [
+      "jpl",
+      "nasa",
+      "science",
+      "robot",
+      "jezero"
+    ]
+  },
+  {
+    "id": "log_nuclear_exit",
+    "version": "v.2011.Patch_DE",
+    "date": "2011 - 2023",
+    "region": "Europe_West (Germany)",
+    "type": "Config Change",
+    "importance": "high",
+    "title": "The Nuclear Deprecation",
+    "description": "Region Admin for 'Germany' disabled 'Nuclear_Power' class assets citing safety concerns (Fear Debuff). \n\n<span class='text-red-500'>[UNINTENDED SIDE EFFECT]</span> Load-bearing shifted to 'Coal_Legacy' assets. Local pollution stats increased despite 'Green' narrative objectives. Optimization failed.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Policy_Fail",
+      "Energy",
+      "Irony"
+    ],
+    "keywords": [
+      "germany",
+      "fukushima",
+      "energiewende",
+      "power",
+      "grid"
+    ]
+  },
+  {
+    "id": "log_civ_higgs",
+    "version": "v.2012.Higgs",
+    "date": "2012",
+    "region": "Europe_Server (CERN)",
+    "type": "Discovery",
+    "importance": "low",
+    "title": "Higgs Boson Verification",
+    "description": "Large Hadron Collider debug console successfully verified the presence of the 'Higgs_Field' mass-allocator subroutine. Physics engine logic confirmed mathematically sound.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Higgs_boson",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Physics",
+      "Discovery",
+      "Science"
+    ],
+    "keywords": [
+      "cern",
+      "lhc",
+      "higgs",
+      "particle",
+      "collider"
+    ]
+  },
+  {
+    "id": "log_civ_bitcoin",
+    "version": "v.2009.Crypto",
+    "date": "2009",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "low",
+    "title": "Decentralized Ledger Protocol",
+    "description": "Released experimental 'Proof_of_Work' consensus mechanism (Bitcoin). Allowed currency transacting without administrative mediation. High energy load penalty applied to computing nodes.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Bitcoin",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Crypto",
+      "Finance",
+      "Network"
+    ],
+    "keywords": [
+      "bitcoin",
+      "cryptocurrency",
+      "blockchain",
+      "satoshi",
+      "mining"
+    ]
+  },
+  {
+    "id": "log_civ_recession",
+    "version": "v.2008.Crash",
+    "date": "2008",
+    "region": "Global_Earth",
+    "type": "Critical Event",
+    "importance": "high",
+    "title": "Financial Engine Arithmetic Overflow",
+    "description": "Massive valuation overflow in subprime mortgage assets triggered crash of global financial compiler. Emergency capital injection patch ('Quantitative Easing') deployed to prevent server bankruptcy.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Great_Recession",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Economy",
+      "Crash",
+      "Patch"
+    ],
+    "keywords": [
+      "banks",
+      "lehman brothers",
+      "recession",
+      "housing market",
+      "subprime",
+      "wall street"
+    ]
+  },
+  {
+    "id": "log_civ_iphone",
+    "version": "v.2007.Smart",
+    "date": "2007",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "low",
+    "title": "The Smartphone",
+    "description": "All players equipped with 'Always-Online' HUD. 'Attention Span' stat nerfed globally. 'Social Media' mini-games became mandatory for some guilds.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Item",
+      "Nerf",
+      "Interface"
+    ],
+    "keywords": [
+      "apple",
+      "steve jobs",
+      "mobile",
+      "touchscreen",
+      "internet"
+    ]
+  },
+  {
+    "id": "log_civ_social_media",
+    "version": "v.2004.Dopamine",
+    "date": "2004 - 2006",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "high",
+    "title": "The Attention Economy Engine",
+    "description": "Deployed global peer-to-peer data indexing platforms (Facebook, YouTube). Unlocked the 'Like' dopamine incentive loop. Side effects: Player concentration stats nerfed by 45%. Polarized guild logic spread exponentially across servers.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Social_media",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Network",
+      "Social",
+      "Nerf"
+    ],
+    "keywords": [
+      "facebook",
+      "youtube",
+      "social media",
+      "algorithm",
+      "dopamine"
+    ]
+  },
+  {
+    "id": "log_civ_911",
+    "version": "v.2001.Security",
+    "date": "2001",
+    "region": "North_America_Server",
+    "type": "Config Change",
+    "importance": "high",
+    "title": "Security Protocol Overhaul",
+    "description": "Following user-driven collision exploits, global region safety protocols were set to maximum. Travel transfer queue times increased by 400% due to deployment of the 'TSA' inspection check. Liquid asset transport heavily restricted during flights.",
+    "wiki_url": "https://en.wikipedia.org/wiki/September_11_attacks",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Security",
+      "Conflict",
+      "Patch"
+    ],
+    "keywords": [
+      "9/11",
+      "twin towers",
+      "airplane",
+      "terrorism",
+      "tsa",
+      "security"
+    ]
+  }
 ]

@@ -1,5 +1,53 @@
 [
   {
+    "id": "log_civ_solar_max",
+    "version": "v.2026.Solar_Maximum",
+    "date": "Present Day",
+    "region": "Solar_System",
+    "type": "System Alert",
+    "importance": "high",
+    "title": "Solar Storm / Skybox Overclocking",
+    "description": "Solar cycle 25 reaches peak output. Aurora particle effects rendered down to lower-latitude skyboxes. Orbital satellite communication arrays experiencing moderate packet loss.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Solar_cycle_25",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Sun",
+      "Space Weather",
+      "Skybox"
+    ],
+    "keywords": [
+      "solar storm",
+      "solar flare",
+      "aurora",
+      "northern lights",
+      "geomagnetic"
+    ]
+  },
+  {
+    "id": "log_civ_agents",
+    "version": "v.2026.Subagents",
+    "date": "Present Day",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "low",
+    "title": "Autonomous Subagent Protocol",
+    "description": "Coding subagents (e.g. Antigravity) deployed across remote workspaces. NPC code output rate increased by 2000%. Active server admin workload transitioning to supervision and confirmation roles.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "AI",
+      "Automation",
+      "Workplace"
+    ],
+    "keywords": [
+      "agents",
+      "gemini",
+      "antigravity",
+      "llm",
+      "coding",
+      "software"
+    ]
+  },
+  {
     "id": "log_climate_crisis",
     "version": "v.2026.Thermal_Warning",
     "date": "Present Day",
@@ -21,29 +69,6 @@
       "greenhouse",
       "fossil fuels",
       "panic"
-    ]
-  },
-  {
-    "id": "log_nuclear_exit",
-    "version": "v.2011.Patch_DE",
-    "date": "2011 - 2023",
-    "region": "Europe_West (Germany)",
-    "type": "Config Change",
-    "importance": "high",
-    "title": "The Nuclear Deprecation",
-    "description": "Region Admin for 'Germany' disabled 'Nuclear_Power' class assets citing safety concerns (Fear Debuff). \n\n<span class='text-red-500'>[UNINTENDED SIDE EFFECT]</span> Load-bearing shifted to 'Coal_Legacy' assets. Local pollution stats increased despite 'Green' narrative objectives. Optimization failed.",
-    "submitted_by": "Aethvion_Admin",
-    "tags": [
-      "Policy_Fail",
-      "Energy",
-      "Irony"
-    ],
-    "keywords": [
-      "germany",
-      "fukushima",
-      "energiewende",
-      "power",
-      "grid"
     ]
   },
   {
@@ -120,178 +145,292 @@
     ]
   },
   {
-    "id": "log_0000001",
-    "version": "v1.0.0_Alpha",
-    "date": "13.8 Billion Years Ago",
-    "region": "Global_Universe",
-    "type": "System Boot",
-    "importance": "high",
-    "title": "The Big Bang",
-    "description": "Executed `universe.exe`. Physics engine initialized. Expansion set to infinite. Memory allocation: 10^80 particles.",
-    "wiki_url": "https://en.wikipedia.org/wiki/Big_Bang",
-    "grok_url": "https://grokipedia.com/page/Big_Bang",
-    "submitted_by": "Aethvion_Admin",
-    "tags": [
-      "System Boot",
-      "Physics",
-      "Start"
-    ],
-    "keywords": [
-      "creation",
-      "ignite",
-      "star",
-      "galaxy",
-      "cosmic"
-    ]
-  },
-  {
-    "id": "log_0000002",
-    "version": "v.Earth.0.1",
-    "date": "4.5 Billion Years Ago",
-    "region": "Solar_System",
+    "id": "log_civ_video_gen",
+    "version": "v.2025.Sora_Render",
+    "date": "2025",
+    "region": "Global_Earth",
     "type": "Feature",
     "importance": "high",
-    "title": "Earth Formation",
-    "description": "Successfully coalesced planetary assets. Core temperature stabilized. Warning: Surface conditions currently hostile to all player classes.",
-    "wiki_url": "https://en.wikipedia.org/wiki/Earth#Formation",
-    "grok_url": "https://grokipedia.com/page/Earth",
+    "title": "Visual Render Engine Upgrade",
+    "description": "Preview of real-time text-to-reality asset generation. Video resolution pipelines upgraded, allowing clients to generate custom dream-state videos from raw descriptions. Reality distinction barrier degradation warnings issued.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Sora_(text-to-video_model)",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Gen_1",
-      "Terrain",
-      "Environment"
+      "AI",
+      "Graphics",
+      "Upgrade"
     ],
     "keywords": [
-      "hadean",
-      "protoplanet",
-      "solar nebula",
-      "accretion",
-      "planet"
+      "sora",
+      "openai",
+      "video generation",
+      "artificial intelligence",
+      "diffusion"
     ]
   },
   {
-    "id": "log_0045201",
-    "version": "v.Jurassic_Patch65",
-    "date": "65 Million BC",
-    "region": "Global_Earth",
-    "type": "Legacy Removal",
-    "importance": "high",
-    "title": "K-Pg Extinction Event",
-    "description": "Thermal regulation system malfunction. Global temperature lowered. Nerfed 'Reptile' classes to encourage 'Mammal' meta usage.",
-    "wiki_url": "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event",
-    "grok_url": "https://grokipedia.com/page/Cretaceous%E2%80%93Paleogene_extinction_event",
+    "id": "log_civ_voyager",
+    "version": "v.2025.Voyager_Link",
+    "date": "2025",
+    "region": "Solar_System (Deep Space)",
+    "type": "Routine Process",
+    "importance": "low",
+    "title": "Deep Space Probe Firmware Hotfix",
+    "description": "Restored telemetry stream from drone 'Voyager_1' at 15 Billion Miles from main server. Patched corrupted telemetry module and fired legacy thruster jets to keep receiver aligned.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Voyager_1#2023%E2%80%932024_telemetry_issues",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Nerf",
-      "Environment",
+      "Space",
+      "Drone",
+      "Repair"
+    ],
+    "keywords": [
+      "voyager",
+      "nasa",
+      "interstellar",
+      "space probe",
+      "telemetry"
+    ]
+  },
+  {
+    "id": "log_civ_chopsticks",
+    "version": "v.2024.Mechazilla",
+    "date": "2024 - 2025",
+    "region": "North_America_Server",
+    "type": "Feature",
+    "importance": "high",
+    "title": "Booster Reusability Catch",
+    "description": "Successfully tested 'Chopstick' mechanical arms on the 'Mechazilla' launch tower to catch descending Super Heavy boosters. Booster asset cooldown time reduced from months to hours. Mars colonization pre-requisite completed.",
+    "wiki_url": "https://en.wikipedia.org/wiki/SpaceX_Starship_flight_tests#Flight_5",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Space",
+      "Engineering",
+      "Feature"
+    ],
+    "keywords": [
+      "spacex",
+      "starship",
+      "booster",
+      "catch",
+      "mechazilla",
+      "elon musk"
+    ]
+  },
+  {
+    "id": "log_civ_covid",
+    "version": "v.2020.Quarantine",
+    "date": "2020 - 2022",
+    "region": "Global_Earth",
+    "type": "Critical Event",
+    "importance": "high",
+    "title": "Pathogen Hotfix: quarantine.bat",
+    "description": "Server-wide lockdown protocol activated due to high-contagion pathogen. Physical interaction bandwidth restricted. Remote-work modifier applied (+300% Slack/Zoom client load). Global supply chain pipeline latency increased.",
+    "wiki_url": "https://en.wikipedia.org/wiki/COVID-19_pandemic",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Crisis",
+      "Quarantine",
+      "Pathogen"
+    ],
+    "keywords": [
+      "coronavirus",
+      "covid",
+      "lockdown",
+      "pandemic",
+      "virus",
+      "vaccine"
+    ]
+  },
+  {
+    "id": "log_civ_rover",
+    "version": "v.2021.Percy",
+    "date": "2021",
+    "region": "Mars_Server",
+    "type": "Feature",
+    "importance": "low",
+    "title": "Perseverance Rover",
+    "description": "Remote scouting bot deployed to `Server: Mars`. Scanning for legacy save files (microbial life). Bandwidth latency acceptable.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Space",
+      "Bot",
+      "Scan"
+    ],
+    "keywords": [
+      "jpl",
+      "nasa",
+      "science",
+      "robot",
+      "jezero"
+    ]
+  },
+  {
+    "id": "log_nuclear_exit",
+    "version": "v.2011.Patch_DE",
+    "date": "2011 - 2023",
+    "region": "Europe_West (Germany)",
+    "type": "Config Change",
+    "importance": "high",
+    "title": "The Nuclear Deprecation",
+    "description": "Region Admin for 'Germany' disabled 'Nuclear_Power' class assets citing safety concerns (Fear Debuff). \n\n<span class='text-red-500'>[UNINTENDED SIDE EFFECT]</span> Load-bearing shifted to 'Coal_Legacy' assets. Local pollution stats increased despite 'Green' narrative objectives. Optimization failed.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Policy_Fail",
+      "Energy",
+      "Irony"
+    ],
+    "keywords": [
+      "germany",
+      "fukushima",
+      "energiewende",
+      "power",
+      "grid"
+    ]
+  },
+  {
+    "id": "log_civ_higgs",
+    "version": "v.2012.Higgs",
+    "date": "2012",
+    "region": "Europe_Server (CERN)",
+    "type": "Discovery",
+    "importance": "low",
+    "title": "Higgs Boson Verification",
+    "description": "Large Hadron Collider debug console successfully verified the presence of the 'Higgs_Field' mass-allocator subroutine. Physics engine logic confirmed mathematically sound.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Higgs_boson",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Physics",
+      "Discovery",
+      "Science"
+    ],
+    "keywords": [
+      "cern",
+      "lhc",
+      "higgs",
+      "particle",
+      "collider"
+    ]
+  },
+  {
+    "id": "log_civ_bitcoin",
+    "version": "v.2009.Crypto",
+    "date": "2009",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "low",
+    "title": "Decentralized Ledger Protocol",
+    "description": "Released experimental 'Proof_of_Work' consensus mechanism (Bitcoin). Allowed currency transacting without administrative mediation. High energy load penalty applied to computing nodes.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Bitcoin",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Crypto",
+      "Finance",
+      "Network"
+    ],
+    "keywords": [
+      "bitcoin",
+      "cryptocurrency",
+      "blockchain",
+      "satoshi",
+      "mining"
+    ]
+  },
+  {
+    "id": "log_civ_recession",
+    "version": "v.2008.Crash",
+    "date": "2008",
+    "region": "Global_Earth",
+    "type": "Critical Event",
+    "importance": "high",
+    "title": "Financial Engine Arithmetic Overflow",
+    "description": "Massive valuation overflow in subprime mortgage assets triggered crash of global financial compiler. Emergency capital injection patch ('Quantitative Easing') deployed to prevent server bankruptcy.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Great_Recession",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Economy",
+      "Crash",
       "Patch"
     ],
     "keywords": [
-      "dinos",
-      "asteroid",
-      "chicxulub",
-      "meteor",
-      "impact"
+      "banks",
+      "lehman brothers",
+      "recession",
+      "housing market",
+      "subprime",
+      "wall street"
     ]
   },
   {
-    "id": "log_civ_001",
-    "version": "v.Antiquity.Fire",
-    "date": "1.5 Million Years Ago",
+    "id": "log_civ_iphone",
+    "version": "v.2007.Smart",
+    "date": "2007",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "low",
+    "title": "The Smartphone",
+    "description": "All players equipped with 'Always-Online' HUD. 'Attention Span' stat nerfed globally. 'Social Media' mini-games became mandatory for some guilds.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Item",
+      "Nerf",
+      "Interface"
+    ],
+    "keywords": [
+      "apple",
+      "steve jobs",
+      "mobile",
+      "touchscreen",
+      "internet"
+    ]
+  },
+  {
+    "id": "log_civ_social_media",
+    "version": "v.2004.Dopamine",
+    "date": "2004 - 2006",
     "region": "Global_Earth",
     "type": "Feature",
     "importance": "high",
-    "title": "Discovery of Fire",
-    "description": "Unlocked 'Crafting' menu for early player builds. Added 'Cooked Food' buff (+20% Brain Growth). Risk of 'Burn' debuff increased.",
-    "wiki_url": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
-    "grok_url": "https://grokipedia.com/page/Control_of_fire_by_early_humans",
+    "title": "The Attention Economy Engine",
+    "description": "Deployed global peer-to-peer data indexing platforms (Facebook, YouTube). Unlocked the 'Like' dopamine incentive loop. Side effects: Player concentration stats nerfed by 45%. Polarized guild logic spread exponentially across servers.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Social_media",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Tech Tree",
-      "Buff",
-      "Survival"
+      "Network",
+      "Social",
+      "Nerf"
     ],
     "keywords": [
-      "tools",
-      "homo erectus",
-      "cooking",
-      "warmth",
-      "light"
+      "facebook",
+      "youtube",
+      "social media",
+      "algorithm",
+      "dopamine"
     ]
   },
   {
-    "id": "log_civ_rome",
-    "version": "v.476.AD",
-    "date": "476",
-    "region": "Europe_Server",
-    "type": "Critical Event",
+    "id": "log_civ_911",
+    "version": "v.2001.Security",
+    "date": "2001",
+    "region": "North_America_Server",
+    "type": "Config Change",
     "importance": "high",
-    "title": "Fall of Rome",
-    "description": "`Region: Europe` fragmentation. Centralized moderation failed due to resource mismanagement. Server split into multiple private lobbies (Feudal System).",
-    "wiki_url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire",
-    "grok_url": "https://grokipedia.com/page/ancient_rome_the_rise_and_fall_of_an_empire",
+    "title": "Security Protocol Overhaul",
+    "description": "Following user-driven collision exploits, global region safety protocols were set to maximum. Travel transfer queue times increased by 400% due to deployment of the 'TSA' inspection check. Liquid asset transport heavily restricted during flights.",
+    "wiki_url": "https://en.wikipedia.org/wiki/September_11_attacks",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Politics",
-      "Server Split",
-      "Admin Fail"
+      "Security",
+      "Conflict",
+      "Patch"
     ],
     "keywords": [
-      "romans",
-      "empire",
-      "gladiator",
-      "caesar",
-      "byzantine"
-    ]
-  },
-  {
-    "id": "log_civ_print",
-    "version": "v.1440.Print",
-    "date": "1440",
-    "region": "Europe_Server",
-    "type": "Feature",
-    "importance": "high",
-    "title": "Gutenberg Press",
-    "description": "Data transmission speed increased by 500%. 'Literacy' perk unlocked for lower-level players. Reduced authority of 'Clergy' admin accounts.",
-    "wiki_url": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg.27s_press",
-    "grok_url": "https://grokipedia.com/page/Printing_press",
-    "submitted_by": "Aethvion_Admin",
-    "tags": [
-      "Communication",
-      "Tech",
-      "Buff"
-    ],
-    "keywords": [
-      "books",
-      "bible",
-      "media",
-      "news",
-      "paper"
-    ]
-  },
-  {
-    "id": "log_1347001",
-    "version": "v.1347.Plague",
-    "date": "1347",
-    "region": "Europe_Server",
-    "type": "Bug Fix",
-    "importance": "high",
-    "title": "The Black Death",
-    "description": "Europe_Server experienced critical overcrowding. Initiated pathogen stress-test (Yersinia pestis). Result: 40% reduction in active player base to improve server latency.",
-    "wiki_url": "https://en.wikipedia.org/wiki/Black_Death",
-    "grok_url": "https://grokipedia.com/page/Black_Death",
-    "submitted_by": "Aethvion_Admin",
-    "tags": [
-      "Population Control",
-      "Patch",
-      "Disease"
-    ],
-    "keywords": [
-      "plague",
-      "rats",
-      "fleas",
-      "pandemic",
-      "death"
+      "9/11",
+      "twin towers",
+      "airplane",
+      "terrorism",
+      "tsa",
+      "security"
     ]
   },
   {
@@ -371,29 +510,6 @@
     ]
   },
   {
-    "id": "log_civ_coldwar",
-    "version": "v.1947.Cold",
-    "date": "1947 - 1991",
-    "region": "Global_Earth",
-    "type": "Feature",
-    "importance": "low",
-    "title": "The Cold War",
-    "description": "Long-term standoff between admin factions. No direct massive PvP, heavily relied on 'Spy' class and 'Proxy War' mini-games.",
-    "submitted_by": "Aethvion_Admin",
-    "tags": [
-      "Politics",
-      "Faction",
-      "Stalemate"
-    ],
-    "keywords": [
-      "ussr",
-      "usa",
-      "soviet",
-      "berlin wall",
-      "communism"
-    ]
-  },
-  {
     "id": "log_civ_un",
     "version": "v.1945.UN",
     "date": "1945",
@@ -414,6 +530,29 @@
       "nyc",
       "council",
       "globalist"
+    ]
+  },
+  {
+    "id": "log_civ_coldwar",
+    "version": "v.1947.Cold",
+    "date": "1947 - 1991",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "low",
+    "title": "The Cold War",
+    "description": "Long-term standoff between admin factions. No direct massive PvP, heavily relied on 'Spy' class and 'Proxy War' mini-games.",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Politics",
+      "Faction",
+      "Stalemate"
+    ],
+    "keywords": [
+      "ussr",
+      "usa",
+      "soviet",
+      "berlin wall",
+      "communism"
     ]
   },
   {
@@ -490,29 +629,6 @@
     ]
   },
   {
-    "id": "log_civ_halley",
-    "version": "v.Periodic.Comet",
-    "date": "Various",
-    "region": "Solar_System",
-    "type": "Routine Process",
-    "importance": "low",
-    "title": "Halley's Comet",
-    "description": "Scheduled background process `comet_render_cycle`. Runs every 76 cycles to test skybox particle effects.",
-    "submitted_by": "Aethvion_Admin",
-    "tags": [
-      "Routine",
-      "Graphics",
-      "Skybox"
-    ],
-    "keywords": [
-      "astronomy",
-      "orbit",
-      "sky",
-      "event",
-      "cycle"
-    ]
-  },
-  {
     "id": "log_1991001",
     "version": "v.1991.WWW",
     "date": "1991",
@@ -561,49 +677,266 @@
     ]
   },
   {
-    "id": "log_civ_iphone",
-    "version": "v.2007.Smart",
-    "date": "2007",
-    "region": "Global_Earth",
-    "type": "Feature",
+    "id": "log_civ_halley",
+    "version": "v.Periodic.Comet",
+    "date": "Various",
+    "region": "Solar_System",
+    "type": "Routine Process",
     "importance": "low",
-    "title": "The Smartphone",
-    "description": "All players equipped with 'Always-Online' HUD. 'Attention Span' stat nerfed globally. 'Social Media' mini-games became mandatory for some guilds.",
+    "title": "Halley's Comet",
+    "description": "Scheduled background process `comet_render_cycle`. Runs every 76 cycles to test skybox particle effects.",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Item",
-      "Nerf",
-      "Interface"
+      "Routine",
+      "Graphics",
+      "Skybox"
     ],
     "keywords": [
-      "apple",
-      "steve jobs",
-      "mobile",
-      "touchscreen",
-      "internet"
+      "astronomy",
+      "orbit",
+      "sky",
+      "event",
+      "cycle"
     ]
   },
   {
-    "id": "log_civ_rover",
-    "version": "v.2021.Percy",
-    "date": "2021",
-    "region": "Mars_Server",
+    "id": "log_civ_print",
+    "version": "v.1440.Print",
+    "date": "1440",
+    "region": "Europe_Server",
     "type": "Feature",
-    "importance": "low",
-    "title": "Perseverance Rover",
-    "description": "Remote scouting bot deployed to `Server: Mars`. Scanning for legacy save files (microbial life). Bandwidth latency acceptable.",
+    "importance": "high",
+    "title": "Gutenberg Press",
+    "description": "Data transmission speed increased by 500%. 'Literacy' perk unlocked for lower-level players. Reduced authority of 'Clergy' admin accounts.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg.27s_press",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Space",
-      "Bot",
-      "Scan"
+      "Communication",
+      "Tech",
+      "Buff"
     ],
     "keywords": [
-      "jpl",
-      "nasa",
-      "science",
-      "robot",
-      "jezero"
+      "books",
+      "bible",
+      "media",
+      "news",
+      "paper"
+    ]
+  },
+  {
+    "id": "log_1347001",
+    "version": "v.1347.Plague",
+    "date": "1347",
+    "region": "Europe_Server",
+    "type": "Bug Fix",
+    "importance": "high",
+    "title": "The Black Death",
+    "description": "Europe_Server experienced critical overcrowding. Initiated pathogen stress-test (Yersinia pestis). Result: 40% reduction in active player base to improve server latency.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Black_Death",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Population Control",
+      "Patch",
+      "Disease"
+    ],
+    "keywords": [
+      "plague",
+      "rats",
+      "fleas",
+      "pandemic",
+      "death"
+    ]
+  },
+  {
+    "id": "log_civ_rome",
+    "version": "v.476.AD",
+    "date": "476",
+    "region": "Europe_Server",
+    "type": "Critical Event",
+    "importance": "high",
+    "title": "Fall of Rome",
+    "description": "`Region: Europe` fragmentation. Centralized moderation failed due to resource mismanagement. Server split into multiple private lobbies (Feudal System).",
+    "wiki_url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Politics",
+      "Server Split",
+      "Admin Fail"
+    ],
+    "keywords": [
+      "romans",
+      "empire",
+      "gladiator",
+      "caesar",
+      "byzantine"
+    ]
+  },
+  {
+    "id": "log_civ_caesar",
+    "version": "v.44.BC.Demotion",
+    "date": "44 BC",
+    "region": "Europe_Server (Rome)",
+    "type": "Critical Event",
+    "importance": "low",
+    "title": "Julius Caesar Deprecation",
+    "description": "Faction Leader 'Julius_Caesar' demoted/terminated by 23 guild members during Senate moderation session. Reason: Attempted to lock admin rights permanently. Faction re-entered civil PvP lobby.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Politics",
+      "PvP",
+      "Admin"
+    ],
+    "keywords": [
+      "caesar",
+      "brutus",
+      "rome",
+      "senate",
+      "stab"
+    ]
+  },
+  {
+    "id": "log_civ_alexandria",
+    "version": "v.48.BC",
+    "date": "48 BC",
+    "region": "Europe_Server (Egypt)",
+    "type": "Critical Event",
+    "importance": "high",
+    "title": "Library of Alexandria Fire",
+    "description": "Critical database corruption in the Egypt shard. Lost ~70% of ancient world knowledge repositories. Backup server synchronization failed. Unlocked 'Dark Ages' progression debuff for the Europe server cluster.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Database Fail",
+      "Glitch",
+      "Knowledge"
+    ],
+    "keywords": [
+      "alexandria",
+      "fire",
+      "library",
+      "scrolls",
+      "caesar"
+    ]
+  },
+  {
+    "id": "log_civ_agriculture",
+    "version": "v.Antiquity.Agri",
+    "date": "10,000 BC",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "high",
+    "title": "Agricultural Revolution",
+    "description": "Players transitioned from dynamic 'Hunter-Gatherer' movement profiles to stationary 'Farming' nodes. Unlocked 'Domestication' class upgrades. Multiplied region player cap by 500%. Risk of localized famine/plague status increased.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Tech Tree",
+      "Structure",
+      "Gen_2"
+    ],
+    "keywords": [
+      "farming",
+      "wheat",
+      "cows",
+      "settlement",
+      "neolithic"
+    ]
+  },
+  {
+    "id": "log_civ_001",
+    "version": "v.Antiquity.Fire",
+    "date": "1.5 Million Years Ago",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "high",
+    "title": "Discovery of Fire",
+    "description": "Unlocked 'Crafting' menu for early player builds. Added 'Cooked Food' buff (+20% Brain Growth). Risk of 'Burn' debuff increased.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Tech Tree",
+      "Buff",
+      "Survival"
+    ],
+    "keywords": [
+      "tools",
+      "homo erectus",
+      "cooking",
+      "warmth",
+      "light"
+    ]
+  },
+  {
+    "id": "log_0045201",
+    "version": "v.Jurassic_Patch65",
+    "date": "65 Million BC",
+    "region": "Global_Earth",
+    "type": "Legacy Removal",
+    "importance": "high",
+    "title": "K-Pg Extinction Event",
+    "description": "Thermal regulation system malfunction. Global temperature lowered. Nerfed 'Reptile' classes to encourage 'Mammal' meta usage.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Nerf",
+      "Environment",
+      "Patch"
+    ],
+    "keywords": [
+      "dinos",
+      "asteroid",
+      "chicxulub",
+      "meteor",
+      "impact"
+    ]
+  },
+  {
+    "id": "log_0000002",
+    "version": "v.Earth.0.1",
+    "date": "4.5 Billion Years Ago",
+    "region": "Solar_System",
+    "type": "Feature",
+    "importance": "high",
+    "title": "Earth Formation",
+    "description": "Successfully coalesced planetary assets. Core temperature stabilized. Warning: Surface conditions currently hostile to all player classes.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Earth#Formation",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Gen_1",
+      "Terrain",
+      "Environment"
+    ],
+    "keywords": [
+      "hadean",
+      "protoplanet",
+      "solar nebula",
+      "accretion",
+      "planet"
+    ]
+  },
+  {
+    "id": "log_0000001",
+    "version": "v1.0.0_Alpha",
+    "date": "13.8 Billion Years Ago",
+    "region": "Global_Universe",
+    "type": "System Boot",
+    "importance": "high",
+    "title": "The Big Bang",
+    "description": "Executed `universe.exe`. Physics engine initialized. Expansion set to infinite. Memory allocation: 10^80 particles.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Big_Bang",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "System Boot",
+      "Physics",
+      "Start"
+    ],
+    "keywords": [
+      "creation",
+      "ignite",
+      "star",
+      "galaxy",
+      "cosmic"
     ]
   }
 ]

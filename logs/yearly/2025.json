@@ -1,1 +1,75 @@
-[]
+[
+  {
+    "id": "log_civ_video_gen",
+    "version": "v.2025.Sora_Render",
+    "date": "2025",
+    "region": "Global_Earth",
+    "type": "Feature",
+    "importance": "high",
+    "title": "Visual Render Engine Upgrade",
+    "description": "Preview of real-time text-to-reality asset generation. Video resolution pipelines upgraded, allowing clients to generate custom dream-state videos from raw descriptions. Reality distinction barrier degradation warnings issued.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Sora_(text-to-video_model)",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "AI",
+      "Graphics",
+      "Upgrade"
+    ],
+    "keywords": [
+      "sora",
+      "openai",
+      "video generation",
+      "artificial intelligence",
+      "diffusion"
+    ]
+  },
+  {
+    "id": "log_civ_voyager",
+    "version": "v.2025.Voyager_Link",
+    "date": "2025",
+    "region": "Solar_System (Deep Space)",
+    "type": "Routine Process",
+    "importance": "low",
+    "title": "Deep Space Probe Firmware Hotfix",
+    "description": "Restored telemetry stream from drone 'Voyager_1' at 15 Billion Miles from main server. Patched corrupted telemetry module and fired legacy thruster jets to keep receiver aligned.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Voyager_1#2023%E2%80%932024_telemetry_issues",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Space",
+      "Drone",
+      "Repair"
+    ],
+    "keywords": [
+      "voyager",
+      "nasa",
+      "interstellar",
+      "space probe",
+      "telemetry"
+    ]
+  },
+  {
+    "id": "log_civ_chopsticks",
+    "version": "v.2024.Mechazilla",
+    "date": "2024 - 2025",
+    "region": "North_America_Server",
+    "type": "Feature",
+    "importance": "high",
+    "title": "Booster Reusability Catch",
+    "description": "Successfully tested 'Chopstick' mechanical arms on the 'Mechazilla' launch tower to catch descending Super Heavy boosters. Booster asset cooldown time reduced from months to hours. Mars colonization pre-requisite completed.",
+    "wiki_url": "https://en.wikipedia.org/wiki/SpaceX_Starship_flight_tests#Flight_5",
+    "submitted_by": "Aethvion_Admin",
+    "tags": [
+      "Space",
+      "Engineering",
+      "Feature"
+    ],
+    "keywords": [
+      "spacex",
+      "starship",
+      "booster",
+      "catch",
+      "mechazilla",
+      "elon musk"
+    ]
+  }
+]

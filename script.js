@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (lower.includes('future') || lower.includes('near future')) return 3000;
 
         // Extract numbers
-        const match = lower.match(/([\d\.]+)/);
+        const match = lower.replace(/,/g, '').match(/([\d\.]+)/);
         if (!match) return 0; // Fallback
 
         let val = parseFloat(match[1]);
