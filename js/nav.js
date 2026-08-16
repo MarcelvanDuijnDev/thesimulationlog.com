@@ -4,7 +4,6 @@
     const NAV_LINKS = [
         { href: '/',          label: 'Latest News', match: /^\/$/ },
         { href: '/metrics/',  label: 'Metrics',     match: /^\/metrics/ },
-        { href: '/timeline/', label: 'AI Timeline',  match: /^\/timeline/ },
     ];
 
     function renderNav() {
