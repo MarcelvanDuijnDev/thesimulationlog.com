@@ -145,58 +145,20 @@
                 </p>
             </div>
 
-            <!-- Compute Growth Graph -->
-            <div class="graph-card">
+            <!-- Compute Growth Graph (built by JS) -->
+            <div class="graph-card" id="ai-graph-card">
                 <div class="graph-header">
-                    <h3 class="graph-title">AI Training Compute & Automation Workload Growth (2020–2026+)</h3>
-                    <div class="graph-legend">
-                        <span class="legend-item"><span class="dot color-primary"></span> Training Compute (FLOPs)</span>
-                        <span class="legend-item"><span class="dot color-accent"></span> Agent Automation Workload</span>
+                    <div>
+                        <h3 class="graph-title">AI Training Compute Growth (2018–2027)</h3>
+                        <p class="graph-subtitle">Logarithmic scale &middot; FLOPs per training run &middot; Hover nodes for details &middot; Click to jump to model</p>
+                    </div>
+                    <div class="graph-legend" id="graph-legend">
+                        <span class="legend-item"><span class="dot color-primary"></span> Confirmed compute</span>
+                        <span class="legend-item"><span class="dot color-future"></span> Projected</span>
                     </div>
                 </div>
-                <div class="graph-container">
-                    <svg class="timeline-svg" viewBox="0 0 900 240" preserveAspectRatio="none">
-                        <!-- Grid Lines -->
-                        <line x1="50" y1="40" x2="850" y2="40" class="svg-grid-line" />
-                        <line x1="50" y1="90" x2="850" y2="90" class="svg-grid-line" />
-                        <line x1="50" y1="140" x2="850" y2="140" class="svg-grid-line" />
-                        <line x1="50" y1="190" x2="850" y2="190" class="svg-grid-line" />
-
-                        <defs>
-                            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.18" />
-                                <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.0" />
-                            </linearGradient>
-                            <linearGradient id="subagentGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#059669" stop-opacity="0.15" />
-                                <stop offset="100%" stop-color="#059669" stop-opacity="0.0" />
-                            </linearGradient>
-                        </defs>
-
-                        <polygon points="50,190 50,180 180,165 320,135 460,110 600,70 740,45 850,25 850,190" fill="url(#areaGrad)" />
-                        <polygon points="50,190 50,188 180,185 320,170 460,130 600,65 740,35 850,15 850,190" fill="url(#subagentGrad)" />
-
-                        <path d="M 50 180 Q 180 165, 320 135 T 600 70 T 850 25" class="svg-path primary" />
-                        <path d="M 50 188 Q 180 185, 320 170 T 600 65 T 850 15" class="svg-path accent" stroke-dasharray="4" />
-
-                        <!-- Nodes -->
-                        <circle cx="50"  cy="180" r="5" class="svg-node" data-year="2020" />
-                        <circle cx="180" cy="165" r="5" class="svg-node" data-year="2022" />
-                        <circle cx="320" cy="135" r="5" class="svg-node" data-year="2023" />
-                        <circle cx="460" cy="110" r="6" class="svg-node active" data-year="2024" />
-                        <circle cx="600" cy="70"  r="7" class="svg-node active" data-year="2025" />
-                        <circle cx="740" cy="45"  r="8" class="svg-node active-pulse" data-year="2026" />
-                        <circle cx="850" cy="25"  r="6" class="svg-node future" data-year="2027+" />
-
-                        <!-- Labels -->
-                        <text x="50"  y="215" class="svg-label">2020 (GPT-3)</text>
-                        <text x="180" y="215" class="svg-label">2022 (ChatGPT)</text>
-                        <text x="320" y="215" class="svg-label">2023 (GPT-4)</text>
-                        <text x="460" y="215" class="svg-label">2024 (Claude 3.5)</text>
-                        <text x="600" y="215" class="svg-label">2025 (DeepSeek-R1)</text>
-                        <text x="740" y="215" class="svg-label highlight">2026 (Gemini 3.6)</text>
-                        <text x="850" y="215" class="svg-label future">2027+</text>
-                    </svg>
+                <div id="ai-graph-container" class="graph-container" style="position:relative; min-height:340px;">
+                    <!-- Interactive SVG built by JavaScript -->
                 </div>
             </div>
 
