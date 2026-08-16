@@ -6,13 +6,15 @@
     "region": "Solar_System",
     "type": "Routine Process",
     "importance": "low",
-    "title": "Halley's Comet",
-    "description": "Scheduled background process `comet_render_cycle`. Runs every 76 cycles to test skybox particle effects.",
+    "title": "Halley's Comet Orbital Pass",
+    "sys_subtitle": "Periodic skybox rendering cycle",
+    "description": "Scheduled 76-year orbital cycle pass testing upper atmosphere particle trail rendering.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Halley%27s_Comet",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Routine",
-      "Graphics",
-      "Skybox"
+      "Astronomy",
+      "Comet",
+      "Solar System"
     ],
     "keywords": [
       "astronomy",
@@ -29,14 +31,15 @@
     "region": "Europe_Server",
     "type": "Feature",
     "importance": "high",
-    "title": "Gutenberg Press",
-    "description": "Data transmission speed increased by 500%. 'Literacy' perk unlocked for lower-level players. Reduced authority of 'Clergy' admin accounts.",
+    "title": "Gutenberg Printing Press Invention",
+    "sys_subtitle": "Movable type information transmission buff",
+    "description": "Invention of movable type printing press accelerated book production, mass literacy, and scientific information distribution.",
     "wiki_url": "https://en.wikipedia.org/wiki/Printing_press#Gutenberg.27s_press",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Communication",
-      "Tech",
-      "Buff"
+      "History",
+      "Printing",
+      "Tech"
     ],
     "keywords": [
       "books",
@@ -53,14 +56,15 @@
     "region": "Europe_Server",
     "type": "Bug Fix",
     "importance": "high",
-    "title": "The Black Death",
-    "description": "Europe_Server experienced critical overcrowding. Initiated pathogen stress-test (Yersinia pestis). Result: 40% reduction in active player base to improve server latency.",
+    "title": "The Black Death Bubonic Plague Pandemic",
+    "sys_subtitle": "Pathogen stress-test across European server nodes",
+    "description": "Yersinia pestis bacterial pandemic spread across Europe, resulting in catastrophic population decline and economic structural shifts.",
     "wiki_url": "https://en.wikipedia.org/wiki/Black_Death",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Population Control",
-      "Patch",
-      "Disease"
+      "Health",
+      "Pandemic",
+      "History"
     ],
     "keywords": [
       "plague",
@@ -77,14 +81,15 @@
     "region": "Europe_Server",
     "type": "Critical Event",
     "importance": "high",
-    "title": "Fall of Rome",
-    "description": "`Region: Europe` fragmentation. Centralized moderation failed due to resource mismanagement. Server split into multiple private lobbies (Feudal System).",
+    "title": "Fall of the Western Roman Empire",
+    "sys_subtitle": "Centralized regional governance fragmentation",
+    "description": "Collapse of Western Roman imperial authority led to regional political fragmentation into early medieval feudal kingdoms.",
     "wiki_url": "https://en.wikipedia.org/wiki/Fall_of_the_Western_Roman_Empire",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Politics",
-      "Server Split",
-      "Admin Fail"
+      "History",
+      "Rome",
+      "Empire"
     ],
     "keywords": [
       "romans",
@@ -101,14 +106,15 @@
     "region": "Europe_Server (Rome)",
     "type": "Critical Event",
     "importance": "low",
-    "title": "Julius Caesar Deprecation",
-    "description": "Faction Leader 'Julius_Caesar' demoted/terminated by 23 guild members during Senate moderation session. Reason: Attempted to lock admin rights permanently. Faction re-entered civil PvP lobby.",
+    "title": "Assassination of Julius Caesar",
+    "sys_subtitle": "Roman Senate faction leadership termination",
+    "description": "Julius Caesar assassinated by Roman senators on the Ides of March, triggering the collapse of the Roman Republic and rise of the Empire.",
     "wiki_url": "https://en.wikipedia.org/wiki/Assassination_of_Julius_Caesar",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Politics",
-      "PvP",
-      "Admin"
+      "History",
+      "Rome",
+      "Politics"
     ],
     "keywords": [
       "caesar",
@@ -125,13 +131,14 @@
     "region": "Europe_Server (Egypt)",
     "type": "Critical Event",
     "importance": "high",
-    "title": "Library of Alexandria Fire",
-    "description": "Critical database corruption in the Egypt shard. Lost ~70% of ancient world knowledge repositories. Backup server synchronization failed. Unlocked 'Dark Ages' progression debuff for the Europe server cluster.",
+    "title": "Destruction of the Library of Alexandria",
+    "sys_subtitle": "Ancient knowledge repository database loss",
+    "description": "Fire destroyed key portions of the Library of Alexandria, leading to severe loss of classical antiquity manuscripts and scientific texts.",
     "wiki_url": "https://en.wikipedia.org/wiki/Library_of_Alexandria",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Database Fail",
-      "Glitch",
+      "History",
+      "Library",
       "Knowledge"
     ],
     "keywords": [
@@ -149,14 +156,15 @@
     "region": "Global_Earth",
     "type": "Feature",
     "importance": "high",
-    "title": "Agricultural Revolution",
-    "description": "Players transitioned from dynamic 'Hunter-Gatherer' movement profiles to stationary 'Farming' nodes. Unlocked 'Domestication' class upgrades. Multiplied region player cap by 500%. Risk of localized famine/plague status increased.",
+    "title": "Neolithic Agricultural Revolution",
+    "sys_subtitle": "Farming tech tree and permanent settlement unlock",
+    "description": "Transition from hunter-gatherer foraging to plant cultivation and animal domestication enabled permanent human settlements and civilizational growth.",
     "wiki_url": "https://en.wikipedia.org/wiki/Neolithic_Revolution",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Tech Tree",
-      "Structure",
-      "Gen_2"
+      "Agriculture",
+      "History",
+      "Civilization"
     ],
     "keywords": [
       "farming",
@@ -173,14 +181,15 @@
     "region": "Global_Earth",
     "type": "Feature",
     "importance": "high",
-    "title": "Discovery of Fire",
-    "description": "Unlocked 'Crafting' menu for early player builds. Added 'Cooked Food' buff (+20% Brain Growth). Risk of 'Burn' debuff increased.",
+    "title": "Early Human Mastery & Control of Fire",
+    "sys_subtitle": "Thermal cooking & crafting unlock",
+    "description": "Early hominids mastered fire control, providing thermal protection, defense, and cooked food energy expansion.",
     "wiki_url": "https://en.wikipedia.org/wiki/Control_of_fire_by_early_humans",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Tech Tree",
-      "Buff",
-      "Survival"
+      "Evolution",
+      "History",
+      "Discovery"
     ],
     "keywords": [
       "tools",
@@ -197,14 +206,15 @@
     "region": "Global_Earth",
     "type": "Legacy Removal",
     "importance": "high",
-    "title": "K-Pg Extinction Event",
-    "description": "Thermal regulation system malfunction. Global temperature lowered. Nerfed 'Reptile' classes to encourage 'Mammal' meta usage.",
+    "title": "Cretaceous-Paleogene (K-Pg) Dinosaur Extinction Event",
+    "sys_subtitle": "Chicxulub asteroid impact & atmospheric cooling",
+    "description": "Asteroid impact in Chicxulub caused global climate cooling, triggering the extinction of non-avian dinosaurs and expansion of mammal species.",
     "wiki_url": "https://en.wikipedia.org/wiki/Cretaceous%E2%80%93Paleogene_extinction_event",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Nerf",
-      "Environment",
-      "Patch"
+      "Extinction",
+      "Asteroid",
+      "Prehistory"
     ],
     "keywords": [
       "dinos",
@@ -221,14 +231,15 @@
     "region": "Solar_System",
     "type": "Feature",
     "importance": "high",
-    "title": "Earth Formation",
-    "description": "Successfully coalesced planetary assets. Core temperature stabilized. Warning: Surface conditions currently hostile to all player classes.",
+    "title": "Formation of Planet Earth",
+    "sys_subtitle": "Planetary accretion & crust stabilization",
+    "description": "Coalescence of dust and gas in the early solar nebula formed planet Earth, initiating core thermal differentiation.",
     "wiki_url": "https://en.wikipedia.org/wiki/Earth#Formation",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Gen_1",
-      "Terrain",
-      "Environment"
+      "Earth",
+      "Astronomy",
+      "Prehistory"
     ],
     "keywords": [
       "hadean",
@@ -245,14 +256,15 @@
     "region": "Global_Universe",
     "type": "System Boot",
     "importance": "high",
-    "title": "The Big Bang",
-    "description": "Executed `universe.exe`. Physics engine initialized. Expansion set to infinite. Memory allocation: 10^80 particles.",
+    "title": "The Big Bang & Origin of the Universe",
+    "sys_subtitle": "Cosmic spacetime expansion boot sequence",
+    "description": "Origin of space, time, and matter via rapid inflation, establishing fundamental physical laws and elemental hydrogen formation.",
     "wiki_url": "https://en.wikipedia.org/wiki/Big_Bang",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "System Boot",
-      "Physics",
-      "Start"
+      "Cosmology",
+      "Big Bang",
+      "Universe"
     ],
     "keywords": [
       "creation",

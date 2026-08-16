@@ -6,15 +6,15 @@
         "region": "Global_Earth",
         "type": "Critical Event",
         "importance": "high",
-        "title": "World War I",
-        "description": "Server-wide faction conflict. Introduced 'Trench' mechanics. High player disconnect rate. Chemical warfare DLC previewed (banned in subsequent patches).",
+        "title": "World War I Global Conflict",
+        "sys_subtitle": "Trench warfare mechanics & chemical hazard testing",
+        "description": "Server-wide multi-faction conflict introducing trench defense tactics, mechanized artillery, and chemical warfare hazards.",
         "wiki_url": "https://en.wikipedia.org/wiki/World_War_I",
-        "grok_url": "https://grokipedia.com/page/World_War_I",
         "submitted_by": "Aethvion_Admin",
         "tags": [
-            "PvP",
+            "History",
             "Conflict",
-            "Update"
+            "War"
         ],
         "keywords": [
             "great war",
@@ -31,15 +31,15 @@
         "region": "Global_Earth",
         "type": "Critical Event",
         "importance": "high",
-        "title": "World War II",
-        "description": "Sequel to the 'Great War' event. Introduced 'Blitzkrieg' mechanics and 'Atomic' end-game content. Resulted in massive server depopulation and faction realignment.",
+        "title": "World War II & Global Faction Realignment",
+        "sys_subtitle": "Blitzkrieg maneuvers & atomic energy unlocks",
+        "description": "Global warfare event involving rapid mobility tactics, industrial radar technologies, and the unlocking of atomic weapon assets.",
         "wiki_url": "https://en.wikipedia.org/wiki/World_War_II",
-        "grok_url": "https://grokipedia.com/page/World_War_II",
         "submitted_by": "Aethvion_Admin",
         "tags": [
-            "PvP",
+            "History",
             "Conflict",
-            "Update"
+            "War"
         ],
         "keywords": [
             "hitler",
@@ -57,15 +57,15 @@
         "region": "Global_Earth",
         "type": "Critical Event",
         "importance": "high",
-        "title": "Trinity Test",
-        "description": "Players discovered an exploit in the physics engine (splitting the atom). Result: Massive damage multiplier unlocked. Admin warning issued regarding server stability.",
+        "title": "Trinity Test: First Nuclear Fission Detonation",
+        "sys_subtitle": "Atomic nucleus mass-energy equivalence unlock",
+        "description": "First successful nuclear test in New Mexico demonstrated nuclear fission reaction capabilities, unlocking high-energy weapon damage multipliers.",
         "wiki_url": "https://en.wikipedia.org/wiki/Trinity_(nuclear_test)",
-        "grok_url": "https://grokipedia.com/page/Trinity_(nuclear_test)",
         "submitted_by": "Aethvion_Admin",
         "tags": [
             "Physics",
-            "Exploit",
-            "Weapon"
+            "Nuclear",
+            "History"
         ],
         "keywords": [
             "oppenheimer",
@@ -82,13 +82,15 @@
         "region": "Global_Earth",
         "type": "Admin Tool",
         "importance": "low",
-        "title": "United Nations",
-        "description": "Established global moderation team to prevent future server wipes. Efficacy rating: Variable.",
+        "title": "Formation of the United Nations",
+        "sys_subtitle": "Global diplomatic moderation protocol",
+        "description": "Establishment of an international organization aimed at maintaining international peace, security, and diplomatic conflict resolution.",
+        "wiki_url": "https://en.wikipedia.org/wiki/United_Nations",
         "submitted_by": "Aethvion_Admin",
         "tags": [
-            "Admin",
-            "Moderation",
-            "Patch"
+            "Diplomacy",
+            "Governance",
+            "Policy"
         ],
         "keywords": [
             "diplomacy",
@@ -105,12 +107,14 @@
         "region": "Global_Earth",
         "type": "Feature",
         "importance": "low",
-        "title": "The Cold War",
-        "description": "Long-term standoff between admin factions. No direct massive PvP, heavily relied on 'Spy' class and 'Proxy War' mini-games.",
+        "title": "The Cold War Era & Nuclear Deterrence Standoff",
+        "sys_subtitle": "Proxy conflict & intelligence gathering era",
+        "description": "Geopolitical rivalry between the United States and Soviet Union characterized by nuclear deterrence, espionage, space race rivalry, and proxy conflicts.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Cold_War",
         "submitted_by": "Aethvion_Admin",
         "tags": [
             "Politics",
-            "Faction",
+            "History",
             "Stalemate"
         ],
         "keywords": [
@@ -128,15 +132,15 @@
         "region": "Global_Earth",
         "type": "Discovery",
         "importance": "high",
-        "title": "Discovery of DNA",
-        "description": "Players accessed the source code for character generation. Unlocked potential for 'Gene Editing' customization in future updates.",
+        "title": "Discovery of the Double-Helix DNA Structure",
+        "sys_subtitle": "Biological source code mapping",
+        "description": "Identification of the double-helix structure of DNA by Watson, Crick, and Franklin unlocked fundamental molecular biology mapping capabilities.",
         "wiki_url": "https://en.wikipedia.org/wiki/Molecular_Structure_of_Nucleic_Acids:_A_Structure_for_Deoxyribose_Nucleic_Acid",
-        "grok_url": "https://grokipedia.com/page/Nucleic_acid_structure",
         "submitted_by": "Aethvion_Admin",
         "tags": [
-            "Source Code",
+            "Genetics",
             "Biology",
-            "Unlock"
+            "Discovery"
         ],
         "keywords": [
             "watson",
@@ -153,13 +157,15 @@
         "region": "Orbit",
         "type": "Feature",
         "importance": "low",
-        "title": "Sputnik Launch",
-        "description": "Deployed first orbital monitoring drone. 'Fog of War' removed for upper atmosphere coverage.",
+        "title": "Soviet Union Launches Sputnik 1 Satellite",
+        "sys_subtitle": "First artificial orbital satellite",
+        "description": "Launch of Sputnik 1 established human orbital satellite capability and initiated the Space Race era.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Sputnik_1",
         "submitted_by": "Aethvion_Admin",
         "tags": [
             "Space",
-            "Drone",
-            "Map"
+            "Satellite",
+            "History"
         ],
         "keywords": [
             "russia",
@@ -176,15 +182,15 @@
         "region": "Moon_Server",
         "type": "Feature",
         "importance": "high",
-        "title": "Apollo 11",
-        "description": "First successful player transfer to `Server: Luna`. Physics engine stress-tested. 'Low Gravity' modifier confirmed stable.",
+        "title": "Apollo 11 Moon Landing: First Humans on Lunar Surface",
+        "sys_subtitle": "Inter-planetary surface transfer milestone",
+        "description": "NASA's Apollo 11 mission successfully landed Neil Armstrong and Buzz Aldrin on the Moon, confirming human spaceflight capability to other celestial bodies.",
         "wiki_url": "https://en.wikipedia.org/wiki/Apollo_11",
-        "grok_url": "https://grokipedia.com/page/Apollo_11",
         "submitted_by": "Aethvion_Admin",
         "tags": [
             "Space",
-            "Transfer",
-            "Milestone"
+            "Moon",
+            "NASA"
         ],
         "keywords": [
             "armstrong",
@@ -201,15 +207,15 @@
         "region": "Global_Earth",
         "type": "Feature",
         "importance": "high",
-        "title": "The World Wide Web",
-        "description": "Deployed global networking protocol (TCP/IP). Enabled peer-to-peer communication. Note: Significant increase in memetic virus propagation.",
+        "title": "Tim Berners-Lee Launches the World Wide Web",
+        "sys_subtitle": "Hypertext internet communication protocol",
+        "description": "Deployment of HTTP, HTML, and public web servers enabled mass-market digital information access and hyperlinked document sharing.",
         "wiki_url": "https://en.wikipedia.org/wiki/World_Wide_Web",
-        "grok_url": "https://grokipedia.com/page/History_of_the_World_Wide_Web",
         "submitted_by": "Aethvion_Admin",
         "tags": [
-            "Network",
-            "Social",
-            "Feature"
+            "Internet",
+            "Tech",
+            "Web"
         ],
         "keywords": [
             "internet",
@@ -226,13 +232,15 @@
         "region": "Global_Earth",
         "type": "Bug Fix",
         "importance": "low",
-        "title": "Y2K Bug",
-        "description": "Calendar integer overflow panic. Patched just before midnight. No server crash occurred. Users reported minor anxiety debuffs.",
+        "title": "Y2K Millennium Bug Remediation",
+        "sys_subtitle": "Two-digit year code integer rollover patch",
+        "description": "Global software engineering effort remediated legacy two-digit year date handling in software systems prior to the year 2000 rollover.",
+        "wiki_url": "https://en.wikipedia.org/wiki/Year_2000_problem",
         "submitted_by": "Aethvion_Admin",
         "tags": [
-            "Patch",
-            "Date",
-            "Glitch"
+            "Software",
+            "Bug Fix",
+            "Y2K"
         ],
         "keywords": [
             "millennium",

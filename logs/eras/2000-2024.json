@@ -6,14 +6,15 @@
     "region": "Global_Earth",
     "type": "Critical Event",
     "importance": "high",
-    "title": "Pathogen Hotfix: quarantine.bat",
-    "description": "Server-wide lockdown protocol activated due to high-contagion pathogen. Physical interaction bandwidth restricted. Remote-work modifier applied (+300% Slack/Zoom client load). Global supply chain pipeline latency increased.",
+    "title": "COVID-19 Global Pandemic & Quarantine Lockdowns",
+    "sys_subtitle": "Pathogen stress-test and remote-work modifier applied",
+    "description": "Global quarantine protocols activated due to airborne pathogen. Physical interaction bandwidth restricted while remote communication client load spiked +300%.",
     "wiki_url": "https://en.wikipedia.org/wiki/COVID-19_pandemic",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Crisis",
+      "Health",
       "Quarantine",
-      "Pathogen"
+      "Pandemic"
     ],
     "keywords": [
       "coronavirus",
@@ -31,13 +32,15 @@
     "region": "Mars_Server",
     "type": "Feature",
     "importance": "low",
-    "title": "Perseverance Rover",
-    "description": "Remote scouting bot deployed to `Server: Mars`. Scanning for legacy save files (microbial life). Bandwidth latency acceptable.",
+    "title": "NASA Perseverance Rover Lands on Mars",
+    "sys_subtitle": "Remote scouting bot deployed to Jezero Crater",
+    "description": "Robotic rover landed in Jezero Crater to collect soil cores and scan for microbial biosignatures on Mars_Server.",
+    "wiki_url": "https://en.wikipedia.org/wiki/Perseverance_(rover)",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Space",
-      "Bot",
-      "Scan"
+      "NASA",
+      "Mars"
     ],
     "keywords": [
       "jpl",
@@ -54,13 +57,14 @@
     "region": "Europe_West (Germany)",
     "type": "Config Change",
     "importance": "high",
-    "title": "The Nuclear Deprecation",
-    "description": "Region Admin for 'Germany' disabled 'Nuclear_Power' class assets citing safety concerns (Fear Debuff). \n\n<span class='text-red-500'>[UNINTENDED SIDE EFFECT]</span> Load-bearing shifted to 'Coal_Legacy' assets. Local pollution stats increased despite 'Green' narrative objectives. Optimization failed.",
+    "title": "German Nuclear Power Plant Shutdown & Coal Offset",
+    "sys_subtitle": "Energy grid load shifted to coal baseline assets",
+    "description": "Germany phased out nuclear power generation following safety policy changes. Grid baseline shifted to fossil coal power during renewable energy buildouts.",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Policy_Fail",
       "Energy",
-      "Irony"
+      "Policy",
+      "Germany"
     ],
     "keywords": [
       "germany",
@@ -77,8 +81,9 @@
     "region": "Europe_Server (CERN)",
     "type": "Discovery",
     "importance": "low",
-    "title": "Higgs Boson Verification",
-    "description": "Large Hadron Collider debug console successfully verified the presence of the 'Higgs_Field' mass-allocator subroutine. Physics engine logic confirmed mathematically sound.",
+    "title": "Discovery & Verification of the Higgs Boson Particle",
+    "sys_subtitle": "Physics particle mass-allocation subroutine verified",
+    "description": "CERN Large Hadron Collider experiments confirmed the existence of the Higgs boson particle, validating the Standard Model of particle physics.",
     "wiki_url": "https://en.wikipedia.org/wiki/Higgs_boson",
     "submitted_by": "Aethvion_Admin",
     "tags": [
@@ -101,14 +106,15 @@
     "region": "Global_Earth",
     "type": "Feature",
     "importance": "low",
-    "title": "Decentralized Ledger Protocol",
-    "description": "Released experimental 'Proof_of_Work' consensus mechanism (Bitcoin). Allowed currency transacting without administrative mediation. High energy load penalty applied to computing nodes.",
+    "title": "Launch of Bitcoin & Decentralized Blockchain Protocol",
+    "sys_subtitle": "Proof-of-Work consensus mechanism deployed",
+    "description": "Satoshi Nakamoto published the Bitcoin whitepaper and genesis block, establishing peer-to-peer digital currency without central bank mediation.",
     "wiki_url": "https://en.wikipedia.org/wiki/Bitcoin",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Crypto",
       "Finance",
-      "Network"
+      "Blockchain"
     ],
     "keywords": [
       "bitcoin",
@@ -125,14 +131,15 @@
     "region": "Global_Earth",
     "type": "Critical Event",
     "importance": "high",
-    "title": "Financial Engine Arithmetic Overflow",
-    "description": "Massive valuation overflow in subprime mortgage assets triggered crash of global financial compiler. Emergency capital injection patch ('Quantitative Easing') deployed to prevent server bankruptcy.",
+    "title": "2008 Global Financial Crisis & Subprime Market Collapse",
+    "sys_subtitle": "Financial asset valuation liquidity crash",
+    "description": "Subprime mortgage asset defaults triggered collapse of major investment banks, prompting global central bank quantitative easing intervention.",
     "wiki_url": "https://en.wikipedia.org/wiki/Great_Recession",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Economy",
-      "Crash",
-      "Patch"
+      "Crisis",
+      "Finance"
     ],
     "keywords": [
       "banks",
@@ -149,14 +156,16 @@
     "date": "2007",
     "region": "Global_Earth",
     "type": "Feature",
-    "importance": "low",
-    "title": "The Smartphone",
-    "description": "All players equipped with 'Always-Online' HUD. 'Attention Span' stat nerfed globally. 'Social Media' mini-games became mandatory for some guilds.",
+    "importance": "high",
+    "title": "Introduction of the Apple iPhone & Touchscreen Smartphones",
+    "sys_subtitle": "Mobile multi-touch display hardware deployment",
+    "description": "Apple introduced the iPhone, accelerating the global transition to connected mobile internet, apps, and always-on personal devices.",
+    "wiki_url": "https://en.wikipedia.org/wiki/IPhone_(1st_generation)",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Item",
-      "Nerf",
-      "Interface"
+      "Tech",
+      "Hardware",
+      "Mobile"
     ],
     "keywords": [
       "apple",
@@ -173,14 +182,15 @@
     "region": "Global_Earth",
     "type": "Feature",
     "importance": "high",
-    "title": "The Attention Economy Engine",
-    "description": "Deployed global peer-to-peer data indexing platforms (Facebook, YouTube). Unlocked the 'Like' dopamine incentive loop. Side effects: Player concentration stats nerfed by 45%. Polarized guild logic spread exponentially across servers.",
+    "title": "Rise of Modern Social Media Platforms (Facebook, YouTube)",
+    "sys_subtitle": "Attention economy and algorithmic feed engagement",
+    "description": "Launch of mass-market social networks transformed global information distribution, media consumption, and social interaction dynamics.",
     "wiki_url": "https://en.wikipedia.org/wiki/Social_media",
     "submitted_by": "Aethvion_Admin",
     "tags": [
-      "Network",
       "Social",
-      "Nerf"
+      "Media",
+      "Internet"
     ],
     "keywords": [
       "facebook",
@@ -197,14 +207,15 @@
     "region": "North_America_Server",
     "type": "Config Change",
     "importance": "high",
-    "title": "Security Protocol Overhaul",
-    "description": "Following user-driven collision exploits, global region safety protocols were set to maximum. Travel transfer queue times increased by 400% due to deployment of the 'TSA' inspection check. Liquid asset transport heavily restricted during flights.",
+    "title": "September 11 Attacks & Global Aviation Security Overhaul",
+    "sys_subtitle": "Travel security protocol & TSA inspection deployment",
+    "description": "Coordinated terror attacks led to major overhauls in global airport security, intelligence sharing, and international defense policies.",
     "wiki_url": "https://en.wikipedia.org/wiki/September_11_attacks",
     "submitted_by": "Aethvion_Admin",
     "tags": [
       "Security",
-      "Conflict",
-      "Patch"
+      "History",
+      "Policy"
     ],
     "keywords": [
       "9/11",

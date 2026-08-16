@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SYSTEM_LOG // EARTH_SIMULATION - Real-Time Reality Patch Notes</title>
+    <title>The Simulation Log - Real-World News Formatted as Simulation Patch Notes</title>
     <meta name="description"
-        content="Official system logs for the Earth Simulation. Monitor real-time patch notes, critical errors, and reality anomaly reports. High-uptime reality monitoring.">
+        content="Live real-world breaking news, AI developments, space exploration, and historical events presented as official Earth Simulation patch notes and system alerts.">
     <meta name="keywords"
-        content="earth simulation, system log, reality patch notes, simulation theory, anomaly tracking, cyber terminal">
+        content="simulation log, real world news, tech news, ai news, breaking news, simulation patch notes, reality status">
     <meta name="author" content="Aethvion">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -18,27 +18,27 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesimulationlog.com/">
-    <meta property="og:title" content="SYSTEM_LOG // EARTH_SIMULATION">
-    <meta property="og:description" content="Reality is glitching. Check the latest patch notes for Earth Sim C-137.">
+    <meta property="og:title" content="THE SIMULATION LOG - Real-World News & Patch Wire">
+    <meta property="og:description" content="Breaking real-world news and technology breakthroughs formatted as Earth Sim patch notes.">
     <meta property="og:image" content="https://thesimulationlog.com/og-preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="SYSTEM_LOG // EARTH_SIMULATION">
-    <meta name="twitter:description" content="Monitoring 8.3 Billion clients. Status: UNSTABLE.">
+    <meta name="twitter:title" content="THE SIMULATION LOG - Real-World News Wire">
+    <meta name="twitter:description" content="Monitoring 8.15 Billion active clients. Status: UNSTABLE.">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebApplication",
+      "@type": "NewsArticle",
       "name": "The Simulation Log",
-      "description": "A real-time monitoring interface for Earth simulation patch notes and anomaly reports.",
-      "applicationCategory": "Entertainment / Simulation",
+      "description": "Real-time news wire and anomaly reporting interface for Earth simulation patch notes.",
+      "applicationCategory": "News / Entertainment",
       "operatingSystem": "Web-Based",
       "author": {
         "@type": "Organization",
         "name": "Aethvion",
         "url": "https://aethvion.com"
       },
-      "datePublished": "2026-01-11",
+      "datePublished": "2026-08-16",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -50,217 +50,271 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&family=Share+Tech+Mono&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3601034423494896"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3601034423494896"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
     <div class="scanline"></div>
 
+    <!-- Main Site Header -->
     <header id="main-header">
-        <div class="header-top">
-            <div class="logo">
-                <span class="blink">></span> SYSTEM_LOG // EARTH_SIMULATION
+        <div class="header-container">
+            <div class="header-top">
+                <div class="brand-group">
+                    <a href="#" class="logo-link" id="nav-logo">
+                        <span class="logo-badge">SYS_LOG</span>
+                        <h1 class="site-title">THE SIMULATION LOG</h1>
+                    </a>
+                    <span class="site-tagline">Real-World News Wire & Simulation Patch Notes</span>
+                </div>
+
+                <div class="header-telemetry">
+                    <div class="telemetry-pill">
+                        <span class="pulse-dot active"></span>
+                        <span class="telemetry-label">CLIENTS:</span>
+                        <span class="telemetry-val">8.15B</span>
+                    </div>
+                    <div class="telemetry-pill">
+                        <span class="telemetry-label">STATUS:</span>
+                        <span class="telemetry-val status-warn">UNSTABLE</span>
+                    </div>
+                    <div class="live-clock" id="live-clock">
+                        --:--:-- UTC
+                    </div>
+                </div>
             </div>
-            <div class="live-clock" id="live-clock">
-                Server Time: --:--:--
-            </div>
-        </div>
-        <div class="status-bar">
-            <span>uptime: 4.54 Billion Years</span>
-            <span class="separator">|</span>
-            <span>CPU Load: 98%</span>
-            <span class="separator">|</span>
-            <span>Connected Clients: 8.1 Billion</span>
-            <span class="separator">|</span>
-            <span class="status-indicator">STATUS: UNSTABLE</span>
-            <span class="separator">|</span>
-            <button id="diagnostic-trigger" class="terminal-text-btn">TERMINAL</button>
+
+            <!-- Primary Navigation Tabs -->
+            <nav class="main-nav">
+                <div class="nav-tabs">
+                    <button class="nav-tab active" data-view="news">
+                        <span class="tab-icon">📰</span> BREAKING NEWS
+                    </button>
+                    <button class="nav-tab" data-view="ai-timeline">
+                        <span class="tab-icon">🤖</span> AI TIMELINE
+                    </button>
+                    <button class="nav-tab" id="diagnostic-trigger">
+                        <span class="tab-icon">⚡</span> ANOMALY DIAGNOSTIC
+                    </button>
+                </div>
+
+                <div class="header-actions">
+                    <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com/issues/new/choose"
+                        target="_blank" class="submit-news-btn">
+                        <span class="plus-icon">+</span> SUBMIT EVENT
+                    </a>
+                </div>
+            </nav>
         </div>
     </header>
 
-    <!-- NEW: Live Server Status Ticker -->
+    <!-- Breaking Alert Ticker -->
     <div id="live-ticker-container">
-        <div class="ticker-label"><span class="pulsing-dot"></span> LIVE_EVENTS:</div>
+        <div class="ticker-label"><span class="pulsing-dot"></span> LIVE_ALERTS:</div>
         <div class="ticker-content-wrapper">
             <div id="ticker-content">
-                <!-- Injected via JS -->
-                <span>Initializing monitor protocol...</span>
+                <span>Loading simulation news wire...</span>
             </div>
         </div>
     </div>
 
-    <main class="layout-grid">
-        <aside id="sidebar">
-            <div class="sidebar-content">
-                <div class="control-group">
-                    <label for="search-input">GREP LOGS</label>
-                    <input type="text" id="search-input" placeholder="Search events, versions..." autocomplete="off">
+    <!-- Main Content Container -->
+    <main class="main-container">
+
+        <!-- VIEW 1: LIVE NEWS FEED -->
+        <section id="view-news" class="content-view active">
+
+            <!-- Hero Featured News Section -->
+            <div id="hero-news-section" class="hero-card-container">
+                <!-- Dynamically Injected Lead News Article -->
+            </div>
+
+            <!-- News Filter Toolbar -->
+            <div class="toolbar-section">
+                <div class="shard-filter-tabs" id="shard-tabs">
+                    <button class="shard-btn active" data-shard="all">ALL SHARDS</button>
+                    <button class="shard-btn" data-shard="tech">TECH & AI</button>
+                    <button class="shard-btn" data-shard="space">SPACE & SCI</button>
+                    <button class="shard-btn" data-shard="climate">CLIMATE & ENERGY</button>
+                    <button class="shard-btn" data-shard="geopolitics">GEOPOLITICS</button>
+                    <button class="shard-btn" data-shard="legacy">LEGACY ARCHIVE</button>
                 </div>
 
-                <div class="control-group">
-                    <label for="sort-select">SORT BY</label>
-                    <select id="sort-select">
-                        <option value="date-desc">Date (Newest First)</option>
-                        <option value="date-asc">Date (Oldest First)</option>
-                    </select>
-                </div>
+                <div class="toolbar-controls">
+                    <div class="search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="search-input" placeholder="Search news, topics, keywords..." autocomplete="off">
+                    </div>
 
-                <div class="control-group">
-                    <label>FILTERS // TIME PERIOD</label>
-                    <div id="time-filter-container" class="filter-button-group">
-                        <!-- Dynamically generated year/era buttons -->
+                    <div class="select-wrapper">
+                        <select id="sort-select">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                        </select>
+                    </div>
+
+                    <div class="view-toggle">
+                        <button class="view-btn active" data-mode="grid" title="Grid News View">
+                            <span>⊞</span> Grid
+                        </button>
+                        <button class="view-btn" data-mode="wire" title="Compact Wire View">
+                            <span>≡</span> Wire
+                        </button>
                     </div>
                 </div>
-
-                <div class="control-group">
-                    <label for="region-select">REGION SELECT</label>
-                    <select id="region-select">
-                        <option value="all">ALL SERVERS</option>
-                        <option value="global_earth">Global_Earth</option>
-                        <option value="europe_server">Europe_Server</option>
-                        <option value="sol_system">Solar_System (Incl. Moon/Mars)</option>
-                        <option value="moon_server">Moon_Server</option>
-                        <option value="mars_server">Mars_Server</option>
-                        <option value="global_universe">Global_Universe</option>
-                    </select>
-                </div>
-
-                <div class="control-group toggle-group">
-                    <label for="severity-toggle">SHOW CRITICAL ONLY</label>
-                    <label class="switch">
-                        <input type="checkbox" id="severity-toggle">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-
-                <!-- NEW: Granularity Toggle -->
-                <div class="control-group toggle-group">
-                    <label for="granularity-toggle" class="tooltip">SHOW VERBOSE LOGS
-                        <span class="tooltip-text">Include minor patches & low importance events</span>
-                    </label>
-                    <label class="switch">
-                        <input type="checkbox" id="granularity-toggle">
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-
-                <!-- Contribute Button -->
-                <!-- Contribute Button -->
-                <div class="sidebar-submit-section">
-                    <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com/issues/new/choose"
-                        target="_blank" class="sidebar-btn group">
-                        <span class="btn-icon">[+]</span> SUBMIT_LOG
-                    </a>
-                    <p class="submit-via-email-text">
-                        // <a href="mailto:contact@aethvion.com?subject=[LOG] New Event Submission">Submit via Email</a>
-                        if no GitHub
-                    </p>
-                </div>
             </div>
-        </aside>
 
-        <section id="feed-container">
-            <div class="feed-header">
-                <h3>// LATEST_PATCH_NOTES</h3>
-                <span id="log-count">Loading...</span>
+            <!-- News Feed Grid Container -->
+            <div class="news-feed-header">
+                <h2 class="feed-title">// SIMULATION_PATCH_FEED</h2>
+                <span id="log-count" class="record-counter">Loading...</span>
             </div>
-            <div id="feed" class="feed-list">
-                <!-- Logs will be injected here via JS -->
+
+            <div id="feed" class="news-grid">
+                <!-- News cards injected via JS -->
             </div>
         </section>
-    </main>
 
-    <footer id="main-footer" class="terminal-footer">
-        <div class="footer-content">
 
-            <!-- Contributors Section -->
-            <div class="footer-section border-bottom-sep">
-                <h3 class="footer-heading opacity-80">
-                    > QUERY_ADMIN_LIST (CONTRIBUTORS)
-                </h3>
-                <div id="contributors-list" class="contributors-grid opacity-80-hover">
-                    <div class="loading-pulse"></div>
-                    <div class="loading-pulse"></div>
-                    <div class="loading-pulse"></div>
+        <!-- VIEW 2: DEDICATED AI TIMELINE PAGE -->
+        <section id="view-ai-timeline" class="content-view hidden">
+            <div class="timeline-hero">
+                <div class="timeline-hero-badge">AI SINGULARITY TELEMETRY</div>
+                <h2 class="timeline-hero-title">Artificial Intelligence Evolution & Compute Scaling</h2>
+                <p class="timeline-hero-desc">
+                    Tracking real-world AI model milestones, parameter growth, compute surges, and subagent breakthroughs from 2020 through future AGI projections.
+                </p>
+            </div>
+
+            <!-- Compute Growth Visual Graph -->
+            <div class="graph-card">
+                <div class="graph-header">
+                    <h3 class="graph-title">📈 FRONTIER COMPUTE SCALING & FLOP ESTIMATES (2020–2026+)</h3>
+                    <div class="graph-legend">
+                        <span class="legend-item"><span class="dot color-primary"></span> Training Compute (FLOPs)</span>
+                        <span class="legend-item"><span class="dot color-accent"></span> Autonomous Subagent Workload</span>
+                    </div>
+                </div>
+                <div class="graph-container">
+                    <svg class="timeline-svg" viewBox="0 0 900 240" preserveAspectRatio="none">
+                        <!-- Grid Lines -->
+                        <line x1="50" y1="40" x2="850" y2="40" class="svg-grid-line" />
+                        <line x1="50" y1="90" x2="850" y2="90" class="svg-grid-line" />
+                        <line x1="50" y1="140" x2="850" y2="140" class="svg-grid-line" />
+                        <line x1="50" y1="190" x2="850" y2="190" class="svg-grid-line" />
+
+                        <!-- Area Gradient Fill -->
+                        <defs>
+                            <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#10b981" stop-opacity="0.35" />
+                                <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
+                            </linearGradient>
+                            <linearGradient id="subagentGrad" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.30" />
+                                <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.0" />
+                            </linearGradient>
+                        </defs>
+
+                        <polygon points="50,190 50,180 180,165 320,135 460,110 600,70 740,45 850,25 850,190" fill="url(#areaGrad)" />
+                        <polygon points="50,190 50,188 180,185 320,170 460,130 600,65 740,35 850,15 850,190" fill="url(#subagentGrad)" />
+
+                        <!-- Curve Lines -->
+                        <path d="M 50 180 Q 180 165, 320 135 T 600 70 T 850 25" class="svg-path primary" />
+                        <path d="M 50 188 Q 180 185, 320 170 T 600 65 T 850 15" class="svg-path accent" stroke-dasharray="4" />
+
+                        <!-- Interactive Nodes -->
+                        <circle cx="50" cy="180" r="5" class="svg-node" data-year="2020" />
+                        <circle cx="180" cy="165" r="5" class="svg-node" data-year="2022" />
+                        <circle cx="320" cy="135" r="5" class="svg-node" data-year="2023" />
+                        <circle cx="460" cy="110" r="6" class="svg-node active" data-year="2024" />
+                        <circle cx="600" cy="70" r="7" class="svg-node active" data-year="2025" />
+                        <circle cx="740" cy="45" r="8" class="svg-node active-pulse" data-year="2026" />
+                        <circle cx="850" cy="25" r="6" class="svg-node future" data-year="2027+" />
+
+                        <!-- Axis Labels -->
+                        <text x="50" y="215" class="svg-label">2020 (GPT-3)</text>
+                        <text x="180" y="215" class="svg-label">2022 (ChatGPT)</text>
+                        <text x="320" y="215" class="svg-label">2023 (GPT-4)</text>
+                        <text x="460" y="215" class="svg-label">2024 (Sora/Claude 3.5)</text>
+                        <text x="600" y="215" class="svg-label">2025 (DeepSeek-R1)</text>
+                        <text x="740" y="215" class="svg-label highlight">2026 (Antigravity/Gemini 3.6)</text>
+                        <text x="850" y="215" class="svg-label future">2027+ (AGI Shard)</text>
+                    </svg>
                 </div>
             </div>
 
-            <!-- Terminal Grid (2-Column) -->
+            <!-- AI Timeline Cards Stack -->
+            <div class="timeline-stack" id="ai-timeline-stack">
+                <!-- Injected via JS -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="main-footer">
+        <div class="footer-container">
             <div class="footer-grid">
-
-                <div class="footer-brand-col">
-                    <h4 class="brand-title">
-                        <span class="status-indicator-dot"></span> SYSTEM_LOG // STATUS
-                    </h4>
-                    <p class="brand-desc terminal-text">
-                        // CURRENT_INSTANCE: EARTH_SIM_C-137<br>
-                        Tracking real-time patch notes, critical errors, and anomaly reports for the local reality
-                        simulation.
+                <div class="footer-brand">
+                    <div class="footer-logo">THE SIMULATION LOG</div>
+                    <p class="footer-desc">
+                        A real-time news reporting interface tracking technological breakthroughs, space exploration, and cultural developments formatted as official Earth Simulation patch notes.
                     </p>
-                    <p class="copyright terminal-text-dim">SysID: 2026-LOG-V1 // ALL RIGHTS RESERVED</p>
+                    <span class="copyright-line">SysID: 2026-NEWS-WIRE // AETHVION SYSTEMS</span>
                 </div>
 
-                <div class="footer-contact-col">
-                    <h4 class="col-heading">ADMIN_CONSOLE // MESSAGE</h4>
-
-                    <div class="contact-block">
-                        <p class="label-dim">Encrypted Channel:</p>
-                        <a href="mailto:contact@aethvion.com" class="contact-link">contact@aethvion.com</a>
-                    </div>
-
-                    <div class="contact-block">
-                        <p class="label-dim">Upstream Link:</p>
-                        <a href="https://aethvion.com" target="_blank" class="contact-link">> AETHVION_MAIN</a>
-                    </div>
-
-                    <div class="contact-block">
-                        <p class="label-dim">Repository:</p>
-                        <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com" target="_blank"
-                            class="contact-link">> VIEW_SOURCE</a>
-                    </div>
-
-                    <div class="contact-sep">
-                        <p class="label-dim">// MANUAL_OVERRIDE</p>
-                        <p class="label-small">
-                            Submit anomaly reports via mail.<br>
-                            Header: <span class="text-green-500">"[LOG] Event Name"</span>
-                        </p>
-                    </div>
+                <div class="footer-links">
+                    <h4 class="footer-heading">NAVIGATION</h4>
+                    <ul>
+                        <li><a href="#" class="footer-nav-link" data-view="news">> Breaking News</a></li>
+                        <li><a href="#" class="footer-nav-link" data-view="ai-timeline">> AI Timeline</a></li>
+                        <li><a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com" target="_blank">> GitHub Source</a></li>
+                        <li><a href="mailto:contact@aethvion.com">> Submit Event Mail</a></li>
+                    </ul>
                 </div>
 
+                <div class="footer-contributors">
+                    <h4 class="footer-heading">COMMUNITY ADMINS</h4>
+                    <div id="contributors-list" class="contributors-flex">
+                        <span class="contributor-tag">Aethvion_Admin</span>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- User Diagnostic Tool -->
-
-
+    <!-- Interactive AI Diagnostic Terminal Modal -->
     <div id="diagnostic-modal" class="terminal-overlay hidden">
         <div class="terminal-window">
             <div class="terminal-header">
-                <span>> SYSTEM_DIAGNOSTIC_TOOL_v.1.0</span>
-                <button id="close-diagnostic" class="close-btn">[ X ]</button>
+                <div class="terminal-title">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <span class="title-text">SYSTEM_DIAGNOSTIC_CONSOLE v2.6</span>
+                </div>
+                <button id="close-diagnostic" class="close-btn">✕</button>
             </div>
 
             <div class="terminal-body">
                 <div id="diagnostic-output" class="output-area">
-                    <p class="system-msg">> INITIALIZING DIAGNOSTIC PROTOCOL...</p>
-                    <p class="system-msg">> WAITING FOR USER INPUT...</p>
+                    <p class="system-msg">> INITIALIZING SIMULATION DIAGNOSTIC ENGINE...</p>
+                    <p class="system-msg">> READY. DESCRIBE YOUR GLITCH OR ANOMALY BELOW.</p>
                 </div>
 
                 <div class="input-line">
-                    <span class="prompt">USER@EARTH:~$</span>
+                    <span class="prompt">USER@EARTH_SIM:~$</span>
                     <input type="text" id="user-input"
-                        placeholder="Describe the error (e.g. 'I'm always tired', 'My code won't run')..."
+                        placeholder="Describe glitch (e.g. 'Code won't run', 'Tired all the time')..."
                         autocomplete="off">
                 </div>
 
                 <div class="terminal-controls">
-                    <button id="run-diagnostic-btn" class="action-btn">[ RUN_ANALYSIS ]</button>
+                    <button id="run-diagnostic-btn" class="action-btn">[ RUN_DIAGNOSTIC ]</button>
                 </div>
 
                 <div class="terminal-footer">
@@ -270,19 +324,27 @@
                     </button>
                     <div id="privacy-tooltip" class="privacy-tooltip hidden">
                         <div class="privacy-tooltip-header">
-                            <strong>Gemini API (Cloud Processing)</strong>
+                            <strong>Gemini API (Enterprise Tier)</strong>
                         </div>
                         <div class="privacy-tooltip-content">
-                            <p>• Powered by Google's Gemini API (Enterprise Tier - Paid Plan)</p>
-                            <p>• Your data is NOT used to train AI models</p>
-                            <p>• Data processed transiently, not stored permanently</p>
-                            <p>• Enterprise-grade security and compliance</p>
+                            <p>• Powered by Google Gemini API</p>
+                            <p>• Data processed transiently, not used to train models</p>
                             <a href="https://ai.google.dev/gemini-api/terms" target="_blank" class="privacy-link">
-                                Read the Privacy Terms (Paid Services) →
+                                Read Privacy Terms →
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Article Detail Modal -->
+    <div id="article-modal" class="article-modal-overlay hidden">
+        <div class="article-modal-content">
+            <button id="close-article-modal" class="close-article-btn">✕</button>
+            <div id="article-modal-body">
+                <!-- Injected via JS -->
             </div>
         </div>
     </div>

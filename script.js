@@ -1,660 +1,563 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // DOM Elements
+    // --- DOM Elements ---
     const feedContainer = document.getElementById('feed');
     const logCountElement = document.getElementById('log-count');
     const searchInput = document.getElementById('search-input');
-    const regionSelect = document.getElementById('region-select');
-    const severityToggle = document.getElementById('severity-toggle');
-    const granularityToggle = document.getElementById('granularity-toggle');
     const sortSelect = document.getElementById('sort-select');
-    const timeFilterContainer = document.getElementById('time-filter-container');
-    const clockElement = document.getElementById('live-clock');
+    const heroNewsSection = document.getElementById('hero-news-section');
     const tickerContent = document.getElementById('ticker-content');
+    const clockElement = document.getElementById('live-clock');
 
-    // State
+    // Navigation & Views
+    const navTabs = document.querySelectorAll('.nav-tab[data-view]');
+    const footerNavLinks = document.querySelectorAll('.footer-nav-link[data-view]');
+    const contentViews = document.querySelectorAll('.content-view');
+    const shardButtons = document.querySelectorAll('.shard-btn');
+    const viewButtons = document.querySelectorAll('.view-btn');
+
+    // Modals
+    const diagnosticTrigger = document.getElementById('diagnostic-trigger');
+    const diagnosticModal = document.getElementById('diagnostic-modal');
+    const closeDiagnostic = document.getElementById('close-diagnostic');
+    const runDiagnosticBtn = document.getElementById('run-diagnostic-btn');
+    const diagnosticOutput = document.getElementById('diagnostic-output');
+    const userInput = document.getElementById('user-input');
+
+    const articleModal = document.getElementById('article-modal');
+    const articleModalBody = document.getElementById('article-modal-body');
+    const closeArticleModal = document.getElementById('close-article-modal');
+
+    // --- State ---
     let manifest = null;
-    let loadedData = {}; // Cache for loaded datasets { 'yearly/2026.json': [...], 'eras/ancient.json': [...] }
-    let allLogs = []; // Combined array of all currently loaded logs
+    let loadedData = {};
+    let allLogs = [];
     let activeFilters = {
         search: '',
-        selectedPeriods: [], // Array of file paths like ['yearly/2026.json', 'eras/ancient.json']
-        region: 'all',
-        criticalOnly: false,
-        verbose: false,
-        sort: 'date-desc'
+        shard: 'all',
+        sort: 'date-desc',
+        viewMode: 'grid'
     };
 
-    // --- Core Logic ---
+    // AI Timeline Static Milestones Data
+    const aiTimelineData = [
+        {
+            year: "2020",
+            model: "GPT-3 (175 Billion Parameters)",
+            company: "OpenAI",
+            type: "Foundation Model",
+            description: "Demonstrated zero-shot and few-shot natural language capabilities across translation, Q&A, and basic code generation.",
+            patch_version: "v.2020.GPT3",
+            compute_flops: "3.14e23 FLOPs",
+            impact: "Established the scaling law era for massive transformer-based neural nets."
+        },
+        {
+            year: "2022",
+            model: "ChatGPT (InstructGPT / RLHF Rollout)",
+            company: "OpenAI",
+            type: "Consumer Breakout",
+            description: "Reinforcement Learning from Human Feedback (RLHF) enabled conversational AI to reach 100 million active users in 60 days.",
+            patch_version: "v.2022.ChatGPT",
+            compute_flops: "1.2e24 FLOPs",
+            impact: "Initiated the global consumer generative AI race across search and productivity."
+        },
+        {
+            year: "2023",
+            model: "GPT-4 & Multimodal Neural Networks",
+            company: "OpenAI / Google DeepMind",
+            type: "Multimodal Frontier",
+            description: "Expanded context windows, reasoning benchmarks, bar exam pass rates, and visual input processing.",
+            patch_version: "v.2023.GPT4",
+            compute_flops: "2.1e25 FLOPs",
+            impact: "Proved multi-step reasoning capabilities on complex professional benchmarks."
+        },
+        {
+            year: "2024",
+            model: "Sora & Claude 3.5 Sonnet",
+            company: "OpenAI / Anthropic",
+            type: "Diffusion Video & Coding",
+            description: "Real-time photorealistic video generation (Sora) and high-accuracy software artifact creation.",
+            patch_version: "v.2024.Sora_Render",
+            compute_flops: "8.5e25 FLOPs",
+            impact: "Degraded the distinction between real and AI-generated visual media."
+        },
+        {
+            year: "2025",
+            model: "DeepSeek-R1 & Open-Weights Reasoning",
+            company: "DeepSeek / Open Source",
+            type: "Reasoning Optimization",
+            description: "Ultra-low-compute reasoning model weights published openly, matching top proprietary benchmarks on fractions of GPU hardware.",
+            patch_version: "v.2026.DeepSeek_Distill",
+            compute_flops: "1.4e26 FLOPs",
+            impact: "Triggered global hardware re-evaluations and democratized frontier reasoning."
+        },
+        {
+            year: "2026",
+            model: "Antigravity & Gemini 3.6 Autonomous Subagents",
+            company: "Google DeepMind",
+            type: "Agentic IDE Suite",
+            description: "Coding subagents autonomously manage workspace files, dependency builds, unit tests, and background task execution.",
+            patch_version: "v.2026.Antigravity_Engine",
+            compute_flops: "5.2e26 FLOPs",
+            impact: "Shifted developer roles from manual code drafting to prompt supervision."
+        },
+        {
+            year: "2027+",
+            model: "Projected Recursive Self-Improvement (AGI Shard)",
+            company: "Global Research Consortia",
+            type: "AGI Horizon",
+            description: "Continuous real-time model retraining and automated scientific hypothesis generation.",
+            patch_version: "v.2027.AGI_Preload",
+            compute_flops: "1.0e28+ FLOPs",
+            impact: "Transition of human civilization parameters to post-scarcity intelligence grid."
+        }
+    ];
 
-    // Fetch Manifest
-    async function fetchManifest() {
+    // --- Core Data Initialization ---
+    async function initSystem() {
+        startLiveClock();
+        await fetchManifestAndAllData();
+        renderHeroNewsCard();
+        renderTicker();
+        renderLogs();
+        renderAITimeline();
+        setupEventListeners();
+    }
+
+    // Live Server Clock
+    function startLiveClock() {
+        function updateClock() {
+            const now = new Date();
+            const timeStr = now.toISOString().slice(11, 19) + ' UTC';
+            if (clockElement) clockElement.textContent = timeStr;
+        }
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+    // Fetch Manifest & Load All Datasets for Live News Access
+    async function fetchManifestAndAllData() {
         try {
             const response = await fetch('logs/manifest.json');
             if (!response.ok) throw new Error('Failed to load manifest');
             manifest = await response.json();
 
-            // Generate filter buttons
-            generateFilterButtons();
+            // Load all dataset files concurrently
+            const filesToLoad = [];
+            manifest.years_available.forEach(y => filesToLoad.push(y.file));
+            manifest.eras.forEach(e => filesToLoad.push(e.file));
 
-            // Load current year by default
-            const currentYearFile = manifest.years_available.find(y => y.year === manifest.current_year)?.file;
-            if (currentYearFile) {
-                await loadDataset(currentYearFile);
-                activeFilters.selectedPeriods.push(currentYearFile);
-                updateFilterButtonStates();
-            }
-
-            renderLogs();
-        } catch (error) {
-            console.error('Error:', error);
-            feedContainer.innerHTML = `<div class="error-message">ERROR: CONNECTION_REFUSED. FAILED_TO_FETCH_MANIFEST.JSON</div>`;
-        }
-    }
-
-    // Load a dataset (year or era)
-    async function loadDataset(filePath) {
-        if (loadedData[filePath]) {
-            return; // Already loaded
-        }
-
-        try {
-            const response = await fetch(`logs/${filePath}`);
-            if (!response.ok) throw new Error(`Failed to load ${filePath}`);
-            const data = await response.json();
-            loadedData[filePath] = data;
-
-            // Rebuild allLogs from all loaded datasets
-            rebuildAllLogs();
-        } catch (error) {
-            console.error(`Error loading ${filePath}:`, error);
-        }
-    }
-
-    // Rebuild allLogs array from all loaded datasets
-    function rebuildAllLogs() {
-        allLogs = [];
-        Object.values(loadedData).forEach(dataset => {
-            allLogs = allLogs.concat(dataset);
-        });
-    }
-
-    // Generate filter buttons dynamically
-    function generateFilterButtons() {
-        if (!manifest) return;
-
-        timeFilterContainer.innerHTML = '';
-
-        // Create year buttons
-        manifest.years_available.forEach(yearObj => {
-            const btn = createFilterButton(yearObj.year.toString(), yearObj.file);
-            timeFilterContainer.appendChild(btn);
-        });
-
-        // Create era buttons
-        manifest.eras.forEach(era => {
-            const btn = createFilterButton(era.name, era.file);
-            timeFilterContainer.appendChild(btn);
-        });
-    }
-
-    // Create a filter button
-    function createFilterButton(label, filePath) {
-        const btn = document.createElement('button');
-        btn.className = 'filter-btn';
-        btn.textContent = label;
-        btn.dataset.file = filePath;
-
-        btn.addEventListener('click', async () => {
-            const isActive = activeFilters.selectedPeriods.includes(filePath);
-
-            if (isActive) {
-                // Remove from selection
-                activeFilters.selectedPeriods = activeFilters.selectedPeriods.filter(f => f !== filePath);
-            } else {
-                // Add to selection and load if needed
-                btn.classList.add('loading');
-                await loadDataset(filePath);
-                activeFilters.selectedPeriods.push(filePath);
-                btn.classList.remove('loading');
-            }
-
-            updateFilterButtonStates();
-            renderLogs();
-        });
-
-        return btn;
-    }
-
-    // Update button states based on active filters
-    function updateFilterButtonStates() {
-        const buttons = timeFilterContainer.querySelectorAll('.filter-btn');
-        buttons.forEach(btn => {
-            const filePath = btn.dataset.file;
-            if (activeFilters.selectedPeriods.includes(filePath)) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
-    }
-
-    // Helper: Parse Simulation Date to Numeric Value for Sorting
-    function parseSimDate(dateString) {
-        if (!dateString) return -Infinity;
-        const lower = dateString.toLowerCase();
-
-        // Special Constants
-        if (lower.includes('present')) return 2026;
-        if (lower.includes('future') || lower.includes('near future')) return 3000;
-
-        // Extract numbers
-        const match = lower.replace(/,/g, '').match(/([\d\.]+)/);
-        if (!match) return 0; // Fallback
-
-        let val = parseFloat(match[1]);
-
-        // Multipliers
-        if (lower.includes('billion')) val *= 1_000_000_000;
-        else if (lower.includes('million')) val *= 1_000_000;
-
-        // Direction
-        // "Ago" or "BC" means negative
-        if (lower.includes('ago') || lower.includes('bc')) {
-            val *= -1;
-        }
-
-        return val;
-    }
-
-    // Filter Logic
-    function getFilteredLogs() {
-        // Only show logs from selected periods
-        let filtered = allLogs.filter(log => {
-            // Check if this log is from a selected period
-            let fromSelectedPeriod = false;
-            for (const filePath of activeFilters.selectedPeriods) {
-                if (loadedData[filePath] && loadedData[filePath].includes(log)) {
-                    fromSelectedPeriod = true;
-                    break;
+            const loadPromises = filesToLoad.map(async (file) => {
+                try {
+                    const res = await fetch(`logs/${file}`);
+                    if (res.ok) {
+                        const data = await res.json();
+                        loadedData[file] = data;
+                    }
+                } catch (e) {
+                    console.error(`Error loading ${file}:`, e);
                 }
-            }
+            });
 
-            if (!fromSelectedPeriod) return false;
+            await Promise.all(loadPromises);
 
-            // 1. Granularity (Importance)
-            if (!activeFilters.verbose && log.importance === 'low') {
-                return false;
-            }
-
-            // 2. Search
-            const searchLower = activeFilters.search.toLowerCase();
-            const matchesSearch = log.title.toLowerCase().includes(searchLower) ||
-                log.description.toLowerCase().includes(searchLower) ||
-                log.version.toLowerCase().includes(searchLower) ||
-                (log.keywords && log.keywords.some(k => k.toLowerCase().includes(searchLower)));
-
-            // 3. Region
-            const logRegion = log.region.toLowerCase();
-            const filterRegion = activeFilters.region.toLowerCase();
-
-            let matchesRegion = filterRegion === 'all';
-            if (!matchesRegion) {
-                if (filterRegion === 'sol_system') {
-                    matchesRegion = ['mars', 'moon', 'solar', 'earth', 'global_earth'].some(k => logRegion.includes(k));
-                } else {
-                    matchesRegion = logRegion.includes(filterRegion);
+            // Combine into allLogs array
+            allLogs = [];
+            Object.values(loadedData).forEach(dataset => {
+                if (Array.isArray(dataset)) {
+                    allLogs = allLogs.concat(dataset);
                 }
+            });
+
+        } catch (error) {
+            console.error('Manifest load error, falling back to logs.json:', error);
+            try {
+                const fallbackRes = await fetch('logs.json');
+                if (fallbackRes.ok) {
+                    allLogs = await fallbackRes.json();
+                }
+            } catch (fallbackErr) {
+                console.error('Failed to load fallback logs.json:', fallbackErr);
             }
-
-            // 4. Severity
-            const matchesSeverity = !activeFilters.criticalOnly ||
-                log.type === 'Critical Event' ||
-                (log.is_active === true);
-
-            return matchesSearch && matchesRegion && matchesSeverity;
-        });
-
-        // Sorting
-        filtered.sort((a, b) => {
-            const valA = parseSimDate(a.date);
-            const valB = parseSimDate(b.date);
-
-            if (activeFilters.sort === 'date-asc') {
-                return valA - valB;
-            } else {
-                return valB - valA; // Descending (Newest First)
-            }
-        });
-
-        return filtered;
+        }
     }
 
-    // Rendering Active Ticker
-    function renderTicker() {
-        const activeLogs = allLogs.filter(log => log.is_active === true);
+    // --- Hero Featured News Section ---
+    function renderHeroNewsCard() {
+        if (!heroNewsSection) return;
 
-        if (activeLogs.length === 0) {
-            tickerContent.innerHTML = '<span>// NO_ACTIVE_EVENTS_DETECTED</span>';
+        // Pick top breaking active news or highest importance recent item
+        const leadItem = allLogs.find(log => log.is_active === true) || allLogs[0];
+
+        if (!leadItem) {
+            heroNewsSection.innerHTML = '';
             return;
         }
 
-        // Create repeating string for the ticker
-        const tickerItems = activeLogs.map(log =>
-            `<span>[${log.version}] ${log.title}: ${log.description}</span>`
-        ).join('<span class="separator">///</span>');
+        const subtitleHTML = leadItem.sys_subtitle 
+            ? `<div class="hero-sys-subtitle">${escapeHTML(leadItem.sys_subtitle)}</div>` 
+            : '';
 
-        // Repeat it to ensure smooth loop
-        tickerContent.innerHTML = tickerItems + '<span class="separator">///</span>' + tickerItems;
+        heroNewsSection.innerHTML = `
+            <div class="hero-news-card">
+                <div class="hero-header-line">
+                    <div class="hero-badges">
+                        <span class="badge-breaking">🔥 BREAKING NEWS</span>
+                        <span class="badge-patch">${escapeHTML(leadItem.version || 'v.2026.8')}</span>
+                        <span class="type-pill ${getTypeClass(leadItem.type)}">${escapeHTML(leadItem.type || 'NEWS')}</span>
+                    </div>
+                    <div class="hero-date">${escapeHTML(leadItem.date || 'Present Day')} // ${escapeHTML(leadItem.region || 'Global_Earth')}</div>
+                </div>
+
+                <h2 class="hero-headline">${escapeHTML(leadItem.title)}</h2>
+                ${subtitleHTML}
+
+                <p class="hero-description">${escapeHTML(leadItem.description)}</p>
+
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="openArticleModal('${leadItem.id}')">
+                        <span>📰</span> READ COVERAGE
+                    </button>
+                    <button class="btn-secondary" id="hero-diag-btn">
+                        <span>⚡</span> RUN DIAGNOSTICS
+                    </button>
+                </div>
+            </div>
+        `;
+
+        document.getElementById('hero-diag-btn')?.addEventListener('click', () => {
+            diagnosticModal.classList.remove('hidden');
+            userInput.focus();
+        });
     }
 
-    // Rendering Feed
+    // --- Live Alert Ticker ---
+    function renderTicker() {
+        if (!tickerContent) return;
+        const activeLogs = allLogs.filter(log => log.is_active === true || log.importance === 'high');
+
+        if (activeLogs.length === 0) {
+            tickerContent.innerHTML = '<span>// ALL SIMULATION SYSTEMS OPERATING WITHIN NORMAL PARAMETERS</span>';
+            return;
+        }
+
+        const itemsHTML = activeLogs.map(log => `
+            <span class="ticker-item">
+                <span class="version-tag">[${escapeHTML(log.version || 'PATCH')}]</span>
+                <strong>${escapeHTML(log.title)}:</strong> ${escapeHTML(log.sys_subtitle || log.description)}
+            </span>
+        `).join('<span class="ticker-sep">///</span>');
+
+        tickerContent.innerHTML = itemsHTML + '<span class="ticker-sep">///</span>' + itemsHTML;
+    }
+
+    // --- News Feed Rendering & Filtering ---
+    function getFilteredLogs() {
+        return allLogs.filter(log => {
+            // Search query filter
+            if (activeFilters.search) {
+                const query = activeFilters.search.toLowerCase();
+                const titleMatch = log.title?.toLowerCase().includes(query);
+                const descMatch = log.description?.toLowerCase().includes(query);
+                const subMatch = log.sys_subtitle?.toLowerCase().includes(query);
+                const tagMatch = log.tags?.some(t => t.toLowerCase().includes(query));
+                const kwMatch = log.keywords?.some(k => k.toLowerCase().includes(query));
+                if (!titleMatch && !descMatch && !subMatch && !tagMatch && !kwMatch) return false;
+            }
+
+            // Shard filter
+            if (activeFilters.shard !== 'all') {
+                const shard = activeFilters.shard;
+                const region = (log.region || '').toLowerCase();
+                const tags = (log.tags || []).map(t => t.toLowerCase());
+
+                if (shard === 'tech' && !tags.some(t => ['ai', 'tech', 'software', 'hardware', 'crypto', 'genetics'].includes(t)) && !region.includes('earth')) {
+                    return false;
+                }
+                if (shard === 'space' && !region.includes('space') && !region.includes('moon') && !region.includes('mars') && !region.includes('orbit') && !tags.includes('space')) {
+                    return false;
+                }
+                if (shard === 'climate' && !tags.some(t => ['climate', 'energy', 'sun', 'physics'].includes(t))) {
+                    return false;
+                }
+                if (shard === 'geopolitics' && !tags.some(t => ['history', 'war', 'pvp', 'politics', 'security', 'diplomacy'].includes(t))) {
+                    return false;
+                }
+                if (shard === 'legacy' && !log.date?.includes('19') && !log.date?.includes('18') && !log.date?.includes('BC') && !log.date?.includes('Ago') && !log.date?.includes('1440') && !log.date?.includes('1347')) {
+                    return false;
+                }
+            }
+
+            return true;
+        }).sort((a, b) => {
+            if (activeFilters.sort === 'date-desc') {
+                return (b.date || '').localeCompare(a.date || '');
+            } else {
+                return (a.date || '').localeCompare(b.date || '');
+            }
+        });
+    }
+
     function renderLogs() {
+        if (!feedContainer) return;
         const filtered = getFilteredLogs();
-        logCountElement.textContent = `Displaying ${filtered.length} Records`;
+        logCountElement.textContent = `Displaying ${filtered.length} Reports`;
         feedContainer.innerHTML = '';
 
         if (filtered.length === 0) {
-            feedContainer.innerHTML = '<div class="no-results">// NO_RECORDS_FOUND</div>';
+            feedContainer.innerHTML = `<div class="no-results" style="padding: 3rem; text-align: center; color: var(--text-muted);">// NO SIMULATION NEWS RECORDS MATCH YOUR FILTER</div>`;
             return;
         }
 
         filtered.forEach(log => {
             const card = document.createElement('div');
-            // Sanitize class name for type
-            const typeClass = `type-${log.type.replace(/\s+/g, '-')}`;
+            card.className = 'news-card';
+            card.onclick = () => openArticleModal(log.id);
 
-            card.className = `log-card ${typeClass}`;
-            if (card.className.includes('Critical')) card.style.borderLeftColor = 'var(--accent-red)';
-
-            // Build Links
-            let linksHtml = '';
-            if (log.wiki_url || log.grok_url) {
-                linksHtml += '<div class="external-links-container">';
-                if (log.wiki_url) {
-                    linksHtml += `<a href="${log.wiki_url}" target="_blank" class="archive-btn">
-                        <span>></span> ACCESS_ARCHIVE (WIKI)
-                    </a>`;
-                }
-                if (log.grok_url) {
-                    linksHtml += `<a href="${log.grok_url}" target="_blank" class="archive-btn grok-btn">
-                        <span>></span> ACCESS_ARCHIVE (GROKIPEDIA)
-                    </a>`;
-                }
-                linksHtml += '</div>';
-            }
+            const tagsHTML = (log.tags || []).slice(0, 3).map(t => `<span class="tag-item">#${escapeHTML(t)}</span>`).join('');
+            const subtitleHTML = log.sys_subtitle ? `<div class="card-sys-subtitle">${escapeHTML(log.sys_subtitle)}</div>` : '';
 
             card.innerHTML = `
-                <div class="card-header">
-                    <div class="meta-info">
-                        <span class="version">[${log.version}]</span>
-                        <span class="date">${log.date}</span>
+                <div>
+                    <div class="card-top-meta">
+                        <span class="type-pill ${getTypeClass(log.type)}">${escapeHTML(log.type || 'NEWS')}</span>
+                        <span class="card-version-tag">${escapeHTML(log.version || 'v.2026')}</span>
                     </div>
-                    <span class="log-type-label">${log.type}</span>
+
+                    <h3 class="card-title">${escapeHTML(log.title)}</h3>
+                    ${subtitleHTML}
+
+                    <p class="card-description">${escapeHTML(log.description)}</p>
                 </div>
-                <span class="card-title">${log.title}</span>
-                <div class="tags">
-                    ${log.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
-                    ${log.importance === 'low' ? '<span class="tag" style="border-color:#444; color:#666">Minor</span>' : ''}
-                </div>
-                <div class="card-details">
-                    <p>${log.description}</p>
-                    ${linksHtml}
-                    ${log.submitted_by ? `<span class="data-source-credit">// DATA_SOURCE: ${log.submitted_by}</span>` : ''}
-                    <p class="meta-info" style="margin-top: 0.5rem">Region: ${log.region} | ID: ${log.id}</p>
+
+                <div class="card-footer-meta">
+                    <span class="card-date">${escapeHTML(log.date || 'Present')} • ${escapeHTML(log.region || 'Global_Earth')}</span>
+                    <div class="card-tags">${tagsHTML}</div>
                 </div>
             `;
 
-            card.addEventListener('click', () => {
-                card.classList.toggle('expanded');
-            });
-
             feedContainer.appendChild(card);
         });
-
-        // Update ticker with all loaded logs
-        renderTicker();
     }
 
-    // --- Interactive Controls ---
+    // --- AI Timeline Rendering ---
+    function renderAITimeline() {
+        const stackContainer = document.getElementById('ai-timeline-stack');
+        if (!stackContainer) return;
 
-    searchInput.addEventListener('input', (e) => {
-        activeFilters.search = e.target.value;
-        renderLogs();
-    });
+        stackContainer.innerHTML = '';
 
-    // Sort Select
-    sortSelect.addEventListener('change', (e) => {
-        activeFilters.sort = e.target.value;
-        renderLogs();
-    });
-
-    regionSelect.addEventListener('change', (e) => {
-        activeFilters.region = e.target.value;
-        renderLogs();
-    });
-
-    severityToggle.addEventListener('change', (e) => {
-        activeFilters.criticalOnly = e.target.checked;
-        renderLogs();
-    });
-
-    granularityToggle.addEventListener('change', (e) => {
-        activeFilters.verbose = e.target.checked;
-        renderLogs();
-    });
-
-    // --- Live Clock ---
-    function updateClock() {
-        const now = new Date();
-        clockElement.textContent = `Server Time: ${now.toLocaleTimeString()}`;
-    }
-
-    // --- Contributors Fetch ---
-    async function loadContributors() {
-        const repo = "MarcelvanDuijnDev/thesimulationlog.com";
-        const container = document.getElementById('contributors-list');
-
-        try {
-            const response = await fetch(`https://api.github.com/repos/${repo}/contributors`);
-
-            if (!response.ok) throw new Error("Connection Refused");
-
-            const data = await response.json();
-
-            // Clear the loading skeleton
-            container.innerHTML = '';
-
-            data.forEach(user => {
-                // Link wrapper
-                const link = document.createElement('a');
-                link.href = user.html_url;
-                link.target = "_blank";
-                link.className = "contributor-link";
-
-                // Avatar
-                const img = document.createElement('img');
-                img.src = user.avatar_url;
-                img.alt = user.login;
-                img.className = "contributor-avatar";
-
-                // Tooltip
-                const tooltip = document.createElement('span');
-                tooltip.textContent = `User: ${user.login}`;
-                tooltip.className = "contributor-tooltip";
-
-                link.appendChild(img);
-                link.appendChild(tooltip);
-                container.appendChild(link);
-            });
-
-        } catch (error) {
-            console.warn("Contributors failed to load:", error);
-            // Fallback for offline/rate limit
-            container.innerHTML = '<span class="text-xs text-dim" style="font-family: var(--font-display)">// OFFLINE_MODE (GIT_API_FAIL)</span>';
-        }
-    }
-
-    // Init interactives
-    fetchManifest();
-    loadContributors();
-    setInterval(updateClock, 1000);
-    updateClock();
-
-    // ========================================
-    // CONSOLE EASTER EGGS
-    // ========================================
-
-    console.log('%c╔═══════════════════════════════════════════════════════════╗', 'color: #00ff41; font-family: monospace;');
-    console.log('%c║     EARTH SIMULATION SYSTEM - DIAGNOSTIC CONSOLE          ║', 'color: #00ff41; font-family: monospace; font-weight: bold;');
-    console.log('%c╚═══════════════════════════════════════════════════════════╝', 'color: #00ff41; font-family: monospace;');
-    console.log('');
-    console.log('%c> SYSTEM STATUS:', 'color: #00ccff; font-weight: bold;');
-    console.log('%c  ├─ Instance: EARTH_SIM_C-137', 'color: #00ff41;');
-    console.log('%c  ├─ Uptime: 4.54 Billion Years', 'color: #00ff41;');
-    console.log('%c  ├─ Active Users: 8.3 Billion', 'color: #00ff41;');
-    console.log('%c  ├─ CPU Load: 98% (WARNING)', 'color: #ffaa00;');
-    console.log('%c  ├─ Memory: 99.7% Allocated', 'color: #ff3333;');
-    console.log('%c  └─ Status: UNSTABLE', 'color: #ff3333; font-weight: bold;');
-    console.log('');
-    console.log('%c> LOADING MODULES:', 'color: #00ccff; font-weight: bold;');
-    console.log('%c  ✓ physics.dll v1.0.0', 'color: #00ff41;');
-    console.log('%c  ✓ consciousness.exe v2.1.4', 'color: #00ff41;');
-    console.log('%c  ✓ gravity.sys v9.8.1', 'color: #00ff41;');
-    console.log('%c  ✓ time.dll v1.0.0 (linear mode)', 'color: #00ff41;');
-    console.log('%c  ⚠ free_will.exe v0.1.2-beta (experimental)', 'color: #ffaa00;');
-    console.log('%c  ✗ meaning_of_life.dll - FILE NOT FOUND', 'color: #ff3333;');
-    console.log('');
-    console.log('%c> RECENT PATCHES:', 'color: #00ccff; font-weight: bold;');
-    console.log('%c  • v2026.01.26 - Minor bug fixes, improved AI integration', 'color: #00ff41;');
-    console.log('%c  • v2024.12.31 - Deprecated Flash support (finally)', 'color: #00ff41;');
-    console.log('%c  • v2020.03.01 - Emergency pandemic hotfix', 'color: #ffaa00;');
-    console.log('');
-    console.log('%c> EASTER EGG UNLOCKED! 🥚', 'color: #00ff41; font-size: 14px; font-weight: bold;');
-    console.log('%cYou found the developer console. Welcome, curious one.', 'color: #00ccff;');
-    console.log('%cFun fact: This simulation runs on a potato-powered quantum computer.', 'color: #666;');
-    console.log('');
-    console.log('%c═══════════════════════════════════════════════════════════', 'color: #00ff41; font-family: monospace;');
-    console.log('');
-
-    // ========================================
-    // USER DIAGNOSTIC TOOL (LIFE DEBUGGER)
-    // ========================================
-
-    const diagnosticTrigger = document.getElementById('diagnostic-trigger');
-    const diagnosticModal = document.getElementById('diagnostic-modal');
-    const closeDiagnostic = document.getElementById('close-diagnostic');
-    const userInput = document.getElementById('user-input');
-    const runDiagnosticBtn = document.getElementById('run-diagnostic-btn');
-    const diagnosticOutput = document.getElementById('diagnostic-output');
-
-    // Get or create anonymized user ID
-    function getAnonymizedUserID() {
-        const storageKey = 'simulation_user_id';
-        let userId = localStorage.getItem(storageKey);
-
-        if (!userId) {
-            // Generate UUID using crypto API
-            userId = crypto.randomUUID();
-            localStorage.setItem(storageKey, userId);
-        }
-
-        return userId;
-    }
-
-    // Typewriter effect for AI responses
-    function typeWriter(text, element, speed = 20) {
-        return new Promise((resolve) => {
-            let i = 0;
-            element.textContent = '';
-
-            function type() {
-                if (i < text.length) {
-                    element.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(type, speed);
-                } else {
-                    resolve();
-                }
-            }
-
-            type();
+        aiTimelineData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'timeline-event-card';
+            card.innerHTML = `
+                <div class="timeline-event-header">
+                    <span class="timeline-event-year">${escapeHTML(item.year)} • ${escapeHTML(item.company)}</span>
+                    <span class="badge-patch">${escapeHTML(item.patch_version)}</span>
+                </div>
+                <div class="timeline-event-model">${escapeHTML(item.model)}</div>
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem;">${escapeHTML(item.description)}</p>
+                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
+                    ⚡ Est. Compute: ${escapeHTML(item.compute_flops)} | Impact: ${escapeHTML(item.impact)}
+                </div>
+            `;
+            stackContainer.appendChild(card);
         });
     }
 
-    // Build system prompt for AI
-    function buildSystemPrompt(userInput) {
-        const ticketNumber = Math.floor(1000 + Math.random() * 9000);
+    // --- Article Modal View ---
+    window.openArticleModal = function(logId) {
+        const log = allLogs.find(l => l.id === logId);
+        if (!log || !articleModalBody) return;
 
-        return `ROLE: Lead Developer of the Earth Simulation.
+        const wikiLinkHTML = log.wiki_url 
+            ? `<a href="${escapeHTML(log.wiki_url)}" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-flex;"><span>🌐</span> Read Full Wikipedia Entry</a>` 
+            : '';
 
-CONTEXT: A user (Unit) is reporting a bug in their life: "${userInput}".
+        articleModalBody.innerHTML = `
+            <div style="font-family: var(--font-mono); color: var(--accent-emerald); font-size: 0.82rem; margin-bottom: 0.5rem;">
+                ${escapeHTML(log.version || 'v.2026')} // ${escapeHTML(log.type || 'NEWS')} // ${escapeHTML(log.region || 'Global_Earth')}
+            </div>
+            <h2 style="font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">${escapeHTML(log.title)}</h2>
+            ${log.sys_subtitle ? `<div style="font-family: var(--font-mono); color: var(--accent-emerald); margin-bottom: 1rem;">❯ ${escapeHTML(log.sys_subtitle)}</div>` : ''}
+            
+            <div style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; white-space: pre-line;">
+                ${escapeHTML(log.description)}
+            </div>
 
-TASK: Analyze this using computer programming terms (memory leaks, infinite loops, hardware limits, corrupted files, deprecated functions, race conditions, etc.).
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
+                Submitted by: <span style="color: var(--accent-cyan);">${escapeHTML(log.submitted_by || 'Aethvion_Admin')}</span><br>
+                Date: ${escapeHTML(log.date || 'Present')} | System Status: ONLINE
+            </div>
 
-OUTPUT FORMAT:
-TICKET #${ticketNumber}: [Technical Name of Error]
+            ${wikiLinkHTML}
+        `;
 
-Status: [CRITICAL / WARNING / INFO]
+        articleModal.classList.remove('hidden');
+    };
 
-Root Cause: [Explain using code/system terms]
+    closeArticleModal?.addEventListener('click', () => {
+        articleModal.classList.add('hidden');
+    });
 
-Recommended Hotfix:
-1. [Step one]
-2. [Step two]
-3. [Step three]
+    articleModal?.addEventListener('click', (e) => {
+        if (e.target === articleModal) articleModal.classList.add('hidden');
+    });
 
-TONE: Witty, slightly condescending, dry, technical. Act like a tired sysadmin dealing with yet another user bug report.
-
-IMPORTANT: Keep response concise (max 200 words). Use technical jargon creatively.`;
+    // --- Helper Functions ---
+    function getTypeClass(type) {
+        if (!type) return 'type-default';
+        const t = type.toLowerCase();
+        if (t.includes('critical') || t.includes('bug')) return 'type-critical';
+        if (t.includes('feature') || t.includes('optimization')) return 'type-feature';
+        if (t.includes('alert')) return 'type-alert';
+        return 'type-default';
     }
 
-    // Add system message to output
-    function addSystemMessage(message, isError = false) {
-        const p = document.createElement('p');
-        p.className = isError ? 'system-msg error-msg' : 'system-msg';
-        p.textContent = `> ${message}`;
-        diagnosticOutput.appendChild(p);
-        diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
+    function escapeHTML(str) {
+        if (!str) return '';
+        return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
 
-    // Run diagnostic analysis
+    // --- Navigation & Controls Event Listeners ---
+    function setupEventListeners() {
+        // Tab View Switching (News vs AI Timeline)
+        navTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const targetView = tab.dataset.view;
+                if (!targetView) return;
+
+                navTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+
+                contentViews.forEach(view => {
+                    if (view.id === `view-${targetView}`) {
+                        view.classList.remove('hidden');
+                        view.classList.add('active');
+                    } else {
+                        view.classList.add('hidden');
+                        view.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        footerNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetView = link.dataset.view;
+                const matchTab = document.querySelector(`.nav-tab[data-view="${targetView}"]`);
+                if (matchTab) matchTab.click();
+            });
+        });
+
+        // Shard Filters
+        shardButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                shardButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilters.shard = btn.dataset.shard;
+                renderLogs();
+            });
+        });
+
+        // View Mode Toggles (Grid vs Wire)
+        viewButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                viewButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                activeFilters.viewMode = btn.dataset.mode;
+                if (activeFilters.viewMode === 'wire') {
+                    feedContainer.classList.add('mode-wire');
+                } else {
+                    feedContainer.classList.remove('mode-wire');
+                }
+            });
+        });
+
+        // Search Input
+        searchInput?.addEventListener('input', (e) => {
+            activeFilters.search = e.target.value.trim();
+            renderLogs();
+        });
+
+        // Sort Select
+        sortSelect?.addEventListener('change', (e) => {
+            activeFilters.sort = e.target.value;
+            renderLogs();
+        });
+
+        // Diagnostic Terminal Modal
+        diagnosticTrigger?.addEventListener('click', () => {
+            diagnosticModal.classList.remove('hidden');
+            userInput.focus();
+        });
+
+        closeDiagnostic?.addEventListener('click', () => {
+            diagnosticModal.classList.add('hidden');
+        });
+
+        runDiagnosticBtn?.addEventListener('click', runDiagnostic);
+        userInput?.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !runDiagnosticBtn.disabled) runDiagnostic();
+        });
+
+        // Privacy info toggle
+        const privacyBtn = document.getElementById('privacy-info-btn');
+        const privacyTooltip = document.getElementById('privacy-tooltip');
+        privacyBtn?.addEventListener('click', (e) => {
+            e.stopPropagation();
+            privacyTooltip.classList.toggle('hidden');
+        });
+    }
+
+    // --- Gemini AI Diagnostic Engine ---
     async function runDiagnostic() {
         const input = userInput.value.trim();
+        if (!input) return;
 
-        if (!input) {
-            addSystemMessage('ERROR: NO INPUT DETECTED. PLEASE DESCRIBE THE GLITCH.', true);
-            return;
-        }
-
-        // Add session separator if there are previous responses
-        const existingResponses = diagnosticOutput.querySelectorAll('.ai-response');
-        if (existingResponses.length > 0) {
-            const separator = document.createElement('div');
-            separator.className = 'session-separator';
-            separator.innerHTML = '<span>═══════════════════════════════════════════════════════════</span>';
-            diagnosticOutput.appendChild(separator);
-        }
-
-        // Display user input in terminal
-        const userInputMsg = document.createElement('p');
-        userInputMsg.className = 'system-msg user-input-echo';
-        userInputMsg.textContent = `USER@EARTH:~$ ${input}`;
-        diagnosticOutput.appendChild(userInputMsg);
-        diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
-
-        // Clear input field
+        addSystemMessage(`USER@EARTH_SIM:~$ ${input}`, 'user-input-echo');
         userInput.value = '';
-
-        // Disable button and show loading
         runDiagnosticBtn.disabled = true;
-        runDiagnosticBtn.classList.add('loading');
 
-        // Show scanning messages
-        addSystemMessage(`ANALYZING INPUT: "${input}"`);
-        await new Promise(resolve => setTimeout(resolve, 500));
-        addSystemMessage('SCANNING SIMULATION LOGS...');
-        await new Promise(resolve => setTimeout(resolve, 500));
-        addSystemMessage('CROSS-REFERENCING USER PROFILE...');
-        await new Promise(resolve => setTimeout(resolve, 500));
-        addSystemMessage('GENERATING DIAGNOSTIC REPORT...');
+        addSystemMessage('SCANNING SIMULATION ANOMALY DATABASE...');
+        await new Promise(r => setTimeout(r, 400));
+        addSystemMessage('CROSS-REFERENCING CLIENT HARDWARE PROFILE...');
+        await new Promise(r => setTimeout(r, 400));
 
         try {
-            // Call Cloudflare Worker API
             const response = await fetch('https://api.aethvion.com/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    prompt: buildSystemPrompt(input),
-                    userId: getAnonymizedUserID()
+                    prompt: `You are the lead SysAdmin AI for Earth Simulation C-137. A user reported: "${input}". Provide a concise, witty, technical patch response (max 150 words).`,
+                    userId: 'SIM_USER_' + Math.floor(Math.random() * 10000)
                 })
             });
 
-            if (!response.ok) {
-                throw new Error(`API returned status ${response.status}`);
-            }
-
+            if (!response.ok) throw new Error(`API returned status ${response.status}`);
             const data = await response.json();
+            const text = data.reply || data.response || data.text || data.message || 'DIAGNOSTIC COMPLETE: System memory cache flushed. Restart client.';
 
-            // Try multiple possible response field names (reply is from your Cloudflare Worker)
-            const responseText = data.reply || data.response || data.text || data.result || data.output || data.message || data.content;
-
-            if (!responseText) {
-                throw new Error('MALFORMED_RESPONSE: No valid text field found in API response');
-            }
-
-            // Create response element
-            const responseDiv = document.createElement('div');
-            responseDiv.className = 'ai-response';
-            diagnosticOutput.appendChild(responseDiv);
-
-            // Typewriter effect for response
-            addSystemMessage('REPORT GENERATED. DISPLAYING...');
-            await new Promise(resolve => setTimeout(resolve, 300));
-
-            // Format the response text (preserve line breaks)
-            const formattedText = responseText.trim();
-            await typeWriter(formattedText, responseDiv, 15);
-
-            addSystemMessage('DIAGNOSTIC COMPLETE. GOOD LUCK, UNIT.', false);
-
-        } catch (error) {
-            addSystemMessage(`ERROR: ${error.message}`, true);
-            addSystemMessage('CHECK BROWSER CONSOLE FOR DETAILS.', true);
+            addSystemMessage(text, 'ai-response');
+        } catch (err) {
+            addSystemMessage(`DIAGNOSTIC REPORT: Glitch localized to client perception layer. Issue logged under ticket #SIM-8849.`, 'ai-response');
         } finally {
-            // Re-enable button
             runDiagnosticBtn.disabled = false;
-            runDiagnosticBtn.classList.remove('loading');
-            diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
         }
     }
 
-    // Modal controls
-    diagnosticTrigger.addEventListener('click', () => {
-        diagnosticModal.classList.remove('hidden');
-        userInput.focus();
-    });
+    function addSystemMessage(text, className = 'system-msg') {
+        const p = document.createElement('p');
+        p.className = className;
+        p.textContent = text;
+        diagnosticOutput.appendChild(p);
+        diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
+    }
 
-    closeDiagnostic.addEventListener('click', () => {
-        diagnosticModal.classList.add('hidden');
-    });
-
-    // Close on overlay click
-    diagnosticModal.addEventListener('click', (e) => {
-        if (e.target === diagnosticModal) {
-            diagnosticModal.classList.add('hidden');
-        }
-    });
-
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && !diagnosticModal.classList.contains('hidden')) {
-            diagnosticModal.classList.add('hidden');
-        }
-    });
-
-    // Run diagnostic on button click
-    runDiagnosticBtn.addEventListener('click', runDiagnostic);
-
-    // Run diagnostic on Enter key
-    userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' && !runDiagnosticBtn.disabled) {
-            runDiagnostic();
-        }
-    });
-
-    // Privacy info toggle
-    const privacyBtn = document.getElementById('privacy-info-btn');
-    const privacyTooltip = document.getElementById('privacy-tooltip');
-
-    privacyBtn.addEventListener('click', (e) => {
-        e.stopPropagation();
-        privacyTooltip.classList.toggle('hidden');
-    });
-
-    // Close privacy tooltip when clicking outside
-    document.addEventListener('click', (e) => {
-        if (!privacyBtn.contains(e.target) && !privacyTooltip.contains(e.target)) {
-            privacyTooltip.classList.add('hidden');
-        }
-    });
+    // Start App
+    initSystem();
 });
