@@ -1,60 +1,61 @@
 [
   {
-    "slug": "claude-3-7-extended-thinking",
-    "title": "Anthropic's Claude 3.7 Sonnet Introduces Extended Thinking",
-    "subtitle": "The new model displays its step-by-step reasoning process in full, sets a new record on software engineering benchmarks, and marks a significant shift in how AI assistants approach complex problems.",
+    "slug": "anthropic-claude-watermarking-ai-text",
+    "title": "Anthropic Watermarks All Claude Outputs — Invisibly, Globally",
+    "subtitle": "Every text response from Claude now carries a hidden statistical signature designed to survive copying and editing. The policy went live on August 2 in response to the EU AI Act, but applies worldwide.",
     "author": "Editorial Team",
-    "date": "August 8, 2026",
-    "date_iso": "2026-08-08",
+    "date": "August 16, 2026",
+    "date_iso": "2026-08-16",
     "category": "Artificial Intelligence",
     "category_class": "ai",
     "tags": [
       "AI",
       "Anthropic",
       "Claude",
-      "LLM",
-      "Reasoning",
-      "Coding"
+      "Watermarking",
+      "EU AI Act",
+      "C2PA"
     ],
-    "reading_time": "5 min read",
-    "meta_description": "Claude 3.7 Sonnet, released February 24, 2025, introduces extended thinking — a visible chain-of-thought reasoning mode that achieves 62.3% on SWE-bench Verified and 97.6% on HumanEval, making it Anthropic's most capable model to date."
+    "reading_time": "4 min read",
+    "meta_description": "Anthropic began watermarking all Claude-generated text on August 2, 2026, using invisible statistical biases in word selection that persist through copying and editing. The policy is global and applies to all Claude platforms."
   },
   {
-    "slug": "deepseek-r1-open-weights-reasoning",
-    "title": "DeepSeek-R1 Matches GPT-4o at 5% of the Cost",
-    "subtitle": "The Chinese lab's open-weight reasoning model triggered a global AI hardware rethink — and wiped $590 billion from Nvidia's market cap in a single trading session.",
+    "slug": "eu-ai-act-enforcement-august-2026",
+    "title": "The EU AI Act Is Now Being Enforced — Here Is What That Means",
+    "subtitle": "As of August 2, 2026, the European Commission's AI Office has formal powers to investigate and fine AI providers. The rules on transparency and content labelling are active. Fines can reach 3% of global turnover.",
     "author": "Editorial Team",
-    "date": "August 8, 2026",
-    "date_iso": "2026-08-08",
+    "date": "August 16, 2026",
+    "date_iso": "2026-08-16",
     "category": "Artificial Intelligence",
     "category_class": "ai",
     "tags": [
       "AI",
-      "DeepSeek",
-      "LLM",
-      "Open Source",
-      "Reasoning"
+      "Regulation",
+      "EU AI Act",
+      "Policy",
+      "Anthropic",
+      "OpenAI"
     ],
-    "reading_time": "6 min read",
-    "meta_description": "DeepSeek-R1 is a 671 billion parameter open-weight reasoning model that matches GPT-4o on major benchmarks while costing a fraction to train — upending assumptions about AI development costs."
+    "reading_time": "5 min read",
+    "meta_description": "The EU AI Act entered active enforcement on August 2, 2026. Transparency obligations are now live, fines can reach 15 million euros or 3% of global revenue, and generative AI providers must label synthetic content in machine-readable formats."
   },
   {
-    "slug": "spacex-mechazilla-catches-starship-booster",
-    "title": "SpaceX Catches the Starship Booster Mid-Air with Mechazilla",
-    "subtitle": "On October 13, 2024, a 71-metre rocket booster returned from space and was caught by mechanical arms on the launch tower — a first in the history of rocketry.",
+    "slug": "spacex-38-minute-dual-launch-record",
+    "title": "SpaceX Sets New World Record: Two Rockets, 38 Minutes Apart",
+    "subtitle": "On August 15, Falcon 9 boosters launched from opposite coasts of the United States in the tightest back-to-back orbital launch window ever recorded.",
     "author": "Editorial Team",
-    "date": "August 8, 2026",
-    "date_iso": "2026-08-08",
+    "date": "August 16, 2026",
+    "date_iso": "2026-08-16",
     "category": "Space",
     "category_class": "space",
     "tags": [
       "SpaceX",
-      "Starship",
+      "Falcon 9",
       "Rockets",
       "Space",
-      "Reusability"
+      "Record"
     ],
-    "reading_time": "5 min read",
-    "meta_description": "SpaceX completed Integrated Flight Test 5 on October 13, 2024, catching the Super Heavy booster with Mechazilla's mechanical arms — the first time a booster of this scale has been caught rather than landed."
+    "reading_time": "4 min read",
+    "meta_description": "SpaceX launched two Falcon 9 rockets just 38 minutes apart on August 15, 2026 — one from Cape Canaveral, one from Vandenberg — setting a new world record for the shortest interval between two orbital launches."
   }
 ]

@@ -1,0 +1,57 @@
+{
+  "slug": "eu-ai-act-enforcement-august-2026",
+  "title": "The EU AI Act Is Now Being Enforced — Here Is What That Means",
+  "subtitle": "As of August 2, 2026, the European Commission's AI Office has formal powers to investigate and fine AI providers. The rules on transparency and content labelling are active. Fines can reach 3% of global turnover.",
+  "author": "Editorial Team",
+  "date": "August 16, 2026",
+  "date_iso": "2026-08-16",
+  "category": "Artificial Intelligence",
+  "category_class": "ai",
+  "tags": ["AI", "Regulation", "EU AI Act", "Policy", "Anthropic", "OpenAI"],
+  "reading_time": "5 min read",
+  "source_url": "https://www.europa.eu",
+  "source_label": "European Commission",
+  "meta_description": "The EU AI Act entered active enforcement on August 2, 2026. Transparency obligations are now live, fines can reach 15 million euros or 3% of global revenue, and generative AI providers must label synthetic content in machine-readable formats.",
+  "content": [
+    {
+      "type": "p",
+      "text": "On August 2, 2026, the European Union's AI Act crossed from legislation into enforcement. The EU AI Office and national competent authorities in each member state now have formal legal powers to investigate AI providers, demand documentation, and impose financial penalties. The transition marks the end of the Act's grace period for transparency obligations — a shift that has been reshaping compliance teams across the technology industry since the first quarter of this year."
+    },
+    {
+      "type": "h2",
+      "text": "What Is Now Required"
+    },
+    {
+      "type": "p",
+      "text": "The provisions active as of August 2 centre on transparency and content labelling. Under Article 50 of the Act, any organisation deploying a generative AI system must ensure users are clearly informed when they are interacting with AI — unless that fact is self-evident from context. More significantly, all AI-generated or AI-manipulated content, including text, images, audio, and video, must now be marked in a machine-readable format that allows detection as synthetic. Deepfakes — content depicting real people, places, or events in ways they did not occur — must be labelled visibly."
+    },
+    {
+      "type": "p",
+      "text": "Penalties for non-compliance are substantial. Providers of general-purpose AI models face fines of up to 15 million euros, or 3% of worldwide annual turnover, whichever is higher. For the largest AI companies, that figure translates to billions of euros in potential exposure."
+    },
+    {
+      "type": "h2",
+      "text": "How Major Providers Are Responding"
+    },
+    {
+      "type": "p",
+      "text": "Anthropic moved quickly. The company activated invisible statistical watermarking for all Claude models launched on or after August 2, applying the technique globally — not just within the EU. The watermark, modelled on a similar approach used by Google DeepMind's SynthID-Text system, introduces subtle biases in word selection patterns that persist through copying and light editing, while remaining imperceptible to readers. Claude also now attaches C2PA-standard provenance metadata to supported image and file outputs."
+    },
+    {
+      "type": "blockquote",
+      "text": "The Act's transparency provisions are not just a European concern. Providers who apply them globally avoid the compliance risk of geographic inconsistency — and the reputational risk of a two-tier content standard."
+    },
+    {
+      "type": "h2",
+      "text": "What Is Still Coming"
+    },
+    {
+      "type": "p",
+      "text": "The August 2 enforcement date does not cover everything. Obligations for high-risk AI systems — those used in hiring, credit scoring, healthcare, law enforcement, and critical infrastructure — are deferred. Standalone high-risk systems face a December 2, 2027 deadline; systems embedded in regulated hardware have until August 2, 2028. This phased structure means the most consequential provisions of the Act are still more than a year away for most enterprise deployments."
+    },
+    {
+      "type": "p",
+      "text": "Compliance experts are nonetheless urging companies not to treat the delay as breathing room. The recommended immediate actions include conducting an inventory of all AI systems in use across an organisation — including tools adopted informally by employees — classifying each system by provider versus deployer role, and establishing internal AI governance frameworks with designated oversight. Regulatory sandboxes, which member states were required to have operational by August 2, are now available for companies wanting to test compliance approaches under supervised conditions."
+    }
+  ]
+}
