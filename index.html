@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>The Simulation Log - Real-World News Formatted as Simulation Patch Notes</title>
+    <title>The Simulation Log - Global Tech, Science & AI News Wire</title>
     <meta name="description"
-        content="Live real-world breaking news, AI developments, space exploration, and historical events presented as official Earth Simulation patch notes and system alerts.">
+        content="Live breaking news, artificial intelligence developments, space exploration, and historical milestones. A modern real-world tech & science news platform.">
     <meta name="keywords"
-        content="simulation log, real world news, tech news, ai news, breaking news, simulation patch notes, reality status">
+        content="tech news, ai news, deepseek, breaking news, space news, science journal, technology timeline">
     <meta name="author" content="Aethvion">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
@@ -18,20 +18,20 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesimulationlog.com/">
-    <meta property="og:title" content="THE SIMULATION LOG - Real-World News & Patch Wire">
-    <meta property="og:description" content="Breaking real-world news and technology breakthroughs formatted as Earth Sim patch notes.">
+    <meta property="og:title" content="THE SIMULATION LOG - Tech & Science News Wire">
+    <meta property="og:description" content="Breaking news, AI breakthroughs, and space technology reporting.">
     <meta property="og:image" content="https://thesimulationlog.com/og-preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="THE SIMULATION LOG - Real-World News Wire">
-    <meta name="twitter:description" content="Monitoring 8.15 Billion active clients. Status: UNSTABLE.">
+    <meta name="twitter:title" content="THE SIMULATION LOG - Global News Wire">
+    <meta name="twitter:description" content="Global breaking news in AI, technology, and science.">
 
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "NewsArticle",
       "name": "The Simulation Log",
-      "description": "Real-time news wire and anomaly reporting interface for Earth simulation patch notes.",
-      "applicationCategory": "News / Entertainment",
+      "description": "Real-time news wire and anomaly reporting interface for technology, space, and science.",
+      "applicationCategory": "News",
       "operatingSystem": "Web-Based",
       "author": {
         "@type": "Organization",
@@ -50,7 +50,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3601034423494896"
@@ -58,29 +58,23 @@
 </head>
 
 <body>
-    <div class="scanline"></div>
-
     <!-- Main Site Header -->
     <header id="main-header">
         <div class="header-container">
             <div class="header-top">
                 <div class="brand-group">
                     <a href="#" class="logo-link" id="nav-logo">
-                        <span class="logo-badge">SYS_LOG</span>
+                        <span class="logo-badge">NEWS WIRE</span>
                         <h1 class="site-title">THE SIMULATION LOG</h1>
                     </a>
-                    <span class="site-tagline">Real-World News Wire & Simulation Patch Notes</span>
+                    <span class="site-tagline">Global Tech, Science & Frontier News</span>
                 </div>
 
                 <div class="header-telemetry">
                     <div class="telemetry-pill">
                         <span class="pulse-dot active"></span>
-                        <span class="telemetry-label">CLIENTS:</span>
-                        <span class="telemetry-val">8.15B</span>
-                    </div>
-                    <div class="telemetry-pill">
                         <span class="telemetry-label">STATUS:</span>
-                        <span class="telemetry-val status-warn">UNSTABLE</span>
+                        <span class="telemetry-val">LIVE FEED</span>
                     </div>
                     <div class="live-clock" id="live-clock">
                         --:--:-- UTC
@@ -92,20 +86,20 @@
             <nav class="main-nav">
                 <div class="nav-tabs">
                     <button class="nav-tab active" data-view="news">
-                        <span class="tab-icon">📰</span> BREAKING NEWS
+                        <span class="tab-icon">📰</span> LATEST STORIES
                     </button>
                     <button class="nav-tab" data-view="ai-timeline">
                         <span class="tab-icon">🤖</span> AI TIMELINE
                     </button>
                     <button class="nav-tab" id="diagnostic-trigger">
-                        <span class="tab-icon">⚡</span> ANOMALY DIAGNOSTIC
+                        <span class="tab-icon">⚡</span> AI DIAGNOSTIC TOOL
                     </button>
                 </div>
 
                 <div class="header-actions">
                     <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com/issues/new/choose"
                         target="_blank" class="submit-news-btn">
-                        <span class="plus-icon">+</span> SUBMIT EVENT
+                        <span class="plus-icon">+</span> SUBMIT STORY
                     </a>
                 </div>
             </nav>
@@ -114,10 +108,10 @@
 
     <!-- Breaking Alert Ticker -->
     <div id="live-ticker-container">
-        <div class="ticker-label"><span class="pulsing-dot"></span> LIVE_ALERTS:</div>
+        <div class="ticker-label"><span class="pulsing-dot"></span> BREAKING NEWS:</div>
         <div class="ticker-content-wrapper">
             <div id="ticker-content">
-                <span>Loading simulation news wire...</span>
+                <span>Loading global news wire...</span>
             </div>
         </div>
     </div>
@@ -136,18 +130,18 @@
             <!-- News Filter Toolbar -->
             <div class="toolbar-section">
                 <div class="shard-filter-tabs" id="shard-tabs">
-                    <button class="shard-btn active" data-shard="all">ALL SHARDS</button>
-                    <button class="shard-btn" data-shard="tech">TECH & AI</button>
+                    <button class="shard-btn active" data-shard="all">ALL STORIES</button>
+                    <button class="shard-btn" data-shard="tech">AI & TECH</button>
                     <button class="shard-btn" data-shard="space">SPACE & SCI</button>
-                    <button class="shard-btn" data-shard="climate">CLIMATE & ENERGY</button>
-                    <button class="shard-btn" data-shard="geopolitics">GEOPOLITICS</button>
-                    <button class="shard-btn" data-shard="legacy">LEGACY ARCHIVE</button>
+                    <button class="shard-btn" data-shard="climate">ENERGY & CLIMATE</button>
+                    <button class="shard-btn" data-shard="geopolitics">WORLD & HISTORY</button>
+                    <button class="shard-btn" data-shard="legacy">ARCHIVE</button>
                 </div>
 
                 <div class="toolbar-controls">
                     <div class="search-box">
                         <span class="search-icon">🔍</span>
-                        <input type="text" id="search-input" placeholder="Search news, topics, keywords..." autocomplete="off">
+                        <input type="text" id="search-input" placeholder="Search news stories, topics, keywords..." autocomplete="off">
                     </div>
 
                     <div class="select-wrapper">
@@ -170,7 +164,7 @@
 
             <!-- News Feed Grid Container -->
             <div class="news-feed-header">
-                <h2 class="feed-title">// SIMULATION_PATCH_FEED</h2>
+                <h2 class="feed-title">LATEST STORIES & BREAKING COVERAGE</h2>
                 <span id="log-count" class="record-counter">Loading...</span>
             </div>
 
@@ -183,20 +177,20 @@
         <!-- VIEW 2: DEDICATED AI TIMELINE PAGE -->
         <section id="view-ai-timeline" class="content-view hidden">
             <div class="timeline-hero">
-                <div class="timeline-hero-badge">AI SINGULARITY TELEMETRY</div>
-                <h2 class="timeline-hero-title">Artificial Intelligence Evolution & Compute Scaling</h2>
+                <div class="timeline-hero-badge">AI INDUSTRY REPORT</div>
+                <h2 class="timeline-hero-title">Artificial Intelligence Model Releases & Compute Growth</h2>
                 <p class="timeline-hero-desc">
-                    Tracking real-world AI model milestones, parameter growth, compute surges, and subagent breakthroughs from 2020 through future AGI projections.
+                    Tracking real-world AI model milestones, parameter growth, compute surges, and autonomous agent breakthroughs from 2020 through future industry projections.
                 </p>
             </div>
 
             <!-- Compute Growth Visual Graph -->
             <div class="graph-card">
                 <div class="graph-header">
-                    <h3 class="graph-title">📈 FRONTIER COMPUTE SCALING & FLOP ESTIMATES (2020–2026+)</h3>
+                    <h3 class="graph-title">📈 AI TRAINING COMPUTE & AGENT WORKLOAD GROWTH (2020–2026+)</h3>
                     <div class="graph-legend">
                         <span class="legend-item"><span class="dot color-primary"></span> Training Compute (FLOPs)</span>
-                        <span class="legend-item"><span class="dot color-accent"></span> Autonomous Subagent Workload</span>
+                        <span class="legend-item"><span class="dot color-accent"></span> Agent Automation Workload</span>
                     </div>
                 </div>
                 <div class="graph-container">
@@ -242,7 +236,7 @@
                         <text x="460" y="215" class="svg-label">2024 (Sora/Claude 3.5)</text>
                         <text x="600" y="215" class="svg-label">2025 (DeepSeek-R1)</text>
                         <text x="740" y="215" class="svg-label highlight">2026 (Antigravity/Gemini 3.6)</text>
-                        <text x="850" y="215" class="svg-label future">2027+ (AGI Shard)</text>
+                        <text x="850" y="215" class="svg-label future">2027+ (Next-Gen AI)</text>
                     </svg>
                 </div>
             </div>
@@ -262,25 +256,25 @@
                 <div class="footer-brand">
                     <div class="footer-logo">THE SIMULATION LOG</div>
                     <p class="footer-desc">
-                        A real-time news reporting interface tracking technological breakthroughs, space exploration, and cultural developments formatted as official Earth Simulation patch notes.
+                        A modern news reporting platform tracking artificial intelligence, space technology, energy breakthroughs, and major global news events.
                     </p>
-                    <span class="copyright-line">SysID: 2026-NEWS-WIRE // AETHVION SYSTEMS</span>
+                    <span class="copyright-line">© 2026 THE SIMULATION LOG // ALL RIGHTS RESERVED</span>
                 </div>
 
                 <div class="footer-links">
                     <h4 class="footer-heading">NAVIGATION</h4>
                     <ul>
-                        <li><a href="#" class="footer-nav-link" data-view="news">> Breaking News</a></li>
+                        <li><a href="#" class="footer-nav-link" data-view="news">> Latest Stories</a></li>
                         <li><a href="#" class="footer-nav-link" data-view="ai-timeline">> AI Timeline</a></li>
-                        <li><a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com" target="_blank">> GitHub Source</a></li>
-                        <li><a href="mailto:contact@aethvion.com">> Submit Event Mail</a></li>
+                        <li><a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com" target="_blank">> GitHub Repository</a></li>
+                        <li><a href="mailto:contact@aethvion.com">> Editorial Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-contributors">
-                    <h4 class="footer-heading">COMMUNITY ADMINS</h4>
+                    <h4 class="footer-heading">EDITORIAL TEAM</h4>
                     <div id="contributors-list" class="contributors-flex">
-                        <span class="contributor-tag">Aethvion_Admin</span>
+                        <span class="contributor-tag">Editorial_Team</span>
                     </div>
                 </div>
             </div>
@@ -295,26 +289,26 @@
                     <span class="dot red"></span>
                     <span class="dot yellow"></span>
                     <span class="dot green"></span>
-                    <span class="title-text">SYSTEM_DIAGNOSTIC_CONSOLE v2.6</span>
+                    <span class="title-text">AI TECHNICAL ASSISTANT v2.6</span>
                 </div>
                 <button id="close-diagnostic" class="close-btn">✕</button>
             </div>
 
             <div class="terminal-body">
                 <div id="diagnostic-output" class="output-area">
-                    <p class="system-msg">> INITIALIZING SIMULATION DIAGNOSTIC ENGINE...</p>
-                    <p class="system-msg">> READY. DESCRIBE YOUR GLITCH OR ANOMALY BELOW.</p>
+                    <p class="system-msg">> INITIALIZING AI TECHNICAL ASSISTANT...</p>
+                    <p class="system-msg">> READY. DESCRIBE YOUR TECHNICAL ISSUE OR QUESTION BELOW.</p>
                 </div>
 
                 <div class="input-line">
-                    <span class="prompt">USER@EARTH_SIM:~$</span>
+                    <span class="prompt">USER:~$</span>
                     <input type="text" id="user-input"
-                        placeholder="Describe glitch (e.g. 'Code won't run', 'Tired all the time')..."
+                        placeholder="Describe issue (e.g. 'Code won't run', 'How does quantum computing work')..."
                         autocomplete="off">
                 </div>
 
                 <div class="terminal-controls">
-                    <button id="run-diagnostic-btn" class="action-btn">[ RUN_DIAGNOSTIC ]</button>
+                    <button id="run-diagnostic-btn" class="action-btn">[ RUN ANALYSIS ]</button>
                 </div>
 
                 <div class="terminal-footer">

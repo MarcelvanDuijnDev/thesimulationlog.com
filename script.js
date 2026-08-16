@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         viewMode: 'grid'
     };
 
-    // AI Timeline Static Milestones Data
+    // AI Timeline Milestones Data
     const aiTimelineData = [
         {
             year: "2020",
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             company: "OpenAI",
             type: "Foundation Model",
             description: "Demonstrated zero-shot and few-shot natural language capabilities across translation, Q&A, and basic code generation.",
-            patch_version: "v.2020.GPT3",
+            release_date: "June 2020",
             compute_flops: "3.14e23 FLOPs",
             impact: "Established the scaling law era for massive transformer-based neural nets."
         },
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             company: "OpenAI",
             type: "Consumer Breakout",
             description: "Reinforcement Learning from Human Feedback (RLHF) enabled conversational AI to reach 100 million active users in 60 days.",
-            patch_version: "v.2022.ChatGPT",
+            release_date: "November 2022",
             compute_flops: "1.2e24 FLOPs",
             impact: "Initiated the global consumer generative AI race across search and productivity."
         },
@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
             company: "OpenAI / Google DeepMind",
             type: "Multimodal Frontier",
             description: "Expanded context windows, reasoning benchmarks, bar exam pass rates, and visual input processing.",
-            patch_version: "v.2023.GPT4",
+            release_date: "March 2023",
             compute_flops: "2.1e25 FLOPs",
             impact: "Proved multi-step reasoning capabilities on complex professional benchmarks."
         },
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
             company: "OpenAI / Anthropic",
             type: "Diffusion Video & Coding",
             description: "Real-time photorealistic video generation (Sora) and high-accuracy software artifact creation.",
-            patch_version: "v.2024.Sora_Render",
+            release_date: "February 2024",
             compute_flops: "8.5e25 FLOPs",
             impact: "Degraded the distinction between real and AI-generated visual media."
         },
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
             company: "DeepSeek / Open Source",
             type: "Reasoning Optimization",
             description: "Ultra-low-compute reasoning model weights published openly, matching top proprietary benchmarks on fractions of GPU hardware.",
-            patch_version: "v.2026.DeepSeek_Distill",
+            release_date: "January 2025",
             compute_flops: "1.4e26 FLOPs",
             impact: "Triggered global hardware re-evaluations and democratized frontier reasoning."
         },
@@ -96,19 +96,19 @@ document.addEventListener('DOMContentLoaded', () => {
             company: "Google DeepMind",
             type: "Agentic IDE Suite",
             description: "Coding subagents autonomously manage workspace files, dependency builds, unit tests, and background task execution.",
-            patch_version: "v.2026.Antigravity_Engine",
+            release_date: "August 2026",
             compute_flops: "5.2e26 FLOPs",
             impact: "Shifted developer roles from manual code drafting to prompt supervision."
         },
         {
             year: "2027+",
-            model: "Projected Recursive Self-Improvement (AGI Shard)",
+            model: "Next-Generation Autonomous Research Models",
             company: "Global Research Consortia",
             type: "AGI Horizon",
             description: "Continuous real-time model retraining and automated scientific hypothesis generation.",
-            patch_version: "v.2027.AGI_Preload",
+            release_date: "Future Horizon",
             compute_flops: "1.0e28+ FLOPs",
-            impact: "Transition of human civilization parameters to post-scarcity intelligence grid."
+            impact: "Transition of human technology infrastructure to self-optimizing intelligence."
         }
     ];
 
@@ -134,14 +134,13 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateClock, 1000);
     }
 
-    // Fetch Manifest & Load All Datasets for Live News Access
+    // Fetch Manifest & Load All Datasets
     async function fetchManifestAndAllData() {
         try {
             const response = await fetch('logs/manifest.json');
             if (!response.ok) throw new Error('Failed to load manifest');
             manifest = await response.json();
 
-            // Load all dataset files concurrently
             const filesToLoad = [];
             manifest.years_available.forEach(y => filesToLoad.push(y.file));
             manifest.eras.forEach(e => filesToLoad.push(e.file));
@@ -160,7 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             await Promise.all(loadPromises);
 
-            // Combine into allLogs array
             allLogs = [];
             Object.values(loadedData).forEach(dataset => {
                 if (Array.isArray(dataset)) {
@@ -185,7 +183,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderHeroNewsCard() {
         if (!heroNewsSection) return;
 
-        // Pick top breaking active news or highest importance recent item
         const leadItem = allLogs.find(log => log.is_active === true) || allLogs[0];
 
         if (!leadItem) {
@@ -202,10 +199,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="hero-header-line">
                     <div class="hero-badges">
                         <span class="badge-breaking">🔥 BREAKING NEWS</span>
-                        <span class="badge-patch">${escapeHTML(leadItem.version || 'v.2026.8')}</span>
                         <span class="type-pill ${getTypeClass(leadItem.type)}">${escapeHTML(leadItem.type || 'NEWS')}</span>
                     </div>
-                    <div class="hero-date">${escapeHTML(leadItem.date || 'Present Day')} // ${escapeHTML(leadItem.region || 'Global_Earth')}</div>
+                    <div class="hero-date">📅 ${escapeHTML(leadItem.date || 'Present')} • ${escapeHTML(leadItem.region || 'Global')}</div>
                 </div>
 
                 <h2 class="hero-headline">${escapeHTML(leadItem.title)}</h2>
@@ -218,7 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <span>📰</span> READ COVERAGE
                     </button>
                     <button class="btn-secondary" id="hero-diag-btn">
-                        <span>⚡</span> RUN DIAGNOSTICS
+                        <span>⚡</span> ASK AI ASSISTANT
                     </button>
                 </div>
             </div>
@@ -236,13 +232,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const activeLogs = allLogs.filter(log => log.is_active === true || log.importance === 'high');
 
         if (activeLogs.length === 0) {
-            tickerContent.innerHTML = '<span>// ALL SIMULATION SYSTEMS OPERATING WITHIN NORMAL PARAMETERS</span>';
+            tickerContent.innerHTML = '<span>// GLOBAL TECH WIRE REPORTING LIVE</span>';
             return;
         }
 
         const itemsHTML = activeLogs.map(log => `
             <span class="ticker-item">
-                <span class="version-tag">[${escapeHTML(log.version || 'PATCH')}]</span>
+                <span class="version-tag">[${escapeHTML(log.date || 'NEWS')}]</span>
                 <strong>${escapeHTML(log.title)}:</strong> ${escapeHTML(log.sys_subtitle || log.description)}
             </span>
         `).join('<span class="ticker-sep">///</span>');
@@ -264,16 +260,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!titleMatch && !descMatch && !subMatch && !tagMatch && !kwMatch) return false;
             }
 
-            // Shard filter
+            // Category filter
             if (activeFilters.shard !== 'all') {
                 const shard = activeFilters.shard;
                 const region = (log.region || '').toLowerCase();
                 const tags = (log.tags || []).map(t => t.toLowerCase());
 
-                if (shard === 'tech' && !tags.some(t => ['ai', 'tech', 'software', 'hardware', 'crypto', 'genetics'].includes(t)) && !region.includes('earth')) {
+                if (shard === 'tech' && !tags.some(t => ['ai', 'tech', 'software', 'hardware', 'crypto', 'genetics'].includes(t))) {
                     return false;
                 }
-                if (shard === 'space' && !region.includes('space') && !region.includes('moon') && !region.includes('mars') && !region.includes('orbit') && !tags.includes('space')) {
+                if (shard === 'space' && !region.includes('space') && !tags.includes('space') && !tags.includes('astronomy')) {
                     return false;
                 }
                 if (shard === 'climate' && !tags.some(t => ['climate', 'energy', 'sun', 'physics'].includes(t))) {
@@ -300,11 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderLogs() {
         if (!feedContainer) return;
         const filtered = getFilteredLogs();
-        logCountElement.textContent = `Displaying ${filtered.length} Reports`;
+        logCountElement.textContent = `Displaying ${filtered.length} Stories`;
         feedContainer.innerHTML = '';
 
         if (filtered.length === 0) {
-            feedContainer.innerHTML = `<div class="no-results" style="padding: 3rem; text-align: center; color: var(--text-muted);">// NO SIMULATION NEWS RECORDS MATCH YOUR FILTER</div>`;
+            feedContainer.innerHTML = `<div class="no-results" style="padding: 3rem; text-align: center; color: var(--text-muted);">// NO STORIES MATCH YOUR FILTER CRITERIA</div>`;
             return;
         }
 
@@ -320,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     <div class="card-top-meta">
                         <span class="type-pill ${getTypeClass(log.type)}">${escapeHTML(log.type || 'NEWS')}</span>
-                        <span class="card-version-tag">${escapeHTML(log.version || 'v.2026')}</span>
+                        <span class="card-real-date">📅 ${escapeHTML(log.date || 'Present')}</span>
                     </div>
 
                     <h3 class="card-title">${escapeHTML(log.title)}</h3>
@@ -330,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="card-footer-meta">
-                    <span class="card-date">${escapeHTML(log.date || 'Present')} • ${escapeHTML(log.region || 'Global_Earth')}</span>
+                    <span class="card-region">📍 ${escapeHTML(log.region || 'Global')}</span>
                     <div class="card-tags">${tagsHTML}</div>
                 </div>
             `;
@@ -351,12 +347,12 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'timeline-event-card';
             card.innerHTML = `
                 <div class="timeline-event-header">
-                    <span class="timeline-event-year">${escapeHTML(item.year)} • ${escapeHTML(item.company)}</span>
-                    <span class="badge-patch">${escapeHTML(item.patch_version)}</span>
+                    <span class="timeline-event-year">📅 ${escapeHTML(item.release_date)} • ${escapeHTML(item.company)}</span>
+                    <span class="type-pill type-feature">${escapeHTML(item.type)}</span>
                 </div>
                 <div class="timeline-event-model">${escapeHTML(item.model)}</div>
                 <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem;">${escapeHTML(item.description)}</p>
-                <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-cyan);">
+                <div style="font-size: 0.82rem; color: var(--accent-cyan);">
                     ⚡ Est. Compute: ${escapeHTML(item.compute_flops)} | Impact: ${escapeHTML(item.impact)}
                 </div>
             `;
@@ -370,23 +366,23 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!log || !articleModalBody) return;
 
         const wikiLinkHTML = log.wiki_url 
-            ? `<a href="${escapeHTML(log.wiki_url)}" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-flex;"><span>🌐</span> Read Full Wikipedia Entry</a>` 
+            ? `<a href="${escapeHTML(log.wiki_url)}" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-flex;"><span>🌐</span> Read Wikipedia Coverage</a>` 
             : '';
 
         articleModalBody.innerHTML = `
-            <div style="font-family: var(--font-mono); color: var(--accent-emerald); font-size: 0.82rem; margin-bottom: 0.5rem;">
-                ${escapeHTML(log.version || 'v.2026')} // ${escapeHTML(log.type || 'NEWS')} // ${escapeHTML(log.region || 'Global_Earth')}
+            <div style="color: var(--accent-emerald); font-weight: 600; font-size: 0.85rem; margin-bottom: 0.5rem;">
+                ${escapeHTML(log.type || 'NEWS')} • 📅 ${escapeHTML(log.date || 'Present')} • 📍 ${escapeHTML(log.region || 'Global')}
             </div>
             <h2 style="font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">${escapeHTML(log.title)}</h2>
-            ${log.sys_subtitle ? `<div style="font-family: var(--font-mono); color: var(--accent-emerald); margin-bottom: 1rem;">❯ ${escapeHTML(log.sys_subtitle)}</div>` : ''}
+            ${log.sys_subtitle ? `<div style="color: var(--accent-emerald); font-weight: 500; margin-bottom: 1rem;">${escapeHTML(log.sys_subtitle)}</div>` : ''}
             
             <div style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; white-space: pre-line;">
                 ${escapeHTML(log.description)}
             </div>
 
-            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-muted);">
-                Submitted by: <span style="color: var(--accent-cyan);">${escapeHTML(log.submitted_by || 'Aethvion_Admin')}</span><br>
-                Date: ${escapeHTML(log.date || 'Present')} | System Status: ONLINE
+            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted);">
+                Published by: <span style="color: var(--accent-cyan); font-weight: 600;">${escapeHTML(log.submitted_by || 'Editorial_Team')}</span><br>
+                Date: ${escapeHTML(log.date || 'Present')}
             </div>
 
             ${wikiLinkHTML}
@@ -408,8 +404,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!type) return 'type-default';
         const t = type.toLowerCase();
         if (t.includes('critical') || t.includes('bug')) return 'type-critical';
-        if (t.includes('feature') || t.includes('optimization')) return 'type-feature';
-        if (t.includes('alert')) return 'type-alert';
+        if (t.includes('feature') || t.includes('ai') || t.includes('tech')) return 'type-feature';
+        if (t.includes('alert') || t.includes('climate')) return 'type-alert';
         return 'type-default';
     }
 
@@ -424,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Navigation & Controls Event Listeners ---
     function setupEventListeners() {
-        // Tab View Switching (News vs AI Timeline)
+        // Tab View Switching
         navTabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const targetView = tab.dataset.view;
@@ -454,7 +450,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Shard Filters
+        // Category Filters
         shardButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 shardButtons.forEach(b => b.classList.remove('active'));
@@ -464,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // View Mode Toggles (Grid vs Wire)
+        // View Mode Toggles
         viewButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 viewButtons.forEach(b => b.classList.remove('active'));
@@ -514,18 +510,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- Gemini AI Diagnostic Engine ---
+    // --- Gemini AI Assistant ---
     async function runDiagnostic() {
         const input = userInput.value.trim();
         if (!input) return;
 
-        addSystemMessage(`USER@EARTH_SIM:~$ ${input}`, 'user-input-echo');
+        addSystemMessage(`USER:~$ ${input}`, 'user-input-echo');
         userInput.value = '';
         runDiagnosticBtn.disabled = true;
 
-        addSystemMessage('SCANNING SIMULATION ANOMALY DATABASE...');
-        await new Promise(r => setTimeout(r, 400));
-        addSystemMessage('CROSS-REFERENCING CLIENT HARDWARE PROFILE...');
+        addSystemMessage('ANALYZING TECHNICAL QUESTION...');
         await new Promise(r => setTimeout(r, 400));
 
         try {
@@ -533,18 +527,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    prompt: `You are the lead SysAdmin AI for Earth Simulation C-137. A user reported: "${input}". Provide a concise, witty, technical patch response (max 150 words).`,
-                    userId: 'SIM_USER_' + Math.floor(Math.random() * 10000)
+                    prompt: `You are an expert AI technical news assistant. A user asked: "${input}". Provide a helpful, clear, technical explanation (max 150 words).`,
+                    userId: 'NEWS_USER_' + Math.floor(Math.random() * 10000)
                 })
             });
 
             if (!response.ok) throw new Error(`API returned status ${response.status}`);
             const data = await response.json();
-            const text = data.reply || data.response || data.text || data.message || 'DIAGNOSTIC COMPLETE: System memory cache flushed. Restart client.';
+            const text = data.reply || data.response || data.text || data.message || 'Analysis complete.';
 
             addSystemMessage(text, 'ai-response');
         } catch (err) {
-            addSystemMessage(`DIAGNOSTIC REPORT: Glitch localized to client perception layer. Issue logged under ticket #SIM-8849.`, 'ai-response');
+            addSystemMessage(`ANALYSIS REPORT: Query processed. Check back for updated editorial coverage.`, 'ai-response');
         } finally {
             runDiagnosticBtn.disabled = false;
         }
