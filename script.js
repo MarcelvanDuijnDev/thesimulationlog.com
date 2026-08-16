@@ -5,27 +5,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
     const sortSelect = document.getElementById('sort-select');
     const heroNewsSection = document.getElementById('hero-news-section');
-    const tickerContent = document.getElementById('ticker-content');
     const clockElement = document.getElementById('live-clock');
 
-    // Navigation & Views
+    // Views & Nav
     const navTabs = document.querySelectorAll('.nav-tab[data-view]');
     const footerNavLinks = document.querySelectorAll('.footer-nav-link[data-view]');
     const contentViews = document.querySelectorAll('.content-view');
     const shardButtons = document.querySelectorAll('.shard-btn');
     const viewButtons = document.querySelectorAll('.view-btn');
 
-    // Modals
-    const diagnosticTrigger = document.getElementById('diagnostic-trigger');
-    const diagnosticModal = document.getElementById('diagnostic-modal');
-    const closeDiagnostic = document.getElementById('close-diagnostic');
-    const runDiagnosticBtn = document.getElementById('run-diagnostic-btn');
-    const diagnosticOutput = document.getElementById('diagnostic-output');
-    const userInput = document.getElementById('user-input');
-
-    const articleModal = document.getElementById('article-modal');
-    const articleModalBody = document.getElementById('article-modal-body');
-    const closeArticleModal = document.getElementById('close-article-modal');
+    // Dynamic View Containers
+    const articlePageContent = document.getElementById('article-page-content');
+    const databaseTableBody = document.getElementById('database-table-body');
 
     // --- State ---
     let manifest = null;
@@ -38,14 +29,14 @@ document.addEventListener('DOMContentLoaded', () => {
         viewMode: 'grid'
     };
 
-    // AI Timeline Milestones Data
+    // AI Timeline Static Data
     const aiTimelineData = [
         {
             year: "2020",
             model: "GPT-3 (175 Billion Parameters)",
             company: "OpenAI",
             type: "Foundation Model",
-            description: "Demonstrated zero-shot and few-shot natural language capabilities across translation, Q&A, and basic code generation.",
+            description: "Demonstrated zero-shot and few-shot natural language capabilities across translation, Q&A, and code generation.",
             release_date: "June 2020",
             compute_flops: "3.14e23 FLOPs",
             impact: "Established the scaling law era for massive transformer-based neural nets."
@@ -65,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             model: "GPT-4 & Multimodal Neural Networks",
             company: "OpenAI / Google DeepMind",
             type: "Multimodal Frontier",
-            description: "Expanded context windows, reasoning benchmarks, bar exam pass rates, and visual input processing.",
+            description: "Expanded context windows, reasoning benchmarks, professional exam pass rates, and visual input processing.",
             release_date: "March 2023",
             compute_flops: "2.1e25 FLOPs",
             impact: "Proved multi-step reasoning capabilities on complex professional benchmarks."
@@ -78,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
             description: "Real-time photorealistic video generation (Sora) and high-accuracy software artifact creation.",
             release_date: "February 2024",
             compute_flops: "8.5e25 FLOPs",
-            impact: "Degraded the distinction between real and AI-generated visual media."
+            impact: "Advanced high-fidelity text-to-video diffusion and autonomous code synthesis."
         },
         {
             year: "2025",
@@ -112,15 +103,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    // --- Core Data Initialization ---
+    // --- Core System Init & Data Fetching ---
     async function initSystem() {
         startLiveClock();
         await fetchManifestAndAllData();
         renderHeroNewsCard();
-        renderTicker();
         renderLogs();
         renderAITimeline();
+        renderDatabaseTable();
         setupEventListeners();
+        handleRouting(); // Initial route check
+        window.addEventListener('hashchange', handleRouting);
     }
 
     // Live Server Clock
@@ -134,7 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setInterval(updateClock, 1000);
     }
 
-    // Fetch Manifest & Load All Datasets
+    // Fetch Manifest & Combine Log Data
     async function fetchManifestAndAllData() {
         try {
             const response = await fetch('logs/manifest.json');
@@ -179,6 +172,45 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // --- Single Page Client Routing (#news, #article/:id, #ai-timeline, #database) ---
+    function handleRouting() {
+        const hash = window.location.hash || '#news';
+
+        if (hash.startsWith('#article/')) {
+            const articleId = hash.replace('#article/', '');
+            renderArticlePage(articleId);
+            showView('article');
+        } else if (hash === '#ai-timeline') {
+            showView('ai-timeline');
+        } else if (hash === '#database') {
+            showView('database');
+        } else {
+            showView('news');
+        }
+    }
+
+    function showView(viewName) {
+        contentViews.forEach(view => {
+            if (view.id === `view-${viewName}`) {
+                view.classList.remove('hidden');
+                view.classList.add('active');
+            } else {
+                view.classList.add('hidden');
+                view.classList.remove('active');
+            }
+        });
+
+        navTabs.forEach(tab => {
+            if (tab.dataset.view === viewName) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
     // --- Hero Featured News Section ---
     function renderHeroNewsCard() {
         if (!heroNewsSection) return;
@@ -198,10 +230,10 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="hero-news-card">
                 <div class="hero-header-line">
                     <div class="hero-badges">
-                        <span class="badge-breaking">🔥 BREAKING NEWS</span>
+                        <span class="badge-breaking">FEATURED STORY</span>
                         <span class="type-pill ${getTypeClass(leadItem.type)}">${escapeHTML(leadItem.type || 'NEWS')}</span>
                     </div>
-                    <div class="hero-date">📅 ${escapeHTML(leadItem.date || 'Present')} • ${escapeHTML(leadItem.region || 'Global')}</div>
+                    <div class="hero-date">Published: ${escapeHTML(leadItem.date || 'Present')} • Region: ${escapeHTML(leadItem.region || 'Global')}</div>
                 </div>
 
                 <h2 class="hero-headline">${escapeHTML(leadItem.title)}</h2>
@@ -210,46 +242,70 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p class="hero-description">${escapeHTML(leadItem.description)}</p>
 
                 <div class="hero-actions">
-                    <button class="btn-primary" onclick="openArticleModal('${leadItem.id}')">
-                        <span>📰</span> READ COVERAGE
-                    </button>
-                    <button class="btn-secondary" id="hero-diag-btn">
-                        <span>⚡</span> ASK AI ASSISTANT
-                    </button>
+                    <a href="#article/${leadItem.id}" class="btn-primary">
+                        READ FULL COVERAGE →
+                    </a>
                 </div>
             </div>
         `;
-
-        document.getElementById('hero-diag-btn')?.addEventListener('click', () => {
-            diagnosticModal.classList.remove('hidden');
-            userInput.focus();
-        });
     }
 
-    // --- Live Alert Ticker ---
-    function renderTicker() {
-        if (!tickerContent) return;
-        const activeLogs = allLogs.filter(log => log.is_active === true || log.importance === 'high');
+    // --- Full Article News Post Page Generator ---
+    function renderArticlePage(articleId) {
+        if (!articlePageContent) return;
 
-        if (activeLogs.length === 0) {
-            tickerContent.innerHTML = '<span>// GLOBAL TECH WIRE REPORTING LIVE</span>';
+        const log = allLogs.find(l => l.id === articleId) || allLogs[0];
+
+        if (!log) {
+            articlePageContent.innerHTML = `<div style="padding: 4rem 0; text-align: center;"><h2>Story Not Found</h2><p><a href="#news">Return to Latest News</a></p></div>`;
             return;
         }
 
-        const itemsHTML = activeLogs.map(log => `
-            <span class="ticker-item">
-                <span class="version-tag">[${escapeHTML(log.date || 'NEWS')}]</span>
-                <strong>${escapeHTML(log.title)}:</strong> ${escapeHTML(log.sys_subtitle || log.description)}
-            </span>
-        `).join('<span class="ticker-sep">///</span>');
+        const wikiLinkHTML = log.wiki_url 
+            ? `<div class="article-source-box">
+                <span class="source-label">Primary Reference & Historical Source:</span>
+                <a href="${escapeHTML(log.wiki_url)}" target="_blank" class="btn-primary">View Wikipedia Reference →</a>
+               </div>` 
+            : '';
 
-        tickerContent.innerHTML = itemsHTML + '<span class="ticker-sep">///</span>' + itemsHTML;
+        articlePageContent.innerHTML = `
+            <a href="#news" class="back-to-news-link">← Back to Latest News</a>
+
+            <div class="article-category-badge">${escapeHTML(log.type || 'AI & TECH')}</div>
+            <h1 class="article-main-headline">${escapeHTML(log.title)}</h1>
+
+            ${log.sys_subtitle ? `<div class="article-lead-subtitle">${escapeHTML(log.sys_subtitle)}</div>` : ''}
+
+            <div class="article-byline-card">
+                <div class="article-author-info">
+                    By <span class="article-author-name">${escapeHTML(log.submitted_by || 'Editorial Team')}</span>
+                    <span>•</span>
+                    <span>Region: ${escapeHTML(log.region || 'Global')}</span>
+                </div>
+                <div>Published: ${escapeHTML(log.date || 'Present')}</div>
+            </div>
+
+            <div class="article-key-highlights">
+                <div class="highlights-title">Key Highlights</div>
+                <div class="highlights-text">${escapeHTML(log.description)}</div>
+            </div>
+
+            <div class="article-body-serif">
+                <p>
+                    ${escapeHTML(log.description)}
+                </p>
+                <p>
+                    Developments in ${escapeHTML(log.tags ? log.tags.join(', ') : 'technology')} continue to influence market strategies, scientific research, and infrastructure investments worldwide. Industry researchers and policy analysts emphasize the importance of monitoring long-term impact metrics as adoption expands across sectors.
+                </p>
+            </div>
+
+            ${wikiLinkHTML}
+        `;
     }
 
-    // --- News Feed Rendering & Filtering ---
+    // --- News Feed Grid Filtering & Rendering ---
     function getFilteredLogs() {
         return allLogs.filter(log => {
-            // Search query filter
             if (activeFilters.search) {
                 const query = activeFilters.search.toLowerCase();
                 const titleMatch = log.title?.toLowerCase().includes(query);
@@ -260,7 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (!titleMatch && !descMatch && !subMatch && !tagMatch && !kwMatch) return false;
             }
 
-            // Category filter
             if (activeFilters.shard !== 'all') {
                 const shard = activeFilters.shard;
                 const region = (log.region || '').toLowerCase();
@@ -300,14 +355,16 @@ document.addEventListener('DOMContentLoaded', () => {
         feedContainer.innerHTML = '';
 
         if (filtered.length === 0) {
-            feedContainer.innerHTML = `<div class="no-results" style="padding: 3rem; text-align: center; color: var(--text-muted);">// NO STORIES MATCH YOUR FILTER CRITERIA</div>`;
+            feedContainer.innerHTML = `<div class="no-results" style="padding: 3rem; text-align: center; color: var(--text-muted);">No stories match your search criteria.</div>`;
             return;
         }
 
         filtered.forEach(log => {
             const card = document.createElement('div');
             card.className = 'news-card';
-            card.onclick = () => openArticleModal(log.id);
+            card.onclick = () => {
+                window.location.hash = `#article/${log.id}`;
+            };
 
             const tagsHTML = (log.tags || []).slice(0, 3).map(t => `<span class="tag-item">#${escapeHTML(t)}</span>`).join('');
             const subtitleHTML = log.sys_subtitle ? `<div class="card-sys-subtitle">${escapeHTML(log.sys_subtitle)}</div>` : '';
@@ -316,7 +373,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div>
                     <div class="card-top-meta">
                         <span class="type-pill ${getTypeClass(log.type)}">${escapeHTML(log.type || 'NEWS')}</span>
-                        <span class="card-real-date">📅 ${escapeHTML(log.date || 'Present')}</span>
+                        <span class="card-real-date">${escapeHTML(log.date || 'Present')}</span>
                     </div>
 
                     <h3 class="card-title">${escapeHTML(log.title)}</h3>
@@ -326,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
 
                 <div class="card-footer-meta">
-                    <span class="card-region">📍 ${escapeHTML(log.region || 'Global')}</span>
+                    <span class="card-region">${escapeHTML(log.region || 'Global')}</span>
                     <div class="card-tags">${tagsHTML}</div>
                 </div>
             `;
@@ -335,7 +392,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // --- AI Timeline Rendering ---
+    // --- AI Timeline Stack ---
     function renderAITimeline() {
         const stackContainer = document.getElementById('ai-timeline-stack');
         if (!stackContainer) return;
@@ -347,57 +404,42 @@ document.addEventListener('DOMContentLoaded', () => {
             card.className = 'timeline-event-card';
             card.innerHTML = `
                 <div class="timeline-event-header">
-                    <span class="timeline-event-year">📅 ${escapeHTML(item.release_date)} • ${escapeHTML(item.company)}</span>
+                    <span class="timeline-event-year">${escapeHTML(item.release_date)} • ${escapeHTML(item.company)}</span>
                     <span class="type-pill type-feature">${escapeHTML(item.type)}</span>
                 </div>
                 <div class="timeline-event-model">${escapeHTML(item.model)}</div>
                 <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 0.75rem;">${escapeHTML(item.description)}</p>
                 <div style="font-size: 0.82rem; color: var(--accent-cyan);">
-                    ⚡ Est. Compute: ${escapeHTML(item.compute_flops)} | Impact: ${escapeHTML(item.impact)}
+                    Compute: ${escapeHTML(item.compute_flops)} | Impact: ${escapeHTML(item.impact)}
                 </div>
             `;
             stackContainer.appendChild(card);
         });
     }
 
-    // --- Article Modal View ---
-    window.openArticleModal = function(logId) {
-        const log = allLogs.find(l => l.id === logId);
-        if (!log || !articleModalBody) return;
+    // --- Database Table Generator ---
+    function renderDatabaseTable() {
+        if (!databaseTableBody) return;
 
-        const wikiLinkHTML = log.wiki_url 
-            ? `<a href="${escapeHTML(log.wiki_url)}" target="_blank" class="btn-primary" style="margin-top: 1rem; display: inline-flex;"><span>🌐</span> Read Wikipedia Coverage</a>` 
-            : '';
+        databaseTableBody.innerHTML = '';
 
-        articleModalBody.innerHTML = `
-            <div style="color: var(--accent-emerald); font-weight: 600; font-size: 0.85rem; margin-bottom: 0.5rem;">
-                ${escapeHTML(log.type || 'NEWS')} • 📅 ${escapeHTML(log.date || 'Present')} • 📍 ${escapeHTML(log.region || 'Global')}
-            </div>
-            <h2 style="font-size: 1.75rem; font-weight: 800; color: #fff; margin-bottom: 0.5rem;">${escapeHTML(log.title)}</h2>
-            ${log.sys_subtitle ? `<div style="color: var(--accent-emerald); font-weight: 500; margin-bottom: 1rem;">${escapeHTML(log.sys_subtitle)}</div>` : ''}
-            
-            <div style="color: var(--text-secondary); font-size: 1.05rem; line-height: 1.6; margin-bottom: 1.5rem; white-space: pre-line;">
-                ${escapeHTML(log.description)}
-            </div>
+        allLogs.forEach(log => {
+            const tr = document.createElement('tr');
+            const wikiLink = log.wiki_url ? `<a href="${escapeHTML(log.wiki_url)}" target="_blank">Wikipedia →</a>` : 'Archive';
 
-            <div style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-color); padding: 1rem; border-radius: var(--radius-sm); font-size: 0.85rem; color: var(--text-muted);">
-                Published by: <span style="color: var(--accent-cyan); font-weight: 600;">${escapeHTML(log.submitted_by || 'Editorial_Team')}</span><br>
-                Date: ${escapeHTML(log.date || 'Present')}
-            </div>
+            tr.innerHTML = `
+                <td style="white-space: nowrap; font-family: var(--font-mono); font-size: 0.82rem;">${escapeHTML(log.date || 'Present')}</td>
+                <td>
+                    <a href="#article/${log.id}" class="db-row-title">${escapeHTML(log.title)}</a>
+                </td>
+                <td><span class="type-pill ${getTypeClass(log.type)}">${escapeHTML(log.type || 'NEWS')}</span></td>
+                <td>${escapeHTML(log.region || 'Global')}</td>
+                <td>${wikiLink}</td>
+            `;
 
-            ${wikiLinkHTML}
-        `;
-
-        articleModal.classList.remove('hidden');
-    };
-
-    closeArticleModal?.addEventListener('click', () => {
-        articleModal.classList.add('hidden');
-    });
-
-    articleModal?.addEventListener('click', (e) => {
-        if (e.target === articleModal) articleModal.classList.add('hidden');
-    });
+            databaseTableBody.appendChild(tr);
+        });
+    }
 
     // --- Helper Functions ---
     function getTypeClass(type) {
@@ -418,39 +460,17 @@ document.addEventListener('DOMContentLoaded', () => {
             .replace(/"/g, '&quot;');
     }
 
-    // --- Navigation & Controls Event Listeners ---
+    // --- Event Listeners Setup ---
     function setupEventListeners() {
-        // Tab View Switching
-        navTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                const targetView = tab.dataset.view;
-                if (!targetView) return;
-
-                navTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-
-                contentViews.forEach(view => {
-                    if (view.id === `view-${targetView}`) {
-                        view.classList.remove('hidden');
-                        view.classList.add('active');
-                    } else {
-                        view.classList.add('hidden');
-                        view.classList.remove('active');
-                    }
-                });
-            });
-        });
-
+        // Nav Links
         footerNavLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
                 const targetView = link.dataset.view;
-                const matchTab = document.querySelector(`.nav-tab[data-view="${targetView}"]`);
-                if (matchTab) matchTab.click();
+                window.location.hash = `#${targetView}`;
             });
         });
 
-        // Category Filters
+        // Shard Filter Buttons
         shardButtons.forEach(btn => {
             btn.addEventListener('click', () => {
                 shardButtons.forEach(b => b.classList.remove('active'));
@@ -485,71 +505,6 @@ document.addEventListener('DOMContentLoaded', () => {
             activeFilters.sort = e.target.value;
             renderLogs();
         });
-
-        // Diagnostic Terminal Modal
-        diagnosticTrigger?.addEventListener('click', () => {
-            diagnosticModal.classList.remove('hidden');
-            userInput.focus();
-        });
-
-        closeDiagnostic?.addEventListener('click', () => {
-            diagnosticModal.classList.add('hidden');
-        });
-
-        runDiagnosticBtn?.addEventListener('click', runDiagnostic);
-        userInput?.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && !runDiagnosticBtn.disabled) runDiagnostic();
-        });
-
-        // Privacy info toggle
-        const privacyBtn = document.getElementById('privacy-info-btn');
-        const privacyTooltip = document.getElementById('privacy-tooltip');
-        privacyBtn?.addEventListener('click', (e) => {
-            e.stopPropagation();
-            privacyTooltip.classList.toggle('hidden');
-        });
-    }
-
-    // --- Gemini AI Assistant ---
-    async function runDiagnostic() {
-        const input = userInput.value.trim();
-        if (!input) return;
-
-        addSystemMessage(`USER:~$ ${input}`, 'user-input-echo');
-        userInput.value = '';
-        runDiagnosticBtn.disabled = true;
-
-        addSystemMessage('ANALYZING TECHNICAL QUESTION...');
-        await new Promise(r => setTimeout(r, 400));
-
-        try {
-            const response = await fetch('https://api.aethvion.com/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    prompt: `You are an expert AI technical news assistant. A user asked: "${input}". Provide a helpful, clear, technical explanation (max 150 words).`,
-                    userId: 'NEWS_USER_' + Math.floor(Math.random() * 10000)
-                })
-            });
-
-            if (!response.ok) throw new Error(`API returned status ${response.status}`);
-            const data = await response.json();
-            const text = data.reply || data.response || data.text || data.message || 'Analysis complete.';
-
-            addSystemMessage(text, 'ai-response');
-        } catch (err) {
-            addSystemMessage(`ANALYSIS REPORT: Query processed. Check back for updated editorial coverage.`, 'ai-response');
-        } finally {
-            runDiagnosticBtn.disabled = false;
-        }
-    }
-
-    function addSystemMessage(text, className = 'system-msg') {
-        const p = document.createElement('p');
-        p.className = className;
-        p.textContent = text;
-        diagnosticOutput.appendChild(p);
-        diagnosticOutput.scrollTop = diagnosticOutput.scrollHeight;
     }
 
     // Start App
