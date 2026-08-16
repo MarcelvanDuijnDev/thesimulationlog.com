@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -10,7 +10,7 @@
         content="Professional reporting on artificial intelligence, machine learning, space technology, and digital frontier developments.">
     <meta name="keywords"
         content="AI news, artificial intelligence, machine learning, deepseek, tech news, space technology, AI timeline">
-    <meta name="author" content="Aethvion">
+    <meta name="author" content="The Simulation Log">
     <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192.png">
     <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="48x48" href="images/favicon-48.png">
@@ -18,11 +18,11 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thesimulationlog.com/">
-    <meta property="og:title" content="THE SIMULATION LOG - AI & Technology News">
+    <meta property="og:title" content="The Simulation Log - AI & Technology News">
     <meta property="og:description" content="Breaking news and in-depth analysis on artificial intelligence, space technology, and global developments.">
     <meta property="og:image" content="https://thesimulationlog.com/og-preview.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="THE SIMULATION LOG - AI News Wire">
+    <meta name="twitter:title" content="The Simulation Log - AI News">
     <meta name="twitter:description" content="Coverage of artificial intelligence, machine learning, and technological breakthroughs.">
 
     <script type="application/ld+json">
@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;500;600;700;800&family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
         rel="stylesheet">
 
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3601034423494896"
@@ -47,47 +47,56 @@
 </head>
 
 <body>
+
+    <!-- Slim Utility Bar -->
+    <div class="utility-bar">
+        <div class="utility-bar-left">
+            <span class="utility-live-badge">
+                <span class="pulse-dot"></span>
+                LIVE
+            </span>
+            <span class="utility-clock" id="live-clock">--:--:-- UTC</span>
+            <span class="utility-date" id="live-date"></span>
+        </div>
+        <div>thesimulationlog.com</div>
+    </div>
+
     <!-- Main Site Header -->
     <header id="main-header">
         <div class="header-container">
-            <div class="header-top">
+
+            <!-- Masthead -->
+            <div class="header-masthead">
                 <div class="brand-group">
                     <a href="#news" class="logo-link" id="nav-logo">
-                        <span class="logo-badge">AI & TECH WIRE</span>
-                        <h1 class="site-title">THE SIMULATION LOG</h1>
+                        <h1 class="site-title">The Simulation Log</h1>
                     </a>
-                    <span class="site-tagline">AI, Technology & Frontier Science Journal</span>
+                    <span class="site-tagline">AI, Technology & Frontier Science</span>
                 </div>
 
-                <div class="header-telemetry">
-                    <div class="telemetry-pill">
-                        <span class="pulse-dot active"></span>
-                        <span class="telemetry-val">LIVE EDITION</span>
-                    </div>
-                    <div class="live-clock" id="live-clock">
-                        --:--:-- UTC
-                    </div>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode" aria-label="Toggle dark mode">
+                        <span class="icon-moon">&#9790;</span>
+                        <span class="icon-sun">&#9728;</span>
+                    </button>
+                    <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com/issues/new/choose"
+                        target="_blank" class="submit-news-btn">
+                        Submit Story
+                    </a>
                 </div>
             </div>
 
             <!-- Primary Navigation Tabs -->
-            <nav class="main-nav">
+            <nav class="main-nav" role="navigation" aria-label="Main navigation">
                 <div class="nav-tabs">
-                    <a href="#news" class="nav-tab active" data-view="news">
-                        LATEST NEWS
+                    <a href="#news" class="nav-tab active" data-view="news" id="nav-news">
+                        Latest News
                     </a>
-                    <a href="#ai-timeline" class="nav-tab" data-view="ai-timeline">
-                        AI TIMELINE
+                    <a href="#ai-timeline" class="nav-tab" data-view="ai-timeline" id="nav-ai-timeline">
+                        AI Timeline
                     </a>
-                    <a href="#database" class="nav-tab" data-view="database">
-                        DATABASE
-                    </a>
-                </div>
-
-                <div class="header-actions">
-                    <a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com/issues/new/choose"
-                        target="_blank" class="submit-news-btn">
-                        SUBMIT STORY
+                    <a href="#database" class="nav-tab" data-view="database" id="nav-database">
+                        Database
                     </a>
                 </div>
             </nav>
@@ -95,83 +104,51 @@
     </header>
 
     <!-- Main Content Container -->
-    <main class="main-container">
+    <main class="main-container" role="main">
 
         <!-- VIEW 1: LATEST NEWS PAGE (HOMEPAGE) -->
-        <section id="view-news" class="content-view active">
+        <section id="view-news" class="content-view active" aria-label="Latest News">
 
-            <!-- Hero Featured Article Banner -->
+            <!-- Hero Featured Article -->
             <div id="hero-news-section" class="hero-card-container">
-                <!-- Dynamically Injected Lead News Article -->
+                <!-- Dynamically injected -->
             </div>
 
-            <!-- News Category Toolbar -->
-            <div class="toolbar-section">
-                <div class="shard-filter-tabs" id="shard-tabs">
-                    <button class="shard-btn active" data-shard="all">ALL STORIES</button>
-                    <button class="shard-btn" data-shard="tech">AI & TECH</button>
-                    <button class="shard-btn" data-shard="space">SPACE & SCI</button>
-                    <button class="shard-btn" data-shard="climate">ENERGY & CLIMATE</button>
-                    <button class="shard-btn" data-shard="geopolitics">WORLD & HISTORY</button>
-                </div>
-
-                <div class="toolbar-controls">
-                    <div class="search-box">
-                        <input type="text" id="search-input" placeholder="Search news stories, topics, keywords..." autocomplete="off">
-                    </div>
-
-                    <div class="select-wrapper">
-                        <select id="sort-select">
-                            <option value="date-desc">Newest First</option>
-                            <option value="date-asc">Oldest First</option>
-                        </select>
-                    </div>
-
-                    <div class="view-toggle">
-                        <button class="view-btn active" data-mode="grid" title="Grid News View">
-                            Grid
-                        </button>
-                        <button class="view-btn" data-mode="wire" title="Compact List View">
-                            List
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- News Grid Header -->
+            <!-- Latest Stories Header -->
             <div class="news-feed-header">
-                <h2 class="feed-title">LATEST STORIES</h2>
+                <h2 class="feed-title">Latest Stories</h2>
                 <span id="log-count" class="record-counter">Loading...</span>
             </div>
 
-            <div id="feed" class="news-grid">
+            <!-- News Grid -->
+            <div id="feed" class="news-grid" role="feed" aria-label="News stories">
                 <!-- News cards injected via JS -->
             </div>
         </section>
 
 
-        <!-- VIEW 2: FULL ARTICLE POST PAGE (DEDICATED URL ROUTE) -->
-        <section id="view-article" class="content-view hidden">
+        <!-- VIEW 2: FULL ARTICLE POST PAGE -->
+        <section id="view-article" class="content-view hidden" aria-label="Article">
             <div class="article-page-container" id="article-page-content">
                 <!-- Injected via JS -->
             </div>
         </section>
 
 
-        <!-- VIEW 3: DEDICATED AI TIMELINE PAGE -->
-        <section id="view-ai-timeline" class="content-view hidden">
+        <!-- VIEW 3: AI TIMELINE PAGE -->
+        <section id="view-ai-timeline" class="content-view hidden" aria-label="AI Timeline">
             <div class="timeline-hero">
-                <div class="timeline-hero-badge">INDUSTRY BENCHMARKS</div>
-                <h2 class="timeline-hero-title">Artificial Intelligence Model Evolution & Compute Scaling</h2>
+                <div class="timeline-hero-badge">Industry Benchmarks</div>
+                <h2 class="timeline-hero-title">Artificial Intelligence: Model Evolution & Compute Scaling</h2>
                 <p class="timeline-hero-desc">
                     Tracking real-world AI model milestones, parameter growth, compute surges, and autonomous agent breakthroughs from 2020 through future industry projections.
                 </p>
             </div>
 
-            <!-- Compute Growth Visual Graph -->
+            <!-- Compute Growth Graph -->
             <div class="graph-card">
                 <div class="graph-header">
-                    <h3 class="graph-title">AI TRAINING COMPUTE & AUTOMATION WORKLOAD GROWTH (2020–2026+)</h3>
+                    <h3 class="graph-title">AI Training Compute & Automation Workload Growth (2020–2026+)</h3>
                     <div class="graph-legend">
                         <span class="legend-item"><span class="dot color-primary"></span> Training Compute (FLOPs)</span>
                         <span class="legend-item"><span class="dot color-accent"></span> Agent Automation Workload</span>
@@ -187,66 +164,96 @@
 
                         <defs>
                             <linearGradient id="areaGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#10b981" stop-opacity="0.35" />
-                                <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
+                                <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.18" />
+                                <stop offset="100%" stop-color="#1d4ed8" stop-opacity="0.0" />
                             </linearGradient>
                             <linearGradient id="subagentGrad" x1="0" y1="0" x2="0" y2="1">
-                                <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.30" />
-                                <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.0" />
+                                <stop offset="0%" stop-color="#059669" stop-opacity="0.15" />
+                                <stop offset="100%" stop-color="#059669" stop-opacity="0.0" />
                             </linearGradient>
                         </defs>
 
                         <polygon points="50,190 50,180 180,165 320,135 460,110 600,70 740,45 850,25 850,190" fill="url(#areaGrad)" />
                         <polygon points="50,190 50,188 180,185 320,170 460,130 600,65 740,35 850,15 850,190" fill="url(#subagentGrad)" />
 
-                        <!-- Curve Lines -->
                         <path d="M 50 180 Q 180 165, 320 135 T 600 70 T 850 25" class="svg-path primary" />
                         <path d="M 50 188 Q 180 185, 320 170 T 600 65 T 850 15" class="svg-path accent" stroke-dasharray="4" />
 
-                        <!-- Interactive Nodes -->
-                        <circle cx="50" cy="180" r="5" class="svg-node" data-year="2020" />
+                        <!-- Nodes -->
+                        <circle cx="50"  cy="180" r="5" class="svg-node" data-year="2020" />
                         <circle cx="180" cy="165" r="5" class="svg-node" data-year="2022" />
                         <circle cx="320" cy="135" r="5" class="svg-node" data-year="2023" />
                         <circle cx="460" cy="110" r="6" class="svg-node active" data-year="2024" />
-                        <circle cx="600" cy="70" r="7" class="svg-node active" data-year="2025" />
-                        <circle cx="740" cy="45" r="8" class="svg-node active-pulse" data-year="2026" />
-                        <circle cx="850" cy="25" r="6" class="svg-node future" data-year="2027+" />
+                        <circle cx="600" cy="70"  r="7" class="svg-node active" data-year="2025" />
+                        <circle cx="740" cy="45"  r="8" class="svg-node active-pulse" data-year="2026" />
+                        <circle cx="850" cy="25"  r="6" class="svg-node future" data-year="2027+" />
 
-                        <!-- Axis Labels -->
-                        <text x="50" y="215" class="svg-label">2020 (GPT-3)</text>
+                        <!-- Labels -->
+                        <text x="50"  y="215" class="svg-label">2020 (GPT-3)</text>
                         <text x="180" y="215" class="svg-label">2022 (ChatGPT)</text>
                         <text x="320" y="215" class="svg-label">2023 (GPT-4)</text>
-                        <text x="460" y="215" class="svg-label">2024 (Sora/Claude 3.5)</text>
+                        <text x="460" y="215" class="svg-label">2024 (Claude 3.5)</text>
                         <text x="600" y="215" class="svg-label">2025 (DeepSeek-R1)</text>
-                        <text x="740" y="215" class="svg-label highlight">2026 (Antigravity/Gemini 3.6)</text>
-                        <text x="850" y="215" class="svg-label future">2027+ (Next-Gen AI)</text>
+                        <text x="740" y="215" class="svg-label highlight">2026 (Gemini 3.6)</text>
+                        <text x="850" y="215" class="svg-label future">2027+</text>
                     </svg>
                 </div>
             </div>
 
-            <!-- AI Timeline Cards Stack -->
+            <!-- AI Timeline Cards -->
             <div class="timeline-stack" id="ai-timeline-stack">
                 <!-- Injected via JS -->
             </div>
         </section>
 
 
-        <!-- VIEW 4: DATABASE TAB VIEW -->
-        <section id="view-database" class="content-view hidden">
+        <!-- VIEW 4: DATABASE TAB -->
+        <section id="view-database" class="content-view hidden" aria-label="Historical Event Database">
+
             <div class="db-header-card">
-                <h2 class="db-title">HISTORICAL EVENT DATABASE</h2>
-                <p class="db-desc">Structured archive of technological breakthroughs, scientific discoveries, and historical events across all recording eras.</p>
+                <h2 class="db-title">Historical Event Database</h2>
+                <span class="db-desc">Archive of technological breakthroughs, scientific discoveries and historical events</span>
             </div>
 
-            <div class="db-table-wrapper">
-                <table class="db-table">
+            <!-- Filter Toolbar (moved here from news page) -->
+            <div class="db-toolbar" id="db-toolbar">
+                <div class="db-toolbar-top">
+                    <div class="db-search-box">
+                        <input type="text" id="search-input" placeholder="Search events, topics, keywords..." autocomplete="off">
+                    </div>
+
+                    <div class="select-wrapper">
+                        <select id="sort-select" aria-label="Sort order">
+                            <option value="date-desc">Newest First</option>
+                            <option value="date-asc">Oldest First</option>
+                        </select>
+                    </div>
+
+                    <div class="view-toggle" role="group" aria-label="View mode">
+                        <button class="view-btn active" data-mode="table" id="view-btn-table" title="Table View">Table</button>
+                        <button class="view-btn" data-mode="grid" id="view-btn-grid" title="Grid View">Grid</button>
+                    </div>
+                </div>
+
+                <div class="db-toolbar-filters" id="db-filter-tabs" role="group" aria-label="Category filters">
+                    <button class="filter-btn active" data-shard="all">All</button>
+                    <button class="filter-btn" data-shard="tech">AI & Tech</button>
+                    <button class="filter-btn" data-shard="space">Space & Science</button>
+                    <button class="filter-btn" data-shard="climate">Energy & Climate</button>
+                    <button class="filter-btn" data-shard="geopolitics">World & History</button>
+                </div>
+            </div>
+
+            <!-- Database Table (default) -->
+            <div class="db-table-wrapper" id="db-table-wrapper">
+                <table class="db-table" id="db-table">
                     <thead>
                         <tr>
-                            <th>DATE</th>
-                            <th>TITLE & EVENT</th>
-                            <th>CATEGORY</th>
-                            <th>REGION</th>
-                            <th>SOURCE</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Title & Event</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Region</th>
+                            <th scope="col">Source</th>
                         </tr>
                     </thead>
                     <tbody id="database-table-body">
@@ -254,37 +261,45 @@
                     </tbody>
                 </table>
             </div>
+
+            <!-- Database Grid (alternate view) -->
+            <div id="db-grid-feed" class="news-grid" style="display:none;">
+                <!-- Injected via JS -->
+            </div>
+
+            <div id="db-count" class="record-counter" style="margin-top:0.75rem;"></div>
         </section>
 
     </main>
 
-    <!-- Footer Section -->
-    <footer id="main-footer">
+    <!-- Footer -->
+    <footer id="main-footer" role="contentinfo">
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-brand">
-                    <div class="footer-logo">THE SIMULATION LOG</div>
+                    <div class="footer-logo">The Simulation Log</div>
                     <p class="footer-desc">
                         A digital publication covering artificial intelligence, software engineering, space exploration, and energy infrastructure.
                     </p>
-                    <span class="copyright-line">© 2026 THE SIMULATION LOG. ALL RIGHTS RESERVED.</span>
+                    <hr class="footer-divider">
+                    <span class="copyright-line">© 2026 The Simulation Log. All rights reserved.</span>
                 </div>
 
                 <div class="footer-links">
-                    <h4 class="footer-heading">NAVIGATION</h4>
+                    <h4 class="footer-heading">Navigation</h4>
                     <ul>
                         <li><a href="#news" class="footer-nav-link" data-view="news">Latest News</a></li>
                         <li><a href="#ai-timeline" class="footer-nav-link" data-view="ai-timeline">AI Timeline</a></li>
                         <li><a href="#database" class="footer-nav-link" data-view="database">Database Archive</a></li>
                         <li><a href="https://github.com/MarcelvanDuijnDev/thesimulationlog.com" target="_blank">GitHub Repository</a></li>
-                        <li><a href="mailto:contact@aethvion.com">Editorial Contact</a></li>
+                        <li><a href="mailto:contact@thesimulationlog.com">Editorial Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-contributors">
-                    <h4 class="footer-heading">EDITORIAL TEAM</h4>
+                    <h4 class="footer-heading">Editorial Team</h4>
                     <div id="contributors-list" class="contributors-flex">
-                        <span class="contributor-tag">Editorial_Team</span>
+                        <span class="contributor-tag">Editorial Team</span>
                     </div>
                 </div>
             </div>
