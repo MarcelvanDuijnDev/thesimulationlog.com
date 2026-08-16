@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ARTICLE_TITLE}} — The Simulation Log</title>
+    <meta name="description" content="{{META_DESCRIPTION}}">
+    <link rel="canonical" href="https://thesimulationlog.com/posts/{{ARTICLE_SLUG}}/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type"        content="article">
+    <meta property="og:title"       content="{{ARTICLE_TITLE}} — The Simulation Log">
+    <meta property="og:description" content="{{META_DESCRIPTION}}">
+    <meta property="og:url"         content="https://thesimulationlog.com/posts/{{ARTICLE_SLUG}}/">
+    <meta property="og:site_name"   content="The Simulation Log">
+    <meta name="twitter:card"       content="summary_large_image">
+    <meta name="twitter:title"      content="{{ARTICLE_TITLE}}">
+    <meta name="twitter:description" content="{{META_DESCRIPTION}}">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/nav.js"></script>
+</head>
+<body>
+
+<!-- Nav injected here -->
+<div id="nav-mount"></div>
+
+<!-- Article -->
+<div class="post-wrap">
+
+    <a href="/" class="back-link">&#8592; Latest News</a>
+
+    <span class="post-category cat-pill {{CATEGORY_CLASS}}">{{ARTICLE_CATEGORY}}</span>
+
+    <h1 class="post-headline">{{ARTICLE_TITLE}}</h1>
+    <p class="post-subtitle">{{ARTICLE_SUBTITLE}}</p>
+
+    <div class="post-byline">
+        <span>By <span class="post-author">{{ARTICLE_AUTHOR}}</span></span>
+        <span>{{ARTICLE_DATE}} &nbsp;&middot;&nbsp; {{ARTICLE_READING_TIME}}</span>
+        <div>{{ARTICLE_TAGS_HTML}}</div>
+    </div>
+
+    <div class="post-body">
+        {{ARTICLE_CONTENT_HTML}}
+    </div>
+
+    {{ARTICLE_SOURCE_BOX}}
+
+    <div class="related-section">
+        <div class="related-title">More Stories</div>
+        <div class="related-grid" id="related-grid">
+            {{RELATED_ARTICLES_HTML}}
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer injected here -->
+<div id="footer-mount"></div>
+
+</body>
+</html>

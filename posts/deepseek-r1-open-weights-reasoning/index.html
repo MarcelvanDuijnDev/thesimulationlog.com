@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DeepSeek-R1 Matches GPT-4o at 5% of the Cost — The Simulation Log</title>
+    <meta name="description" content="DeepSeek-R1 is a 671 billion parameter open-weight reasoning model that matches GPT-4o on major benchmarks while costing a fraction to train — upending assumptions about AI development costs.">
+    <link rel="canonical" href="https://thesimulationlog.com/posts/deepseek-r1-open-weights-reasoning/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type"        content="article">
+    <meta property="og:title"       content="DeepSeek-R1 Matches GPT-4o at 5% of the Cost — The Simulation Log">
+    <meta property="og:description" content="DeepSeek-R1 is a 671 billion parameter open-weight reasoning model that matches GPT-4o on major benchmarks while costing a fraction to train — upending assumptions about AI development costs.">
+    <meta property="og:url"         content="https://thesimulationlog.com/posts/deepseek-r1-open-weights-reasoning/">
+    <meta property="og:site_name"   content="The Simulation Log">
+    <meta name="twitter:card"       content="summary_large_image">
+    <meta name="twitter:title"      content="DeepSeek-R1 Matches GPT-4o at 5% of the Cost">
+    <meta name="twitter:description" content="DeepSeek-R1 is a 671 billion parameter open-weight reasoning model that matches GPT-4o on major benchmarks while costing a fraction to train — upending assumptions about AI development costs.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/nav.js"></script>
+</head>
+<body>
+
+<!-- Nav injected here -->
+<div id="nav-mount"></div>
+
+<!-- Article -->
+<div class="post-wrap">
+
+    <a href="/" class="back-link">&#8592; Latest News</a>
+
+    <span class="post-category cat-pill ai">Artificial Intelligence</span>
+
+    <h1 class="post-headline">DeepSeek-R1 Matches GPT-4o at 5% of the Cost</h1>
+    <p class="post-subtitle">The Chinese lab's open-weight reasoning model triggered a global AI hardware rethink — and wiped $590 billion from Nvidia's market cap in a single trading session.</p>
+
+    <div class="post-byline">
+        <span>By <span class="post-author">Editorial Team</span></span>
+        <span>January 22, 2025 &nbsp;&middot;&nbsp; 6 min read</span>
+        <div><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#AI</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#DeepSeek</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#LLM</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#Open Source</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#Reasoning</span></div>
+    </div>
+
+    <div class="post-body">
+        <p>On January 20, 2025, Chinese AI lab DeepSeek published the weights of DeepSeek-R1 to Hugging Face — fully open, free to download, and ready to run on consumer hardware in its distilled form. Within days, the release had redrawn the competitive map of the global AI industry.</p>
+<p>DeepSeek-R1 is a 671 billion parameter model built on a Mixture-of-Experts (MoE) architecture, meaning only around 37 billion parameters are active at any given time during inference. This makes it dramatically more efficient than dense models of comparable capability. On the AIME 2024 mathematical reasoning benchmark, R1 scored 79.8% — matching or exceeding OpenAI's GPT-4o and o1-mini on several key tests. On Codeforces competitive programming tasks, it placed in the 96.3rd percentile.</p>
+<h2>The Cost Shock</h2>
+<p>Industry estimates place the training cost for GPT-4 at somewhere between $50 million and $100 million. DeepSeek reported training R1 for approximately $6 million — using older Nvidia H800 GPUs acquired before US export controls tightened. The efficiency was achieved partly through algorithmic innovation: R1 uses Group Relative Policy Optimization (GRPO), a reinforcement learning technique that eliminates the need for a separate critic model during training, reducing memory and compute demands significantly.</p>
+<blockquote>DeepSeek-R1 demonstrated that frontier reasoning capability does not require frontier training budgets. The gap was not in hardware — it was in training methodology.</blockquote>
+<h2>The Market Reaction</h2>
+<p>On January 27, 2025 — one week after the release — Nvidia's stock fell 17% in a single trading session, erasing approximately $590 billion in market capitalisation. The sell-off reflected a straightforward concern: if state-of-the-art AI can be trained at a fraction of previously assumed costs, demand for Nvidia's most expensive GPU clusters may be lower than Wall Street had priced in. Microsoft, Meta, and Alphabet also saw significant declines.</p>
+<h2>Open Weights and the Transparency Question</h2>
+<p>Unlike proprietary models from OpenAI or Anthropic, DeepSeek released both R1's weights and a companion paper detailing its training methodology in full. It also released a "Zero" variant — R1-Zero — trained entirely through reinforcement learning without supervised fine-tuning, which independently developed chain-of-thought reasoning behavior, raising substantive questions about how much of the capability in frontier models comes from data versus compute versus algorithmic structure.</p>
+<p>The model shows its reasoning traces to users, displaying the step-by-step thinking process before producing a final answer. This transparency — unusual among top-tier models — has made R1 particularly useful for educational purposes and for auditing the model's approach to complex problems. Several smaller distilled versions of R1 (7B, 14B, 32B parameters) are now among the most-downloaded models on Hugging Face, running efficiently on local hardware.</p>
+
+    </div>
+
+    <div class="post-source">  <span>Primary source: <strong>DeepSeek GitHub</strong></span>  <a href="https://github.com/deepseek-ai/DeepSeek-R1" target="_blank" rel="noopener" class="read-btn">  View Source &rarr;</a></div>
+
+    <div class="related-section">
+        <div class="related-title">More Stories</div>
+        <div class="related-grid" id="related-grid">
+            <a href="/posts/claude-3-7-extended-thinking/" class="related-card">  <span class="related-card-cat" style="color:var(--blue);">Artificial Intelligence</span>  <span class="related-card-title">Anthropic's Claude 3.7 Sonnet Introduces Extended Thinking</span>  <span class="related-card-date">February 24, 2025</span></a><a href="/posts/spacex-mechazilla-catches-starship-booster/" class="related-card">  <span class="related-card-cat" style="color:var(--blue);">Space</span>  <span class="related-card-title">SpaceX Catches the Starship Booster Mid-Air with Mechazilla</span>  <span class="related-card-date">October 14, 2024</span></a>
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer injected here -->
+<div id="footer-mount"></div>
+
+</body>
+</html>

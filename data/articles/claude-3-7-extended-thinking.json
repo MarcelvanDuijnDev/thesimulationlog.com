@@ -1,0 +1,57 @@
+{
+  "slug": "claude-3-7-extended-thinking",
+  "title": "Anthropic's Claude 3.7 Sonnet Introduces Extended Thinking",
+  "subtitle": "The new model displays its step-by-step reasoning process in full, sets a new record on software engineering benchmarks, and marks a significant shift in how AI assistants approach complex problems.",
+  "author": "Editorial Team",
+  "date": "February 24, 2025",
+  "date_iso": "2025-02-24",
+  "category": "Artificial Intelligence",
+  "category_class": "ai",
+  "tags": ["AI", "Anthropic", "Claude", "LLM", "Reasoning", "Coding"],
+  "reading_time": "5 min read",
+  "source_url": "https://www.anthropic.com/news/claude-3-7-sonnet",
+  "source_label": "Anthropic Blog",
+  "meta_description": "Claude 3.7 Sonnet, released February 24, 2025, introduces extended thinking — a visible chain-of-thought reasoning mode that achieves 62.3% on SWE-bench Verified and 97.6% on HumanEval, making it Anthropic's most capable model to date.",
+  "content": [
+    {
+      "type": "p",
+      "text": "Anthropic released Claude 3.7 Sonnet on February 24, 2025, introducing a feature the company calls extended thinking — a mode in which the model works through a problem step by step before producing its final answer, with the intermediate reasoning visible to the user. The feature marks a departure from the traditional black-box output model that has characterised most commercial AI assistants."
+    },
+    {
+      "type": "p",
+      "text": "On SWE-bench Verified — a benchmark testing a model's ability to resolve real GitHub issues in open-source software repositories — Claude 3.7 Sonnet scored 62.3%, the highest result recorded at the time of its release. On HumanEval, a standard coding benchmark, it reached 97.6%. These figures place it above GPT-4o and in direct competition with DeepSeek-R1's coding performance, though the models use substantially different architectures and training approaches."
+    },
+    {
+      "type": "h2",
+      "text": "What Extended Thinking Actually Does"
+    },
+    {
+      "type": "p",
+      "text": "Extended thinking is not a new architecture — it is a mode of operation. When enabled, Claude uses a larger portion of its token budget to reason before answering, similar in concept to OpenAI's o1 series. The difference is that Claude 3.7 shows this thinking in a visible scratchpad: users can read the model's working-out, see where it second-guessed itself, and understand why it reached its conclusion. For debugging, mathematics, and multi-step planning tasks, this transparency is practically valuable."
+    },
+    {
+      "type": "blockquote",
+      "text": "Showing the reasoning isn't just a user experience choice — it's a safety property. A model whose thinking is visible is a model whose mistakes are visible."
+    },
+    {
+      "type": "h2",
+      "text": "Computer Use and Agentic Capabilities"
+    },
+    {
+      "type": "p",
+      "text": "Claude 3.7 also improves on the computer use API introduced with Claude 3.5 Sonnet, which allows the model to interact with graphical user interfaces — clicking buttons, typing into fields, reading screen content, and navigating web browsers. The update reduces error rates on multi-step computer tasks and improves the model's ability to recover when an action produces an unexpected result. This makes Claude 3.7 more viable for agentic applications: automated workflows where the AI operates independently over longer timeframes."
+    },
+    {
+      "type": "h2",
+      "text": "Anthropic's Position in the Market"
+    },
+    {
+      "type": "p",
+      "text": "Anthropic has consistently differentiated itself from OpenAI and Google through its Constitutional AI framework — a training approach that embeds a set of principles into the model's behaviour rather than relying solely on human feedback for every decision. Claude 3.7 continues this approach, with Anthropic publishing more extensive safety evaluations than most competitors. The company has also made Claude's system prompt and safety guidelines partially public, allowing researchers to examine how the guardrails are implemented."
+    },
+    {
+      "type": "p",
+      "text": "With a 200,000 token context window, strong performance across coding, analysis, and reasoning tasks, and the extended thinking mode for complex problems, Claude 3.7 Sonnet positions Anthropic as a credible alternative to GPT-4o for professional and enterprise deployments — particularly in engineering environments where verifiable reasoning steps matter more than raw generation speed."
+    }
+  ]
+}

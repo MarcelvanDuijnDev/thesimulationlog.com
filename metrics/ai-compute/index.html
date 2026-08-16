@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Compute & Models — Metrics — The Simulation Log</title>
+    <meta name="description" content="Interactive logarithmic chart of AI training compute from 2018 to 2027, model release frequency, and the full AI model milestone timeline.">
+    <link rel="canonical" href="https://thesimulationlog.com/metrics/ai-compute/">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/nav.js"></script>
+</head>
+<body>
+
+<div id="nav-mount"></div>
+
+<main>
+<div class="page-wrap">
+
+    <a href="/metrics/" class="back-link">&#8592; Metrics</a>
+
+    <div class="metric-page-hero">
+        <h1>AI Compute &amp; Models</h1>
+        <p>Training compute per model run on a logarithmic scale (2018–2027), model release frequency by year, and a full milestone timeline of key AI systems.</p>
+    </div>
+
+    <!-- ── Chart 1: Interactive compute graph ── -->
+    <div class="chart-card">
+        <div class="chart-head">
+            <div>
+                <div class="chart-title">AI Training Compute Growth (2018–2027)</div>
+                <div class="chart-subtitle">Logarithmic scale &middot; FLOPs per training run &middot; Hover nodes for details &middot; Click key models to jump to timeline</div>
+            </div>
+            <div class="chart-legend">
+                <span><span class="legend-dot" style="background:var(--blue);"></span>Confirmed</span>
+                <span><span class="legend-dot" style="background:var(--amber);"></span>Projected</span>
+            </div>
+        </div>
+        <div class="chart-container">
+            <div id="compute-graph" style="position:relative; min-height:340px;"></div>
+        </div>
+    </div>
+
+    <!-- ── Chart 2: Model releases per year ── -->
+    <div class="chart-card">
+        <div class="chart-head">
+            <div>
+                <div class="chart-title">Major AI Model Releases Per Year</div>
+                <div class="chart-subtitle">Count of frontier or widely-adopted models released annually (2017–2026)</div>
+            </div>
+        </div>
+        <div class="chart-container">
+            <div id="releases-chart" style="min-height:180px;"></div>
+        </div>
+    </div>
+
+    <!-- ── Timeline ── -->
+    <div class="section-head" style="margin-top:2.5rem;">
+        <h2 class="section-title">AI Model Milestone Timeline</h2>
+    </div>
+
+    <div class="timeline-wrap" id="ai-timeline">
+        <!-- Injected by JS -->
+    </div>
+
+</div>
+</main>
+
+<div id="footer-mount"></div>
+
+<script>
+// ──────────────────────────────────────────────────────────────
+// AI Timeline Data
+// ──────────────────────────────────────────────────────────────
+const AI_TIMELINE = [
+    {
+        year: 2020, model: "GPT-3", subtitle: "175 Billion Parameters — The Scale Breakthrough",
+        company: "OpenAI", company_color: "#10a37f", type: "Foundation Model",
+        release_date: "June 2020", compute: "3.14 × 10²³", params: "175B",
+        context: "4,096 tokens", benchmark: "MMLU ~60%",
+        description: "GPT-3 established that scale alone could unlock emergent natural language abilities. Zero-shot and few-shot generation, translation, and code synthesis emerged once parameter counts crossed 100 billion.",
+        impact: "Launched the modern race for large language models and proved the scaling law hypothesis.",
+        real: true
+    },
+    {
+        year: 2022, model: "ChatGPT", subtitle: "100 Million Users in 60 Days — Consumer AI Arrives",
+        company: "OpenAI", company_color: "#10a37f", type: "Consumer Breakout",
+        release_date: "November 2022", compute: "1.2 × 10²⁴", params: "~20B (est.)",
+        context: "4,096 tokens", benchmark: "RLHF alignment",
+        description: "Reinforcement Learning from Human Feedback (RLHF) transformed a powerful but inconsistent language model into a reliable conversational assistant. The public launch triggered the fastest adoption curve of any consumer technology in history.",
+        impact: "Ended the expert-only era of AI. Forced every major AI lab to accelerate public releases by 12–18 months.",
+        real: true
+    },
+    {
+        year: 2023, model: "GPT-4 & Gemini Ultra", subtitle: "Multimodal Reasoning — Professional Exam Performance",
+        company: "OpenAI / Google DeepMind", company_color: "#4285f4", type: "Multimodal Frontier",
+        release_date: "March 2023", compute: "2.1 × 10²⁵", params: "~1T (est., MoE)",
+        context: "128,000 tokens", benchmark: "Bar Exam top 10%",
+        description: "GPT-4 and Gemini Ultra independently cleared professional licensing exams in law, medicine, and finance. Extended context, image understanding, and chain-of-thought reasoning elevated AI from chat tool to knowledge professional.",
+        impact: "Established AI as capable of passing professional credentialing standards, triggering regulatory debates worldwide.",
+        real: true
+    },
+    {
+        year: 2024, model: "Claude 3.5 Sonnet & Sora", subtitle: "Coding AI & Photorealistic Video Generation",
+        company: "Anthropic / OpenAI", company_color: "#d4a574", type: "Video & Code AI",
+        release_date: "June 2024", compute: "8.5 × 10²⁵", params: "~70B (Claude est.)",
+        context: "200,000 tokens", benchmark: "HumanEval 92%",
+        description: "Claude 3.5 Sonnet achieved near-human code synthesis on standardised benchmarks and introduced computer-use APIs allowing agents to operate graphical interfaces. Sora demonstrated minute-long photorealistic video generation from text.",
+        impact: "Marked the beginning of AI-driven software development pipelines, with agentic coding assistants replacing boilerplate work.",
+        real: true
+    },
+    {
+        year: 2025, model: "DeepSeek-R1", subtitle: "Open-Weights Reasoning at Fraction of Compute Cost",
+        company: "DeepSeek", company_color: "#e74c3c", type: "Reasoning Optimization",
+        release_date: "January 2025", compute: "1.4 × 10²⁶", params: "671B (MoE, 37B active)",
+        context: "64,000 tokens", benchmark: "AIME 2024: 79.8%",
+        description: "DeepSeek-R1 published fully open weights matching GPT-4o on mathematical and scientific reasoning benchmarks, trained at approximately 5% of the estimated compute cost of comparable proprietary models.",
+        impact: "Triggered a global re-evaluation of AI hardware strategies. Nvidia lost $590B in market cap in a single trading session.",
+        real: true
+    },
+    {
+        year: 2026, model: "Gemini 3.6 & Autonomous Agents", subtitle: "IDE-Integrated Coding Agents",
+        company: "Google DeepMind", company_color: "#4285f4", type: "Agentic AI Suite",
+        release_date: "August 2026", compute: "5.2 × 10²⁶", params: "~2T+ (est.)",
+        context: "1M+ tokens", benchmark: "SWE-Bench 78%+",
+        description: "Gemini 3.6 and companion agentic IDE systems autonomously manage workspace files, write test suites, install dependencies, and resolve multi-file bugs across full repositories.",
+        impact: "Shifted software engineering from code authorship to agent supervision.",
+        real: true
+    },
+    {
+        year: 2027, model: "Next-Generation Research Models", subtitle: "Projected — Autonomous Scientific Hypothesis Generation",
+        company: "Global Research Consortia", company_color: "#9ca3af", type: "AGI Horizon",
+        release_date: "Projected 2027+", compute: "~10²⁸ (projected)", params: "Unknown",
+        context: "Unlimited (projected)", benchmark: "TBD",
+        description: "Projected systems capable of continuous real-time retraining, automated experimental design, and hypothesis verification on narrow scientific domains.",
+        impact: "Would represent the first AI systems capable of independently advancing scientific knowledge.",
+        real: false
+    }
+];
+
+// Graph data points
+const GRAPH_POINTS = [
+    { year:2018.5, label:"GPT (117M)",        compute:4.6e19,  modelIdx:null, real:true },
+    { year:2019.5, label:"GPT-2 (1.5B)",      compute:1.5e22,  modelIdx:null, real:true },
+    { year:2020.5, label:"GPT-3",             compute:3.14e23, modelIdx:0,    real:true },
+    { year:2021.5, label:"Codex / DALL-E 2",  compute:6e23,    modelIdx:null, real:true },
+    { year:2022.4, label:"ChatGPT",           compute:1.2e24,  modelIdx:1,    real:true },
+    { year:2022.9, label:"PaLM (540B)",       compute:2.5e24,  modelIdx:null, real:true },
+    { year:2023.2, label:"GPT-4",             compute:2.1e25,  modelIdx:2,    real:true },
+    { year:2023.8, label:"Gemini Ultra",      compute:5e25,    modelIdx:null, real:true },
+    { year:2024.2, label:"Claude 3.5 / Sora", compute:8.5e25, modelIdx:3,    real:true },
+    { year:2024.7, label:"Llama 3.1 (405B)", compute:1.1e26,  modelIdx:null, real:true },
+    { year:2025.0, label:"DeepSeek-R1",       compute:1.4e26,  modelIdx:4,    real:true },
+    { year:2025.7, label:"Llama 4 / Phi-5",  compute:2.8e26,  modelIdx:null, real:true },
+    { year:2026.5, label:"Gemini 3.6",        compute:5.2e26,  modelIdx:5,    real:true },
+    { year:2027.2, label:"Next-Gen (Proj.)",  compute:2e28,    modelIdx:6,    real:false }
+];
+
+// ──────────────────────────────────────────────────────────────
+// Build interactive SVG compute graph
+// ──────────────────────────────────────────────────────────────
+function buildComputeGraph() {
+    const container = document.getElementById('compute-graph');
+    if (!container) return;
+
+    const tooltip = document.createElement('div');
+    tooltip.className = 'graph-tooltip';
+    tooltip.style.display = 'none';
+    container.appendChild(tooltip);
+
+    const NS = 'http://www.w3.org/2000/svg';
+    const W = 900, H = 320;
+    const PAD = { top:28, right:35, bottom:58, left:78 };
+    const CW = W - PAD.left - PAD.right;
+    const CH = H - PAD.top  - PAD.bottom;
+    const X_MIN=2018, X_MAX=2028, LOG_MIN=19, LOG_MAX=29;
+
+    const xPos = y  => PAD.left + (y - X_MIN) / (X_MAX - X_MIN) * CW;
+    const yPos = fl => PAD.top  + CH - Math.max(0,Math.min(1,(Math.log10(fl)-LOG_MIN)/(LOG_MAX-LOG_MIN))) * CH;
+
+    const svg = document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    svg.style.cssText = 'width:100%;height:auto;display:block;overflow:visible;';
+
+    const defs = document.createElementNS(NS,'defs');
+    const g = document.createElementNS(NS,'linearGradient');
+    g.setAttribute('id','cAreaGrad'); g.setAttribute('x1','0'); g.setAttribute('y1','0'); g.setAttribute('x2','0'); g.setAttribute('y2','1');
+    [['0.12','0%'],['0.01','100%']].forEach(([op,off])=>{
+        const s=document.createElementNS(NS,'stop'); s.setAttribute('offset',off); s.setAttribute('stop-color','#1d4ed8'); s.setAttribute('stop-opacity',op); g.appendChild(s);
+    });
+    defs.appendChild(g); svg.appendChild(defs);
+
+    // Y grid + labels
+    const YD=[20,21,22,23,24,25,26,27,28];
+    const YL=['10²⁰','10²¹','10²²','10²³','10²⁴','10²⁵','10²⁶','10²⁷','10²⁸'];
+    YD.forEach((d,i)=>{
+        if(d<LOG_MIN||d>LOG_MAX) return;
+        const y=PAD.top+CH-(d-LOG_MIN)/(LOG_MAX-LOG_MIN)*CH;
+        const l=document.createElementNS(NS,'line'); l.setAttribute('x1',PAD.left); l.setAttribute('y1',y); l.setAttribute('x2',PAD.left+CW); l.setAttribute('y2',y); l.setAttribute('class','svg-gridline'); svg.appendChild(l);
+        const t=document.createElementNS(NS,'text'); t.setAttribute('x',PAD.left-8); t.setAttribute('y',y+4); t.setAttribute('text-anchor','end'); t.setAttribute('class','svg-label'); t.style.fontSize='10px'; t.textContent=YL[i]; svg.appendChild(t);
+    });
+
+    // Y axis title
+    const yt=document.createElementNS(NS,'text'); yt.setAttribute('transform','rotate(-90)'); yt.setAttribute('x',-(PAD.top+CH/2)); yt.setAttribute('y',14); yt.setAttribute('text-anchor','middle'); yt.setAttribute('class','svg-label'); yt.style.fontSize='10px'; yt.textContent='Training Compute (FLOPs)'; svg.appendChild(yt);
+
+    // X axis labels
+    [2018,2019,2020,2021,2022,2023,2024,2025,2026,2027].forEach(yr=>{
+        const x=xPos(yr);
+        const tk=document.createElementNS(NS,'line'); tk.setAttribute('x1',x); tk.setAttribute('y1',PAD.top+CH); tk.setAttribute('x2',x); tk.setAttribute('y2',PAD.top+CH+4); tk.setAttribute('class','svg-gridline'); svg.appendChild(tk);
+        const t=document.createElementNS(NS,'text'); t.setAttribute('x',x); t.setAttribute('y',PAD.top+CH+17); t.setAttribute('text-anchor','middle'); t.setAttribute('class','svg-label'); t.style.fontSize='10px'; t.textContent=yr; svg.appendChild(t);
+    });
+
+    // Axes
+    [[[PAD.left,PAD.top],[PAD.left,PAD.top+CH]],[[PAD.left,PAD.top+CH],[PAD.left+CW,PAD.top+CH]]].forEach(([[x1,y1],[x2,y2]])=>{
+        const l=document.createElementNS(NS,'line'); l.setAttribute('x1',x1); l.setAttribute('y1',y1); l.setAttribute('x2',x2); l.setAttribute('y2',y2); l.setAttribute('class','svg-axis'); svg.appendChild(l);
+    });
+
+    // Area fill
+    const rp=GRAPH_POINTS.filter(p=>p.real);
+    let aD=`M ${xPos(rp[0].year)} ${PAD.top+CH} L ${xPos(rp[0].year)} ${yPos(rp[0].compute)}`;
+    rp.forEach((p,i)=>{ if(i>0) aD+=` L ${xPos(p.year)} ${yPos(p.compute)}`; });
+    aD+=` L ${xPos(rp[rp.length-1].year)} ${PAD.top+CH} Z`;
+    const area=document.createElementNS(NS,'path'); area.setAttribute('d',aD); area.setAttribute('fill','url(#cAreaGrad)'); svg.appendChild(area);
+
+    // Main line
+    let lD=''; rp.forEach((p,i)=>{ lD+=`${i===0?'M':'L'} ${xPos(p.year)} ${yPos(p.compute)} `; });
+    const mainLine=document.createElementNS(NS,'path'); mainLine.setAttribute('d',lD); mainLine.setAttribute('fill','none'); mainLine.setAttribute('stroke','var(--blue)'); mainLine.setAttribute('stroke-width','2.5'); mainLine.setAttribute('stroke-linecap','round'); mainLine.setAttribute('stroke-linejoin','round'); svg.appendChild(mainLine);
+    requestAnimationFrame(()=>{ try{ const len=mainLine.getTotalLength(); mainLine.style.strokeDasharray=len; mainLine.style.strokeDashoffset=len; mainLine.style.transition='stroke-dashoffset 2s cubic-bezier(0.4,0,0.2,1)'; requestAnimationFrame(()=>{ mainLine.style.strokeDashoffset='0'; }); }catch(e){} });
+
+    // Projected line
+    const lr=rp[rp.length-1], pp=GRAPH_POINTS.find(p=>!p.real);
+    if(pp){ const pl=document.createElementNS(NS,'path'); pl.setAttribute('d',`M ${xPos(lr.year)} ${yPos(lr.compute)} L ${xPos(pp.year)} ${yPos(pp.compute)}`); pl.setAttribute('fill','none'); pl.setAttribute('stroke','var(--amber)'); pl.setAttribute('stroke-width','2'); pl.setAttribute('stroke-dasharray','7 4'); pl.setAttribute('stroke-linecap','round'); pl.style.opacity='0.7'; svg.appendChild(pl); }
+
+    // Nodes
+    GRAPH_POINTS.forEach(p=>{
+        const x=xPos(p.year), y=yPos(p.compute);
+        const isKey=p.modelIdx!==null, isFuture=!p.real;
+        if(isKey){ const ring=document.createElementNS(NS,'circle'); ring.setAttribute('cx',x); ring.setAttribute('cy',y); ring.setAttribute('r','12'); ring.setAttribute('fill',isFuture?'var(--amber)':'var(--blue)'); ring.setAttribute('fill-opacity','0.07'); ring.style.pointerEvents='none'; svg.appendChild(ring); }
+        const c=document.createElementNS(NS,'circle'); c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',isKey?'6':'4'); c.setAttribute('fill','var(--bg)'); c.setAttribute('stroke',isFuture?'var(--amber)':'var(--blue)'); c.setAttribute('stroke-width',isKey?'2.5':'2'); svg.appendChild(c);
+        if(isKey){ const tl=document.createElementNS(NS,'text'); tl.setAttribute('x',x); tl.setAttribute('y',y-11); tl.setAttribute('text-anchor','middle'); tl.setAttribute('class','svg-label'); tl.style.cssText='font-size:9.5px;font-weight:700;fill:var(--blue);'; tl.textContent=p.label.split('/')[0].trim(); svg.appendChild(tl); }
+        const hit=document.createElementNS(NS,'circle'); hit.setAttribute('cx',x); hit.setAttribute('cy',y); hit.setAttribute('r',isKey?'14':'9'); hit.setAttribute('fill','transparent'); hit.style.cursor=isKey?'pointer':'crosshair'; svg.appendChild(hit);
+        hit.addEventListener('mouseenter',()=>{ c.setAttribute('r',isKey?'8':'5.5'); showTip(p,tooltip); });
+        hit.addEventListener('mouseleave',()=>{ c.setAttribute('r',isKey?'6':'4'); tooltip.style.display='none'; });
+        hit.addEventListener('mousemove',(e)=>{ posTip(e,container,tooltip); });
+        if(isKey) hit.addEventListener('click',()=>{ const card=document.getElementById(`tl-${p.modelIdx}`); if(card) card.scrollIntoView({behavior:'smooth',block:'center'}); });
+    });
+
+    container.appendChild(svg);
+}
+
+function showTip(p,tip){
+    const log=Math.log10(p.compute);
+    tip.innerHTML=`<div class="gt-model">${p.label}</div><div class="gt-co">${Math.floor(p.year)}</div><div class="gt-row"><span>Compute</span><strong>10<sup>${log.toFixed(1)}</sup> FLOPs</strong></div>${!p.real?'<div class="gt-proj">Projected</div>':''}${p.modelIdx!==null?'<div style="font-size:.65rem;margin-top:.3rem;opacity:.5;">Click to jump to timeline card</div>':''}`;
+    tip.style.display='block';
+}
+function posTip(e,container,tip){
+    const r=container.getBoundingClientRect();
+    let x=e.clientX-r.left+14, y=e.clientY-r.top-52;
+    const tw=tip.offsetWidth||190;
+    if(x+tw>r.width-8) x=e.clientX-r.left-tw-14;
+    if(y<4) y=e.clientY-r.top+16;
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+}
+
+// ──────────────────────────────────────────────────────────────
+// Model releases bar chart
+// ──────────────────────────────────────────────────────────────
+const RELEASES = [
+    {year:2017,count:2}, {year:2018,count:3}, {year:2019,count:3},
+    {year:2020,count:4}, {year:2021,count:5}, {year:2022,count:7},
+    {year:2023,count:12},{year:2024,count:18},{year:2025,count:22},
+    {year:2026,count:28}
+];
+
+function buildReleasesChart() {
+    const container = document.getElementById('releases-chart');
+    if (!container) return;
+    const NS = 'http://www.w3.org/2000/svg';
+    const W=860, H=180, PL=40, PR=20, PT=15, PB=40;
+    const CW=W-PL-PR, CH=H-PT-PB;
+    const maxC=Math.max(...RELEASES.map(r=>r.count));
+    const barW=CW/RELEASES.length*0.6;
+    const gap=CW/RELEASES.length;
+
+    const svg=document.createElementNS(NS,'svg');
+    svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+    svg.style.cssText='width:100%;height:auto;display:block;overflow:visible;';
+
+    // Grid lines
+    [0,0.25,0.5,0.75,1].forEach(t=>{
+        const y=PT+CH*(1-t);
+        const l=document.createElementNS(NS,'line'); l.setAttribute('x1',PL); l.setAttribute('y1',y); l.setAttribute('x2',PL+CW); l.setAttribute('y2',y); l.setAttribute('class','svg-gridline'); svg.appendChild(l);
+        if(t>0){ const txt=document.createElementNS(NS,'text'); txt.setAttribute('x',PL-5); txt.setAttribute('y',y+4); txt.setAttribute('text-anchor','end'); txt.setAttribute('class','svg-label'); txt.style.fontSize='10px'; txt.textContent=Math.round(maxC*t); svg.appendChild(txt); }
+    });
+
+    RELEASES.forEach((r,i)=>{
+        const x=PL+i*gap+(gap-barW)/2;
+        const bh=Math.max(2,(r.count/maxC)*CH);
+        const y=PT+CH-bh;
+
+        const bar=document.createElementNS(NS,'rect');
+        bar.setAttribute('x',x); bar.setAttribute('y',y+bh); bar.setAttribute('width',barW); bar.setAttribute('height',0);
+        bar.setAttribute('fill','var(--blue)'); bar.setAttribute('rx','3'); bar.style.opacity=r.year>2025?'0.55':'0.85';
+        svg.appendChild(bar);
+        // Animate
+        requestAnimationFrame(()=>{ bar.style.transition=`y 0.8s ${i*0.04}s ease, height 0.8s ${i*0.04}s ease`; bar.setAttribute('y',y); bar.setAttribute('height',bh); });
+
+        // Year label
+        const t=document.createElementNS(NS,'text'); t.setAttribute('x',x+barW/2); t.setAttribute('y',PT+CH+15); t.setAttribute('text-anchor','middle'); t.setAttribute('class','svg-label'); t.style.fontSize='10px'; t.textContent=r.year; svg.appendChild(t);
+
+        // Count label
+        const c=document.createElementNS(NS,'text'); c.setAttribute('x',x+barW/2); c.setAttribute('y',y-4); c.setAttribute('text-anchor','middle'); c.setAttribute('class','svg-label'); c.style.cssText='font-size:9.5px;font-weight:700;fill:var(--blue);'; c.textContent=r.count; svg.appendChild(c);
+    });
+
+    container.appendChild(svg);
+}
+
+// ──────────────────────────────────────────────────────────────
+// Render timeline cards
+// ──────────────────────────────────────────────────────────────
+function renderTimeline() {
+    const container = document.getElementById('ai-timeline');
+    if (!container) return;
+
+    AI_TIMELINE.forEach((item, idx) => {
+        const isFuture = !item.real;
+        const wrapper = document.createElement('div');
+        wrapper.className = `tl-item${isFuture?' future':''}`;
+
+        const dot = document.createElement('div');
+        dot.className = 'tl-dot';
+        wrapper.appendChild(dot);
+
+        const card = document.createElement('div');
+        card.className = 'tl-card';
+        card.id = `tl-${idx}`;
+        card.innerHTML = `
+            <div class="tl-head">
+                <span class="tl-release">${item.release_date}</span>
+                <div class="tl-badges">
+                    ${isFuture?'<span class="tl-proj-badge">Projected</span>':''}
+                    <span class="tl-type-badge">${item.type}</span>
+                    <span class="tl-co-badge" style="color:${item.company_color};">${item.company}</span>
+                </div>
+            </div>
+            <div class="tl-model">${item.model}</div>
+            <div class="tl-model-sub">${item.subtitle}</div>
+            <div class="tl-stats">
+                <div class="tl-stat"><span class="tl-stat-l">Parameters</span><span class="tl-stat-v">${item.params}</span></div>
+                <div class="tl-stat"><span class="tl-stat-l">Context</span><span class="tl-stat-v">${item.context}</span></div>
+                <div class="tl-stat"><span class="tl-stat-l">Compute</span><span class="tl-stat-v">${item.compute}</span></div>
+                <div class="tl-stat"><span class="tl-stat-l">Benchmark</span><span class="tl-stat-v">${item.benchmark}</span></div>
+            </div>
+            <p class="tl-desc">${item.description}</p>
+            <div class="tl-impact"><span class="tl-impact-label">Impact</span><span>${item.impact}</span></div>`;
+
+        wrapper.appendChild(card);
+        container.appendChild(wrapper);
+    });
+}
+
+// Init
+document.addEventListener('DOMContentLoaded', () => {
+    buildComputeGraph();
+    buildReleasesChart();
+    renderTimeline();
+});
+</script>
+
+</body>
+</html>

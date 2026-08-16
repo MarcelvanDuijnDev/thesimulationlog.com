@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Anthropic's Claude 3.7 Sonnet Introduces Extended Thinking — The Simulation Log</title>
+    <meta name="description" content="Claude 3.7 Sonnet, released February 24, 2025, introduces extended thinking — a visible chain-of-thought reasoning mode that achieves 62.3% on SWE-bench Verified and 97.6% on HumanEval, making it Anthropic's most capable model to date.">
+    <link rel="canonical" href="https://thesimulationlog.com/posts/claude-3-7-extended-thinking/">
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type"        content="article">
+    <meta property="og:title"       content="Anthropic's Claude 3.7 Sonnet Introduces Extended Thinking — The Simulation Log">
+    <meta property="og:description" content="Claude 3.7 Sonnet, released February 24, 2025, introduces extended thinking — a visible chain-of-thought reasoning mode that achieves 62.3% on SWE-bench Verified and 97.6% on HumanEval, making it Anthropic's most capable model to date.">
+    <meta property="og:url"         content="https://thesimulationlog.com/posts/claude-3-7-extended-thinking/">
+    <meta property="og:site_name"   content="The Simulation Log">
+    <meta name="twitter:card"       content="summary_large_image">
+    <meta name="twitter:title"      content="Anthropic's Claude 3.7 Sonnet Introduces Extended Thinking">
+    <meta name="twitter:description" content="Claude 3.7 Sonnet, released February 24, 2025, introduces extended thinking — a visible chain-of-thought reasoning mode that achieves 62.3% on SWE-bench Verified and 97.6% on HumanEval, making it Anthropic's most capable model to date.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&family=Playfair+Display:wght@700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/js/nav.js"></script>
+</head>
+<body>
+
+<!-- Nav injected here -->
+<div id="nav-mount"></div>
+
+<!-- Article -->
+<div class="post-wrap">
+
+    <a href="/" class="back-link">&#8592; Latest News</a>
+
+    <span class="post-category cat-pill ai">Artificial Intelligence</span>
+
+    <h1 class="post-headline">Anthropic's Claude 3.7 Sonnet Introduces Extended Thinking</h1>
+    <p class="post-subtitle">The new model displays its step-by-step reasoning process in full, sets a new record on software engineering benchmarks, and marks a significant shift in how AI assistants approach complex problems.</p>
+
+    <div class="post-byline">
+        <span>By <span class="post-author">Editorial Team</span></span>
+        <span>February 24, 2025 &nbsp;&middot;&nbsp; 5 min read</span>
+        <div><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#AI</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#Anthropic</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#Claude</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#LLM</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#Reasoning</span><span style="font-size:.7rem;font-weight:600;padding:.15rem .45rem;border-radius:3px;background:var(--bg-2);color:var(--ink-3);border:1px solid var(--border);margin-left:.3rem;">#Coding</span></div>
+    </div>
+
+    <div class="post-body">
+        <p>Anthropic released Claude 3.7 Sonnet on February 24, 2025, introducing a feature the company calls extended thinking — a mode in which the model works through a problem step by step before producing its final answer, with the intermediate reasoning visible to the user. The feature marks a departure from the traditional black-box output model that has characterised most commercial AI assistants.</p>
+<p>On SWE-bench Verified — a benchmark testing a model's ability to resolve real GitHub issues in open-source software repositories — Claude 3.7 Sonnet scored 62.3%, the highest result recorded at the time of its release. On HumanEval, a standard coding benchmark, it reached 97.6%. These figures place it above GPT-4o and in direct competition with DeepSeek-R1's coding performance, though the models use substantially different architectures and training approaches.</p>
+<h2>What Extended Thinking Actually Does</h2>
+<p>Extended thinking is not a new architecture — it is a mode of operation. When enabled, Claude uses a larger portion of its token budget to reason before answering, similar in concept to OpenAI's o1 series. The difference is that Claude 3.7 shows this thinking in a visible scratchpad: users can read the model's working-out, see where it second-guessed itself, and understand why it reached its conclusion. For debugging, mathematics, and multi-step planning tasks, this transparency is practically valuable.</p>
+<blockquote>Showing the reasoning isn't just a user experience choice — it's a safety property. A model whose thinking is visible is a model whose mistakes are visible.</blockquote>
+<h2>Computer Use and Agentic Capabilities</h2>
+<p>Claude 3.7 also improves on the computer use API introduced with Claude 3.5 Sonnet, which allows the model to interact with graphical user interfaces — clicking buttons, typing into fields, reading screen content, and navigating web browsers. The update reduces error rates on multi-step computer tasks and improves the model's ability to recover when an action produces an unexpected result. This makes Claude 3.7 more viable for agentic applications: automated workflows where the AI operates independently over longer timeframes.</p>
+<h2>Anthropic's Position in the Market</h2>
+<p>Anthropic has consistently differentiated itself from OpenAI and Google through its Constitutional AI framework — a training approach that embeds a set of principles into the model's behaviour rather than relying solely on human feedback for every decision. Claude 3.7 continues this approach, with Anthropic publishing more extensive safety evaluations than most competitors. The company has also made Claude's system prompt and safety guidelines partially public, allowing researchers to examine how the guardrails are implemented.</p>
+<p>With a 200,000 token context window, strong performance across coding, analysis, and reasoning tasks, and the extended thinking mode for complex problems, Claude 3.7 Sonnet positions Anthropic as a credible alternative to GPT-4o for professional and enterprise deployments — particularly in engineering environments where verifiable reasoning steps matter more than raw generation speed.</p>
+
+    </div>
+
+    <div class="post-source">  <span>Primary source: <strong>Anthropic Blog</strong></span>  <a href="https://www.anthropic.com/news/claude-3-7-sonnet" target="_blank" rel="noopener" class="read-btn">  View Source &rarr;</a></div>
+
+    <div class="related-section">
+        <div class="related-title">More Stories</div>
+        <div class="related-grid" id="related-grid">
+            <a href="/posts/deepseek-r1-open-weights-reasoning/" class="related-card">  <span class="related-card-cat" style="color:var(--blue);">Artificial Intelligence</span>  <span class="related-card-title">DeepSeek-R1 Matches GPT-4o at 5% of the Cost</span>  <span class="related-card-date">January 22, 2025</span></a><a href="/posts/spacex-mechazilla-catches-starship-booster/" class="related-card">  <span class="related-card-cat" style="color:var(--blue);">Space</span>  <span class="related-card-title">SpaceX Catches the Starship Booster Mid-Air with Mechazilla</span>  <span class="related-card-date">October 14, 2024</span></a>
+        </div>
+    </div>
+
+</div>
+
+<!-- Footer injected here -->
+<div id="footer-mount"></div>
+
+</body>
+</html>
